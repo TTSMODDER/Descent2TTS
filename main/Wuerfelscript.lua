@@ -11,7 +11,7 @@ function createWuerfelButton()
                 position = "-25 0",
                 anchorMin="1 0.5",
                 anchorMax="1 0.5",
-                id = "wuerfelMenu"
+                id = "wuerfelMenu",
                 },
                 children={
                     {
@@ -85,7 +85,7 @@ function createWuerfelButton()
                         attributes={
                             height=50,
                             width = 50,
-                            color="red",
+                            color="Red",
                             onClick = "wuerfeln",
                             id = "Red",
                         },
@@ -97,53 +97,239 @@ function createWuerfelButton()
     )
 end
 
-function wuerfeln (player, value, id)
-   
-    if  allowedPlayerColors[player.color] then
+
+local currentDice = {}
+
+
+-- clickFunction to start dice process
+function wuerfeln(player, value, id)
+    -- Nur für Spielerfarben, nicht für DM
+    if allowedPlayerColors[player.color] then
         if wuerfel[id] then
             local url = wuerfel[id].url
-            spawnObjFromCloud(url, id, callback, position)
+            local startPos = vector(0, 0, 0) -- Anfangsposition
+            local offset = 3
+
+            -- Berechne die Position des neuen Würfels basierend auf der Anzahl bestehender Würfel
+            local newPos = vector(startPos.x + #currentDice * offset, 10, -10)
+
+            -- Würfel an der berechneten Position spawnen
+            spawnObjFromCloud(url, id, callback, newPos)
         end
-    end  
+    elseif allowedDMColor[player.color] then
+        log("Der DM rollt die Würfel")
+    else
+        log("nichts passiert")
+    end
 end
 
-local spawnedCubes ={}
 
-function spawnObjFromCloud (url, id, callback)
+---@params url string Cloud URL from Library/Constants
+---@params id string ButtonID of pushed button
+---@params callback function for delayed reaction after spawning
+---@params obj object Spawned object
+---@return currentDice obj List element with all current dices
+
+function spawnObjFromCloud (url, id, callback, position)
     WebRequest.get(url, function(response)
         local objectJSON = response.text
         -- Objekt mit dem geladenen JSON spawnen
         local spawnedObject = spawnObjectJSON({
             json = objectJSON,
-            position = {x = xValue , y = 10, z = -10},
+            position = position,
             callback_function = function(obj)
                 obj.setName(id.." Cube")
-                table.insert(spawnedCubes, obj)
-                for i = 1, #spawnedCubes do
-                    log(position)
-                    local position = {x = xValue + (i * 3), y= 10, z=-10}
-                    spawnedCubes[i].setPosition(position)
-                    log(spawnedCubes[i])
-                end
+                table.insert(currentDice, obj)
+                --startRollTimer(obj)
                 if callback then
-                    log("wird ausgeführt")
                     callback(obj)
                 end
             end
         })
     end)
+    return currentDice
 end
 
-function callback (obj)
-    
+function startRollTimer(obj)
+    local timerID = "dice_check_" .. obj.getGUID()
+    -- Falls der Timer bereits existiert, wird er gelöscht
+    Timer.destroy(timerID)
   
-    Wait.time(function()
-        obj.roll()
-    end,0.5, 3)
-    Wait.time(function()
-        for _, cube in ipairs (spawnedCubes) do
-            destroyObject(cube)
-        end
-        spawnedCubes = {}
-    end, 10)
+    Timer.create({
+        identifier = "dice_check_" .. obj.getGUID(),
+        function_name = "rollDice",
+        parameters = {obj.getGUID()}, -- GUID korrekt übergeben
+        delay = 0.1,
+        repetitions = 0,
+    })
 end
+
+function rollDice(params)
+    local diceGUID = params[1]
+    local obj = getObjectFromGUID(diceGUID)
+    if not obj then
+        log("Error: Object not found for GUID: " .. diceGUID)
+        Timer.destroy("dice_check_" .. diceGUID)
+        return
+    end
+
+    -- Geschwindigkeit des Würfels überprüfen
+    local velocity = obj.getVelocity()
+
+    -- Wenn der Würfel still ist, beenden
+    if math.abs(velocity.x) < 0.01 and math.abs(velocity.y) < 0.01 and math.abs(velocity.z) < 0.01 then
+        Timer.destroy("dice_check_" .. diceGUID)  -- Timer stoppen, wenn der Würfel gestoppt ist
+        return
+    end
+
+    -- Timer erneut starten, um die Geschwindigkeit weiter zu überwachen
+    startRollTimer(obj)
+end
+
+-- callback Funktion for rolling dices and destroy after rolling all dices
+function callback (obj)
+    Wait.time(function()
+        for i=1, #currentDice do
+            local dice = currentDice[i]
+            dice.roll()
+            startRollTimer(obj)
+        end
+
+        -- destroy all dices after rolling --
+        Wait.time(function()
+            for _, cube in ipairs (currentDice) do
+                destroyObject(cube)
+            end
+            currentDice = {}
+        end, 10)
+        --displayResults()
+    end,3) 
+end
+--[[ function checkDiceMovement(objGUID)
+    log(objGUID)
+    local dice = getObjectFromGUID(objGUID)
+    if not dice then
+        Timer.destroy("dice_check_" .. objGUID)
+        return
+    end
+
+    local currentPosition = dice.getPosition()
+    local velocity = dice.getVelocity()
+    log(velocity)
+
+    if math.abs(velocity.x) < 0.01 and math.abs(velocity.y) < 0.01 and math.abs(velocity.z) < 0.01 then
+        Timer.destroy("dice_check_" .. objGUID)
+        showDiceValue(dice)
+    end
+end --]]
+
+
+
+function showDiceValue(dice)
+    log ("funktioniert")
+end
+
+
+
+function wuerfelCoroutine()
+    print("vor der Pause")
+    coroutine.yield()  -- Hier wird die Ausführung pausiert
+    print("Nach der Pause")
+end
+
+
+-------------------------------------------TEST ---------------
+--[[
+
+function checkDiceResting()
+    -- Prüfen, ob currentDice leer ist
+    if #currentDice == 0 then
+        log("Keine Würfel zum Prüfen.")
+        return false
+    end
+
+    -- Annahme: Alle Würfel ruhen
+    local allResting = true
+
+    -- Alle Würfel durchgehen
+    for i = 1, #currentDice do
+        local dice = currentDice[i]
+        resting = dice.isResting()
+        log(resting)
+
+        -- Prüfen, ob das Objekt gültig ist und die Methode isResting besitzt
+        if not dice.isResting then
+            log("Objekt hat keine isResting-Methode: " .. dice.getName())
+            return false
+        end
+
+        -- Wenn ein Würfel nicht ruht, ändere allResting und brich die Schleife ab
+        if not dice.isResting() then
+            allResting = false
+            log("Ein Würfel bewegt sich noch: " .. dice.getName())
+            break
+        end
+    end
+
+    -- Ergebnis loggen
+    if allResting then
+        log("Alle Würfel ruhen.")
+    else
+        log("Mindestens ein Würfel bewegt sich noch.")
+    end
+
+    return allResting
+end --]]
+
+--[[ function displayResults(color)
+    local total = 0
+    local resultTable = {}
+
+    --Tally result info
+    for _, die in ipairs(currentDice) do
+        if die ~= nil then
+            --Tally value info
+            --local value = die.getValue()
+			            --total = total + value
+			         			   --Custom dice value
+            if die.getName() == "Blue Cube" then
+			                	value = ref_Blue[die.getValue()]
+            			end
+            if die.getName() == "Red Cube" then
+                				value = ref_Red[die.getValue()]
+            			end
+            if die.getName() == "Yellow Cube" then
+                				value = ref_Yellow[die.getValue()]
+            			end
+            if die.getName() == "Green Cube" then
+                				value = ref_Green[die.getValue()]
+            			end
+            if die.getName() == "Grey Cube" then
+                				value = ref_Grey[die.getValue()]
+            			end
+            if die.getName() == "Black Cube" then
+                				value = ref_Black[die.getValue()]
+            			end
+            if die.getName() == "Brown Cube" then
+                				value = ref_Brown[die.getValue()]
+            			end			
+            --Tally color info
+            local textColor = {1,1,1}
+            if announce_color == "player" then
+                textColor = stringColorToRGB(color)
+            elseif announce_color == "die" then
+                textColor = stringColorToRGB(die.getName())
+            end
+            --Get die type
+            local dSides = ""
+            local dieCustomInfo = die.getCustomObject()
+            if next(dieCustomInfo) then
+                dSides = ref_customDieSides_rev[dieCustomInfo.type+1]
+            else
+                dSides = tonumber(string.match(tostring(die),"%d+"))
+            end
+            --Add to table
+            table.insert(resultTable, {value=value, color=textColor, sides=dSides})
+        end
+    end
+end --]]
