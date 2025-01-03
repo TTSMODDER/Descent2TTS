@@ -37,3 +37,7 @@ announce_color = "die"
 
 allowedPlayerColors = {Red = true, Green = true, Yellow = true, Blue = true}
 allowedDMColor = {White = true}
+
+isRolling = false
+diceCount = 0
+maxDice = 7
