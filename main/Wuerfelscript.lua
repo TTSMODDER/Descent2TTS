@@ -105,6 +105,15 @@ local currentDice = {}
 function wuerfeln(player, value, id)
     -- Nur für Spielerfarben, nicht für DM
     if allowedPlayerColors[player.color] then
+       
+        log(diceCount)
+        if isRolling == true then
+            log("würfel rollen noch")
+        end
+        if diceCount >= maxDice then
+            log("maximale anzahl an würfel wurde erreicht!")
+            return
+        end
         if wuerfel[id] then
             local url = wuerfel[id].url
             local startPos = vector(0, 0, 0) -- Anfangsposition
@@ -115,6 +124,8 @@ function wuerfeln(player, value, id)
 
             -- Würfel an der berechneten Position spawnen
             spawnObjFromCloud(url, id, callback, newPos)
+
+            diceCount = diceCount + 1
         end
     elseif allowedDMColor[player.color] then
         log("Der DM rollt die Würfel")
@@ -199,13 +210,14 @@ function callback (obj)
         Wait.time(function()
             for _, cube in ipairs (currentDice) do
                 destroyObject(cube)
+                diceCount = 0
             end
             currentDice = {}
         end, 10)
         --displayResults()
     end,3) 
 end
---[[ function checkDiceMovement(objGUID)
+function checkDiceMovement(objGUID)
     log(objGUID)
     local dice = getObjectFromGUID(objGUID)
     if not dice then
@@ -221,7 +233,7 @@ end
         Timer.destroy("dice_check_" .. objGUID)
         showDiceValue(dice)
     end
-end --]]
+end
 
 
 
