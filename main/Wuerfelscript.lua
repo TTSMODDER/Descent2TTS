@@ -109,6 +109,7 @@ function wuerfeln(player, value, id)
         log(diceCount)
         if isRolling == true then
             log("würfel rollen noch")
+            return
         end
         if diceCount >= maxDice then
             log("maximale anzahl an würfel wurde erreicht!")
@@ -125,7 +126,7 @@ function wuerfeln(player, value, id)
             -- Würfel an der berechneten Position spawnen
             spawnObjFromCloud(url, id, callback, newPos)
 
-            diceCount = diceCount + 1
+            
         end
     elseif allowedDMColor[player.color] then
         log("Der DM rollt die Würfel")
@@ -142,6 +143,8 @@ end
 ---@return currentDice obj List element with all current dices
 
 function spawnObjFromCloud (url, id, callback, position)
+    diceCount = diceCount + 1
+
     WebRequest.get(url, function(response)
         local objectJSON = response.text
         -- Objekt mit dem geladenen JSON spawnen
@@ -200,6 +203,7 @@ end
 -- callback Funktion for rolling dices and destroy after rolling all dices
 function callback (obj)
     Wait.time(function()
+        isRolling = true
         for i=1, #currentDice do
             local dice = currentDice[i]
             dice.roll()
@@ -211,6 +215,7 @@ function callback (obj)
             for _, cube in ipairs (currentDice) do
                 destroyObject(cube)
                 diceCount = 0
+                isRolling = false
             end
             currentDice = {}
         end, 10)
