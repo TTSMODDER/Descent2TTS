@@ -111,6 +111,15 @@ function wuerfeln(player, value, id)
             log("würfel rollen noch")
             return
         end
+        if rollingDone == true then
+            for _, cube in ipairs (currentDice) do
+                destroyObject(cube)
+            end
+            isRolling = false
+            rollingDone = false
+            diceCount = 0
+            currentDice = {}
+        end
         if diceCount >= maxDice then
             log("maximale anzahl an würfel wurde erreicht!")
             return
@@ -212,13 +221,9 @@ function callback (obj)
 
         -- destroy all dices after rolling --
         Wait.time(function()
-            for _, cube in ipairs (currentDice) do
-                destroyObject(cube)
-                diceCount = 0
-                isRolling = false
-            end
-            currentDice = {}
-        end, 10)
+            isRolling = false
+            rollingDone = true
+        end, 3)
         --displayResults()
     end,3) 
 end
