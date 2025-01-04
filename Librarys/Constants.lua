@@ -42,3 +42,4 @@ isRolling = false
 rollingDone = false
 diceCount = 0
 maxDice = 7
+diceResults = {}

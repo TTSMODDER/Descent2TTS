@@ -202,6 +202,16 @@ function rollDice(params)
     -- Wenn der Würfel still ist, beenden
     if math.abs(velocity.x) < 0.01 and math.abs(velocity.y) < 0.01 and math.abs(velocity.z) < 0.01 then
         Timer.destroy("dice_check_" .. diceGUID)  -- Timer stoppen, wenn der Würfel gestoppt ist
+        
+        if diceCount > 0 then
+            diceCount = diceCount - 1
+            log (diceCount)
+        end
+        if diceCount == 0 then
+            displayResults()
+        end 
+        
+        
         return
     end
 
@@ -209,7 +219,7 @@ function rollDice(params)
     startRollTimer(obj)
 end
 
--- callback Funktion for rolling dices and destroy after rolling all dices
+-- callback Funktion for rolling dices
 function callback (obj)
     Wait.time(function()
         isRolling = true
@@ -219,15 +229,21 @@ function callback (obj)
             startRollTimer(obj)
         end
 
-        -- destroy all dices after rolling --
         Wait.time(function()
             isRolling = false
             rollingDone = true
         end, 3)
-        --displayResults()
     end,3) 
 end
-function checkDiceMovement(objGUID)
+
+function displayResults()
+    
+    for i = 1, #currentDice do
+        local dice = currentDice[i].getValue()
+        log(dice)
+    end
+end
+--[[ function checkDiceMovement(objGUID)
     log(objGUID)
     local dice = getObjectFromGUID(objGUID)
     if not dice then
@@ -243,70 +259,24 @@ function checkDiceMovement(objGUID)
         Timer.destroy("dice_check_" .. objGUID)
         showDiceValue(dice)
     end
-end
+end --]]
 
 
 
-function showDiceValue(dice)
-    log ("funktioniert")
-end
+--[[ function showDiceValue(dice)
+    local result = dice.getValue()
+    log (result)
+end --]]
 
-
-
-function wuerfelCoroutine()
-    print("vor der Pause")
-    coroutine.yield()  -- Hier wird die Ausführung pausiert
-    print("Nach der Pause")
-end
 
 
 -------------------------------------------TEST ---------------
---[[
 
-function checkDiceResting()
-    -- Prüfen, ob currentDice leer ist
-    if #currentDice == 0 then
-        log("Keine Würfel zum Prüfen.")
-        return false
-    end
 
-    -- Annahme: Alle Würfel ruhen
-    local allResting = true
-
-    -- Alle Würfel durchgehen
-    for i = 1, #currentDice do
-        local dice = currentDice[i]
-        resting = dice.isResting()
-        log(resting)
-
-        -- Prüfen, ob das Objekt gültig ist und die Methode isResting besitzt
-        if not dice.isResting then
-            log("Objekt hat keine isResting-Methode: " .. dice.getName())
-            return false
-        end
-
-        -- Wenn ein Würfel nicht ruht, ändere allResting und brich die Schleife ab
-        if not dice.isResting() then
-            allResting = false
-            log("Ein Würfel bewegt sich noch: " .. dice.getName())
-            break
-        end
-    end
-
-    -- Ergebnis loggen
-    if allResting then
-        log("Alle Würfel ruhen.")
-    else
-        log("Mindestens ein Würfel bewegt sich noch.")
-    end
-
-    return allResting
-end --]]
-
---[[ function displayResults(color)
+--[[ function displayResults()
     local total = 0
     local resultTable = {}
-
+    log(currentDice[1].getValue())
     --Tally result info
     for _, die in ipairs(currentDice) do
         if die ~= nil then
@@ -351,7 +321,7 @@ end --]]
                 dSides = tonumber(string.match(tostring(die),"%d+"))
             end
             --Add to table
-            table.insert(resultTable, {value=value, color=textColor, sides=dSides})
+            table.insert(resultTable, {value=value, color=textColor, sides=dSides}) 
         end
     end
 end --]]
