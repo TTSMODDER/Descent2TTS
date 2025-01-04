@@ -239,9 +239,21 @@ end
 function displayResults()
     
     for i = 1, #currentDice do
-        local dice = currentDice[i].getValue()
-        log(dice)
+        local dice = currentDice[i]
+        if currentDice[i].getName() == "Blue Cube" then
+            local value = ref_Blue[dice.getValue()]
+            table.insert(diceResults, value)
+        end
+        if currentDice[i].getName() == "Red Cube" then
+            local value = ref_Red[dice.getValue()]
+            table.insert(diceResults, value)
+        end
     end
+    local resultString = table.concat(diceResults, " , ")
+  --[[   for i = 1, #diceResults do
+        diceResulst[i] .. ", " ..
+    end --]]
+    log(resultString)
 end
 --[[ function checkDiceMovement(objGUID)
     log(objGUID)
