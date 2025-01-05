@@ -91,8 +91,21 @@ function createWuerfelButton()
                         },
                         value="",
                     },
-                }
-            }
+                },
+            },
+            {
+                tag = "Text",
+                attributes = {
+                    id = "showResultID",
+                    richText = "true",
+                    fontSize = "40",
+                    color = "white",
+                    alignment = "UpperCenter",
+                    position = "0 -100",
+                    text = "", -- Der Text mit den <color>-Tags
+
+                },
+            },
         }
     )
 end
@@ -208,7 +221,8 @@ function rollDice(params)
             log (diceCount)
         end
         if diceCount == 0 then
-            displayResults()
+           local result = displayResults()
+           showResult(result)
         end 
         
         
@@ -237,24 +251,74 @@ function callback (obj)
 end
 
 function displayResults()
-    
+    diceResults = {} -- Stelle sicher, dass das Array leer ist.
+
     for i = 1, #currentDice do
         local dice = currentDice[i]
-        if currentDice[i].getName() == "Blue Cube" then
-            local value = ref_Blue[dice.getValue()]
-            table.insert(diceResults, value)
+        local color, value
+        if dice.getName() == "Blue Cube" then
+            value = ref_Blue[dice.getValue()]
+            color = "#287eb0"
+        elseif dice.getName() == "Red Cube" then
+            value = ref_Red[dice.getValue()]
+            color = "#cc391f"
+        elseif dice.getName() == "Yellow Cube" then
+            value = ref_Yellow[dice.getValue()]
+            color = "#e0e322"
+        elseif dice.getName() == "Green Cube" then
+            value = ref_Green[dice.getValue()]
+            color = "#2aa136"
+        elseif dice.getName() == "Grey Cube" then
+            value = ref_Grey[dice.getValue()]
+            color = "#b5b5ae"
+        elseif dice.getName() == "Black Cube" then
+            value = ref_Black[dice.getValue()]
+            color = "#1c1c1c"
+        elseif dice.getName() == "Brown Cube" then
+            value = ref_Brown[dice.getValue()]
+            color = "#734c0a"
         end
-        if currentDice[i].getName() == "Red Cube" then
-            local value = ref_Red[dice.getValue()]
-            table.insert(diceResults, value)
+
+        if value then
+            table.insert(diceResults, {value = value, color = color})
         end
     end
-    local resultString = table.concat(diceResults, " , ")
-  --[[   for i = 1, #diceResults do
-        diceResulst[i] .. ", " ..
-    end --]]
-    log(resultString)
+    
+    local result = ""
+    
+    for _, dice in ipairs(diceResults) do
+        log(dice.color)
+        local coloredText = string.format("<color=%s>%s</color>", dice.color, dice.value)
+        result = result .. coloredText .. " | "
+    end
+    return result 
+end        
+
+function showResult(result)
+    self.UI.setAttribute("showResultID", "text", result)
+    Wait.time(function()
+        self.UI.setAttribute("showResultID", "text", "")
+    end, 8)
 end
+
+--[[     self.UI.setXmlTable({
+        {
+            tag = "Text",
+            attributes = {
+                id = "resultText",
+                color = "White",
+                fontSize = "30",
+                richText = "true",
+                text = result,
+            },
+        },
+    })
+    
+    Wait.time(function()
+        self.UI.setAttribute("resultText", "text", "") -- Löscht nur den Text des Elements
+    end, 5) -- Nach 5 Sekunden --]]
+    
+
 --[[ function checkDiceMovement(objGUID)
     log(objGUID)
     local dice = getObjectFromGUID(objGUID)
