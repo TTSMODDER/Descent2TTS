@@ -131,6 +131,7 @@ local currentDice = {}
 
 -- clickFunction to start dice process
 function wuerfeln(player, value, id)
+    self.UI.setAttribute("resultIMG", "color", "rgba(0,0,0,0)")
     -- Nur für Spielerfarben, nicht für DM
     if allowedPlayerColors[player.color] then
         if isRolling == true then
@@ -273,21 +274,27 @@ function displayResults()
             color = "#287eb0"    
         elseif dice.getName() == "Red Cube" then
             value = ref_Red[dice.getValue()]
+            diceIMG = redDiceIMGs[dice.getValue()]
             color = "#cc391f"
         elseif dice.getName() == "Yellow Cube" then
             value = ref_Yellow[dice.getValue()]
+            diceIMG = yellowDiceIMGs[dice.getValue()]
             color = "#e0e322"
         elseif dice.getName() == "Green Cube" then
             value = ref_Green[dice.getValue()]
+            diceIMG = greenDiceIMGs[dice.getValue()]
             color = "#2aa136"
         elseif dice.getName() == "Grey Cube" then
             value = ref_Grey[dice.getValue()]
+            diceIMG = greyDiceIMGs[dice.getValue()]
             color = "#b5b5ae"
         elseif dice.getName() == "Black Cube" then
             value = ref_Black[dice.getValue()]
+            diceIMG = blackDiceIMGs[dice.getValue()]
             color = "#1c1c1c"
         elseif dice.getName() == "Brown Cube" then
             value = ref_Brown[dice.getValue()]
+            diceIMG = brownDiceIMGs[dice.getValue()]
             color = "#734c0a"
         end
 
