@@ -8,7 +8,7 @@ function createWuerfelButton()
                 height=350,
                 width=50,
                 color="rgba(0,0,0,0.7)",
-                position = "-25 0",
+                position = "-50 0",
                 anchorMin="1 0.5",
                 anchorMax="1 0.5",
                 id = "wuerfelMenu",
@@ -106,6 +106,21 @@ function createWuerfelButton()
 
                 },
             },
+            {
+                tag = "Image",
+                attributes = {
+                    id = "resultIMG",
+                    width = 50,
+                    height = 50,
+                    rectAlignment = "UpperRight",  -- Positionierung des Bildes in der oberen rechten Ecke
+                    offsetXY = "-25 -150",
+                    --visibility = "True",
+                    color = "rgba(0,0,0,0)",
+                    image = "",
+                   
+
+                },
+            },
         }
     )
 end
@@ -118,8 +133,6 @@ local currentDice = {}
 function wuerfeln(player, value, id)
     -- Nur für Spielerfarben, nicht für DM
     if allowedPlayerColors[player.color] then
-       
-        log(diceCount)
         if isRolling == true then
             log("würfel rollen noch")
             return
@@ -218,14 +231,11 @@ function rollDice(params)
         
         if diceCount > 0 then
             diceCount = diceCount - 1
-            log (diceCount)
         end
         if diceCount == 0 then
-           local result = displayResults()
-           showResult(result)
+           local result, imgURL = displayResults()
+           showResult(result, imgURL)
         end 
-        
-        
         return
     end
 
@@ -252,13 +262,15 @@ end
 
 function displayResults()
     diceResults = {} -- Stelle sicher, dass das Array leer ist.
-
+    local diceImgTbl = {}
+    local diceIMG = ""
     for i = 1, #currentDice do
         local dice = currentDice[i]
         local color, value
         if dice.getName() == "Blue Cube" then
             value = ref_Blue[dice.getValue()]
-            color = "#287eb0"
+            diceIMG = blueDiceIMGs[dice.getValue()]
+            color = "#287eb0"    
         elseif dice.getName() == "Red Cube" then
             value = ref_Red[dice.getValue()]
             color = "#cc391f"
@@ -282,25 +294,38 @@ function displayResults()
         if value then
             table.insert(diceResults, {value = value, color = color})
         end
+        if diceIMG then
+            table.insert(diceImgTbl, diceIMG)
+           -- log(diceImgTbl)
+        end
     end
     
+    local imgURL = ""
+    for i = 1, #diceImgTbl do
+        imgURL = diceImgTbl[i]
+        --imgURL = string.format([["%s"]], diceImgTbl[i])
+    end
+
     local result = ""
-    
     for _, dice in ipairs(diceResults) do
-        log(dice.color)
         local coloredText = string.format("<color=%s>%s</color>", dice.color, dice.value)
-        result = result .. coloredText .. " | "
+        result = result .. coloredText .. " | " 
     end
-    return result 
+    return result, imgURL
 end        
 
-function showResult(result)
+function showResult(result, imgURL)
     self.UI.setAttribute("showResultID", "text", result)
+    self.UI.setAttribute("resultIMG", "image", imgURL)
+    self.UI.setAttribute("resultIMG", "color", "rgba(255,255,255,1)")
     Wait.time(function()
         self.UI.setAttribute("showResultID", "text", "")
     end, 8)
 end
 
+function showImg(diceImgTbl)
+   
+end
 --[[     self.UI.setXmlTable({
         {
             tag = "Text",

@@ -12,6 +12,16 @@ wuerfel = {
     ["Brown"] = {url = "https://steamusercontent-a.akamaihd.net/ugc/54703869594687749/962D1DC2E14369E65DA5E6A0E766317FA42E36AB/"},
 }
 
+blueDiceIMGs = {
+    "https://steamusercontent-a.akamaihd.net/ugc/54705153895630143/57EC980D6CCBC6C82234860E9DCB66AEFDEFEE71/",
+    "https://steamusercontent-a.akamaihd.net/ugc/54705153895630250/9AAECAEF9F1634816794456E30FD1A4F7183FE79/",
+    "https://steamusercontent-a.akamaihd.net/ugc/54705153895630325/1AC7B79914321C73DB000D4134DB121271FF0AEE/",
+    "https://steamusercontent-a.akamaihd.net/ugc/54705153895630418/6367402C99CA8FCC5795CD549BB57A865FC135B7/",
+    "https://steamusercontent-a.akamaihd.net/ugc/54705153895630485/BB3A4BE2748B34DBA5D2E0C42AF65E95ACDB4721/",
+    "https://steamusercontent-a.akamaihd.net/ugc/54705153895630570/5E560D5179AD35864B41CB8C9E274B0B49EFEA9F/"
+}
+
+
 ref_Blue = {"3♥♥","6♥↯","2♥♥↯","5♥","4♥♥","❌❌X❌"}
 ref_Red = {"♥♥","♥♥♥↯","♥♥","♥♥♥","♥♥","♥"}
 ref_Yellow = {"2♥","♥♥↯","1♥","♥♥","♥↯","1↯"}
