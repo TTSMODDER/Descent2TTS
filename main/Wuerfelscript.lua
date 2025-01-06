@@ -121,17 +121,33 @@ function createWuerfelButton()
 
                 },
             },
+            {
+                tag = "Text",
+                attributes = {
+                    id = "spielerName",
+                    richText = "true",
+                    fontSize = "20",
+                    color = "white",
+                    alignment = "UpperRight",
+                    position = "-100 -125",
+                    text = "", -- Der Text mit den <color>-Tags
+
+                },
+            },
         }
     )
 end
 
 
 local currentDice = {}
-
+local playerName = ""
 
 -- clickFunction to start dice process
 function wuerfeln(player, value, id)
     self.UI.setAttribute("resultIMG", "color", "rgba(0,0,0,0)")
+    local playerObj = Player[player.color]
+    playerName = playerObj.steam_name -- Oder .getName(), falls benötigt
+
     -- Nur für Spielerfarben, nicht für DM
     if allowedPlayerColors[player.color] then
         if isRolling == true then
@@ -326,10 +342,11 @@ function displayResults()
 end        
 
 function showResult(result, imgURL, resultToPrint)
+    self.UI.setAttribute("spielerName", "text", playerName)
     self.UI.setAttribute("showResultID", "text", result)
     self.UI.setAttribute("resultIMG", "image", imgURL)
     self.UI.setAttribute("resultIMG", "color", "rgba(255,255,255,1)")
-    print(resultToPrint)
+    print(playerName .. ": " .. resultToPrint)
     Wait.time(function()
         self.UI.setAttribute("showResultID", "text", "")
     end, 8)
