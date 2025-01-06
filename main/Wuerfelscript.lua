@@ -234,8 +234,8 @@ function rollDice(params)
             diceCount = diceCount - 1
         end
         if diceCount == 0 then
-           local result, imgURL = displayResults()
-           showResult(result, imgURL)
+           local result, imgURL, resultToPrint = displayResults()
+           showResult(result, imgURL, resultToPrint)
         end 
         return
     end
@@ -314,17 +314,22 @@ function displayResults()
     end
 
     local result = ""
+    local resultToPrint = ""
     for _, dice in ipairs(diceResults) do
         local coloredText = string.format("<color=%s>%s</color>", dice.color, dice.value)
+
+        resultToPrint = resultToPrint .. dice.value .. " | "
         result = result .. coloredText .. " | " 
     end
-    return result, imgURL
+    
+    return result, imgURL, resultToPrint
 end        
 
-function showResult(result, imgURL)
+function showResult(result, imgURL, resultToPrint)
     self.UI.setAttribute("showResultID", "text", result)
     self.UI.setAttribute("resultIMG", "image", imgURL)
     self.UI.setAttribute("resultIMG", "color", "rgba(255,255,255,1)")
+    print(resultToPrint)
     Wait.time(function()
         self.UI.setAttribute("showResultID", "text", "")
     end, 8)
