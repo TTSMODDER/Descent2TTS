@@ -103,6 +103,7 @@ allowedDMColor = {White = true}
 
 isRolling = false
 rollingDone = false
+activePlayer = false
 diceCount = 0
 maxDice = 7
 diceResults = {}

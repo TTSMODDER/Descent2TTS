@@ -141,6 +141,26 @@ end
 
 local currentDice = {}
 local playerName = ""
+local lastPlayer = ""
+
+function checkCurrentPlayer (player)
+    if lastPlayer == "" or lastPlayer == player.color then
+        return
+    else 
+        if isRolling == true then
+            log("würfel rollen noch")
+            return
+        end
+        for _, cube in ipairs(currentDice[lastPlayer]) do
+            destroyObject(cube)
+        end
+        isRolling = false
+        rollingDone = false
+        diceCount = 0
+        currentDice = {}
+        log(currentDice)
+    end
+end
 
 -- clickFunction to start dice process
 function wuerfeln(player, value, id)
@@ -148,14 +168,23 @@ function wuerfeln(player, value, id)
     local playerObj = Player[player.color]
     playerName = playerObj.steam_name -- Oder .getName(), falls benötigt
 
+    checkCurrentPlayer(player)
+
     -- Nur für Spielerfarben, nicht für DM
     if allowedPlayerColors[player.color] then
+        if lastPlayer == "" or lastPlayer == player.color then
+            log("Du darfst würfeln")
+
+        else 
+            log("du darfst nicht würfeln")
+        end
+        
         if isRolling == true then
             log("würfel rollen noch")
             return
         end
         if rollingDone == true then
-            for _, cube in ipairs (currentDice) do
+            for _, cube in ipairs(currentDice[player.color]) do
                 destroyObject(cube)
             end
             isRolling = false
@@ -167,18 +196,24 @@ function wuerfeln(player, value, id)
             log("maximale anzahl an würfel wurde erreicht!")
             return
         end
+       
         if wuerfel[id] then
             local url = wuerfel[id].url
-            local startPos = vector(0, 0, 0) -- Anfangsposition
-            local offset = 3
+            local startPos = vector(0, 10, -10) -- Anfangsposition (nur einmal festgelegt)
 
-            -- Berechne die Position des neuen Würfels basierend auf der Anzahl bestehender Würfel
-            local newPos = vector(startPos.x + #currentDice * offset, 10, -10)
-
-            -- Würfel an der berechneten Position spawnen
-            spawnObjFromCloud(url, id, callback, newPos)
-
+            if currentDice[player.color] == nil  then
+                currentDice[player.color] = {}
+            end
+                
             
+           
+            local diceForPlayer = currentDice[player.color]
+            local newDicePos = vector(startPos.x + #diceForPlayer * 3, 10, -10)
+            
+            -- Würfel spawnen
+            spawnObjFromCloud(url, id, callback, newDicePos, player)
+            lastPlayer = player.color
+            log(lastPlayer)
         end
     elseif allowedDMColor[player.color] then
         log("Der DM rollt die Würfel")
@@ -194,25 +229,35 @@ end
 ---@params obj object Spawned object
 ---@return currentDice obj List element with all current dices
 
-function spawnObjFromCloud (url, id, callback, position)
+function spawnObjFromCloud (url, id, callback, newDicePos, player)
+    log(position)
     diceCount = diceCount + 1
+    local playerColor = player.color
 
     WebRequest.get(url, function(response)
         local objectJSON = response.text
         -- Objekt mit dem geladenen JSON spawnen
         local spawnedObject = spawnObjectJSON({
             json = objectJSON,
-            position = position,
+            position = newDicePos,
             callback_function = function(obj)
                 obj.setName(id.." Cube")
-                table.insert(currentDice, obj)
+                if currentDice[playerColor] == nil then
+                    currentDice[playerColor] = {}
+                end
+                
+                table.insert(currentDice[playerColor], obj)
+               
+                
+                --table.insert(currentDice, obj)
                 --startRollTimer(obj)
                 if callback then
-                    callback(obj)
+                    callback(obj, playerColor)
                 end
             end
         })
     end)
+    -- Gibt Dictonary mit Farbzuweisung zurück an die übergeordnete Variable Current Dice
     return currentDice
 end
 
@@ -261,68 +306,71 @@ function rollDice(params)
 end
 
 -- callback Funktion for rolling dices
-function callback (obj)
+function callback(obj, playerColor)
     Wait.time(function()
         isRolling = true
-        for i=1, #currentDice do
-            local dice = currentDice[i]
-            dice.roll()
-            startRollTimer(obj)
+        local diceTbl = currentDice[playerColor]  -- Hole die Würfel des entsprechenden Spielers
+        if diceTbl then
+            for _, dice in ipairs(diceTbl) do
+                dice.roll()
+                startRollTimer(obj)
+            end
         end
-
         Wait.time(function()
             isRolling = false
             rollingDone = true
         end, 3)
-    end,3) 
+    end, 3)
 end
 
 function displayResults()
     diceResults = {} -- Stelle sicher, dass das Array leer ist.
     local diceImgTbl = {}
     local diceIMG = ""
-    for i = 1, #currentDice do
-        local dice = currentDice[i]
-        local color, value
-        if dice.getName() == "Blue Cube" then
-            value = ref_Blue[dice.getValue()]
-            diceIMG = blueDiceIMGs[dice.getValue()]
-            color = "#287eb0"    
-        elseif dice.getName() == "Red Cube" then
-            value = ref_Red[dice.getValue()]
-            diceIMG = redDiceIMGs[dice.getValue()]
-            color = "#cc391f"
-        elseif dice.getName() == "Yellow Cube" then
-            value = ref_Yellow[dice.getValue()]
-            diceIMG = yellowDiceIMGs[dice.getValue()]
-            color = "#e0e322"
-        elseif dice.getName() == "Green Cube" then
-            value = ref_Green[dice.getValue()]
-            diceIMG = greenDiceIMGs[dice.getValue()]
-            color = "#2aa136"
-        elseif dice.getName() == "Grey Cube" then
-            value = ref_Grey[dice.getValue()]
-            diceIMG = greyDiceIMGs[dice.getValue()]
-            color = "#b5b5ae"
-        elseif dice.getName() == "Black Cube" then
-            value = ref_Black[dice.getValue()]
-            diceIMG = blackDiceIMGs[dice.getValue()]
-            color = "#1c1c1c"
-        elseif dice.getName() == "Brown Cube" then
-            value = ref_Brown[dice.getValue()]
-            diceIMG = brownDiceIMGs[dice.getValue()]
-            color = "#734c0a"
-        end
+    for key, diceList in pairs (currentDice) do
+    log(diceList)
+        for i = 1, #diceList do
+            local dice = diceList[i]
+            local color, value
+            if dice.getName() == "Blue Cube" then
+                value = ref_Blue[dice.getValue()]
+                diceIMG = blueDiceIMGs[dice.getValue()]
+                color = "#287eb0"    
+            elseif dice.getName() == "Red Cube" then
+                value = ref_Red[dice.getValue()]
+                diceIMG = redDiceIMGs[dice.getValue()]
+                color = "#cc391f"
+            elseif dice.getName() == "Yellow Cube" then
+                value = ref_Yellow[dice.getValue()]
+                diceIMG = yellowDiceIMGs[dice.getValue()]
+                color = "#e0e322"
+            elseif dice.getName() == "Green Cube" then
+                value = ref_Green[dice.getValue()]
+                diceIMG = greenDiceIMGs[dice.getValue()]
+                color = "#2aa136"
+            elseif dice.getName() == "Grey Cube" then
+                value = ref_Grey[dice.getValue()]
+                diceIMG = greyDiceIMGs[dice.getValue()]
+                color = "#b5b5ae"
+            elseif dice.getName() == "Black Cube" then
+                value = ref_Black[dice.getValue()]
+                diceIMG = blackDiceIMGs[dice.getValue()]
+                color = "#1c1c1c"
+            elseif dice.getName() == "Brown Cube" then
+                value = ref_Brown[dice.getValue()]
+                diceIMG = brownDiceIMGs[dice.getValue()]
+                color = "#734c0a"
+            end
 
-        if value then
-            table.insert(diceResults, {value = value, color = color})
-        end
-        if diceIMG then
-            table.insert(diceImgTbl, diceIMG)
-           -- log(diceImgTbl)
+            if value then
+                table.insert(diceResults, {value = value, color = color})
+            end
+            if diceIMG then
+                table.insert(diceImgTbl, diceIMG)
+            -- log(diceImgTbl)
+            end
         end
     end
-    
     local imgURL = ""
     for i = 1, #diceImgTbl do
         imgURL = diceImgTbl[i]
