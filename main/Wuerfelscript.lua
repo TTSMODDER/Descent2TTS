@@ -146,7 +146,7 @@ local lastPlayer = ""
 function checkCurrentPlayer (player)
     if lastPlayer == "" or lastPlayer == player.color then
         return
-    else 
+    elseif player.color ~= "White" then
         if isRolling == true then
             log("würfel rollen noch")
             return
@@ -159,6 +159,8 @@ function checkCurrentPlayer (player)
         diceCount = 0
         currentDice = {}
         log(currentDice)
+    else
+        return
     end
 end
 
@@ -171,19 +173,13 @@ function wuerfeln(player, value, id)
     checkCurrentPlayer(player)
 
     -- Nur für Spielerfarben, nicht für DM
-    if allowedPlayerColors[player.color] then
-        if lastPlayer == "" or lastPlayer == player.color then
-            log("Du darfst würfeln")
-
-        else 
-            log("du darfst nicht würfeln")
-        end
-        
+    if allowedPlayerColors[player.color] then 
         if isRolling == true then
             log("würfel rollen noch")
             return
         end
         if rollingDone == true then
+            log(currentDice)
             for _, cube in ipairs(currentDice[player.color]) do
                 destroyObject(cube)
             end
@@ -199,7 +195,7 @@ function wuerfeln(player, value, id)
        
         if wuerfel[id] then
             local url = wuerfel[id].url
-            local startPos = vector(0, 10, -10) -- Anfangsposition (nur einmal festgelegt)
+            local startPos = vector(-8, 10, 8) -- Anfangsposition (nur einmal festgelegt)
 
             if currentDice[player.color] == nil  then
                 currentDice[player.color] = {}
@@ -208,15 +204,60 @@ function wuerfeln(player, value, id)
             
            
             local diceForPlayer = currentDice[player.color]
-            local newDicePos = vector(startPos.x + #diceForPlayer * 3, 10, -10)
+            local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
             
             -- Würfel spawnen
             spawnObjFromCloud(url, id, callback, newDicePos, player)
             lastPlayer = player.color
-            log(lastPlayer)
         end
     elseif allowedDMColor[player.color] then
-        log("Der DM rollt die Würfel")
+        playerName = "Dungeon Master"
+
+        -- check if dices still rolling
+        if isRollingDM == true then
+            log("würfel rollen noch")
+            return
+        end
+
+        --check if dices are rolled out
+        if rollingDoneDM == true then
+            log(currentDice)
+            for key, diceTbl in pairs(currentDice) do
+                if key == "White" then
+                    for _,dice in ipairs(currentDice[key]) do
+                        destroyObject(dice)
+                    end
+                end   
+            end
+            isRollingDM = false
+            rollingDoneDM = false
+            diceCountDM = 0
+            currentDice[player.color] = {}
+        end
+        -- check maximum of possible dices
+        if diceCountDM >= maxDice then
+            log("maximale anzahl an würfel wurde erreicht!")
+            return
+        end
+       
+        if wuerfel[id] then
+            local url = wuerfel[id].url
+            local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
+
+            if currentDice[player.color] == nil  then
+                currentDice[player.color] = {}
+            end
+                
+            
+           
+            local diceForPlayer = currentDice[player.color]
+            local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
+            
+            -- Würfel spawnen
+            spawnObjFromCloud(url, id, callback, newDicePos, player)
+            
+        end
+
     else
         log("nichts passiert")
     end
@@ -230,9 +271,15 @@ end
 ---@return currentDice obj List element with all current dices
 
 function spawnObjFromCloud (url, id, callback, newDicePos, player)
-    log(position)
-    diceCount = diceCount + 1
+    
     local playerColor = player.color
+    if allowedPlayerColors [playerColor] then
+        diceCount = diceCount + 1
+        log(diceCount)
+    elseif allowedDMColor [playerColor] then
+        diceCountDM = diceCountDM + 1
+        log(diceCountDM)
+    end
 
     WebRequest.get(url, function(response)
         local objectJSON = response.text
@@ -308,7 +355,11 @@ end
 -- callback Funktion for rolling dices
 function callback(obj, playerColor)
     Wait.time(function()
-        isRolling = true
+        if playerColor ~= "White" then
+            isRolling = true
+        else
+            isRollingDM = true
+        end
         local diceTbl = currentDice[playerColor]  -- Hole die Würfel des entsprechenden Spielers
         if diceTbl then
             for _, dice in ipairs(diceTbl) do
@@ -317,8 +368,13 @@ function callback(obj, playerColor)
             end
         end
         Wait.time(function()
-            isRolling = false
-            rollingDone = true
+            if playerColor ~= "White" then
+                isRolling = false
+                rollingDone = true
+            else
+                isRollingDM = false
+                rollingDoneDM = true
+            end
         end, 3)
     end, 3)
 end

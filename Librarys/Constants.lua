@@ -102,9 +102,11 @@ allowedPlayerColors = {Red = true, Green = true, Yellow = true, Blue = true}
 allowedDMColor = {White = true}
 
 isRolling = false
+isRollingDM = false
 rollingDone = false
-activePlayer = false
+rollingDoneDM = false
 diceCount = 0
+diceCountDM = 0
 maxDice = 7
 diceResults = {}
 
