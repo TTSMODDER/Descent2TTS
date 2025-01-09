@@ -130,7 +130,20 @@ function createWuerfelButton()
                     color = "white",
                     alignment = "UpperRight",
                     position = "-100 -125",
-                    text = "", -- Der Text mit den <color>-Tags
+                    text = "Spieler", -- Der Text mit den <color>-Tags
+
+                },
+            },
+            {
+                tag = "Text",
+                attributes = {
+                    id = "NameDM",
+                    richText = "true",
+                    fontSize = "20",
+                    color = "white",
+                    alignment = "UpperRight",
+                    position = "-100 -225",
+                    text = "Dungeon Master", -- Der Text mit den <color>-Tags
 
                 },
             },
@@ -211,7 +224,7 @@ function wuerfeln(player, value, id)
             lastPlayer = player.color
         end
     elseif allowedDMColor[player.color] then
-        playerName = "Dungeon Master"
+        
 
         -- check if dices still rolling
         if isRollingDM == true then
