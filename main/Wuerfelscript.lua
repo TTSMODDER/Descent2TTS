@@ -154,6 +154,7 @@ end
 
 local currentDice = {}
 local playerName = ""
+local playerColor = ""
 local lastPlayer = ""
 
 function checkCurrentPlayer (player)
@@ -285,7 +286,7 @@ end
 
 function spawnObjFromCloud (url, id, callback, newDicePos, player)
     
-    local playerColor = player.color
+    playerColor = player.color
     if allowedPlayerColors [playerColor] then
         diceCount = diceCount + 1
         log(diceCount)
@@ -396,8 +397,10 @@ function displayResults()
     diceResults = {} -- Stelle sicher, dass das Array leer ist.
     local diceImgTbl = {}
     local diceIMG = ""
+    if playerColor == "White" then
+        currentDice[lastPlayer] = {}
+    end
     for key, diceList in pairs (currentDice) do
-    log(diceList)
         for i = 1, #diceList do
             local dice = diceList[i]
             local color, value
@@ -430,6 +433,7 @@ function displayResults()
                 diceIMG = brownDiceIMGs[dice.getValue()]
                 color = "#734c0a"
             end
+
 
             if value then
                 table.insert(diceResults, {value = value, color = color})
