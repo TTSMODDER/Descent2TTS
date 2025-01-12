@@ -213,7 +213,6 @@ function wuerfeln(player, value, id)
             return
         end
         if rollingDone == true then
-            log(currentDice)
             for _, cube in ipairs(currentDice[playerColor]) do
                 destroyObject(cube)
             end
@@ -221,8 +220,6 @@ function wuerfeln(player, value, id)
             rollingDone = false
             diceCount = 0
             currentDice = {}
-            --lasPlayer = player.color
-            --log(lastPlayer)
         end
         if diceCount >= maxDice then
             log("maximale anzahl an würfel wurde erreicht!")
@@ -261,10 +258,8 @@ function spawnObjFromCloud (url, id, callback, newDicePos, player)
     
     if allowedPlayerColors [playerColor] then
         diceCount = diceCount + 1
-        log(diceCount)
     elseif allowedDMColor [playerColor] then
         diceCountDM = diceCountDM + 1
-        log(diceCountDM)
     end
 
     WebRequest.get(url, function(response)
@@ -420,12 +415,10 @@ function displayResults()
                 end
                 if diceIMG then
                     table.insert(diceImgTbl, diceIMG)
-                -- log(diceImgTbl)
                 end
             end
         end
     end
-    log(diceResults)
     local result = ""
     local resultToPrint = ""
     local imgURL = ""
@@ -446,9 +439,6 @@ end
 
 function showResult(result, imgURL, resultToPrint)
     if playerColor == "White" then
-        log(playerColor)
-        log(result)
-        log(tostring(allowedDMColor[playerColor]))
         local resultDM = result
         local imgURLDM = imgURL
 
@@ -460,7 +450,6 @@ function showResult(result, imgURL, resultToPrint)
             self.UI.setAttribute("showResultID", "text", "")
         end, 5)
     elseif allowedPlayerColors[playerColor] then
-        log(result)
         self.UI.setAttribute("spielerName", "text", playerName)
         self.UI.setAttribute("showResultID", "text", result)
         self.UI.setAttribute("resultIMG", "image", imgURL)
