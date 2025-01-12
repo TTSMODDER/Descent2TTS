@@ -147,6 +147,21 @@ function createWuerfelButton()
 
                 },
             },
+            {
+                tag = "Image",
+                attributes = {
+                    id = "resultIMGDM",
+                    width = 50,
+                    height = 50,
+                    rectAlignment = "UpperRight",  -- Positionierung des Bildes in der oberen rechten Ecke
+                    offsetXY = "-25 -265",
+                    --visibility = "True",
+                    color = "rgba(0,0,0,0)",
+                    image = "",
+                   
+
+                },
+            },
         }
     )
 end
@@ -157,123 +172,81 @@ local playerName = ""
 local playerColor = ""
 local lastPlayer = ""
 
-function checkCurrentPlayer (player)
-    if lastPlayer == "" or lastPlayer == player.color then
+function checkCurrentPlayer(player)
+    if lastPlayer == "" or lastPlayer == playerColor then
+        lastPlayer = playerColor
         return
-    elseif player.color ~= "White" then
+    elseif lastPlayer ~= playerColor then 
         if isRolling == true then
-            log("würfel rollen noch")
+            log("Würfel rollen noch")
             return
         end
-        for _, cube in ipairs(currentDice[lastPlayer]) do
-            destroyObject(cube)
+
+        -- Nur die Würfel des letzten Spielers löschen
+        if currentDice[lastPlayer] then
+            for _, cube in ipairs(currentDice[lastPlayer]) do
+                destroyObject(cube)
+            end
+            currentDice[lastPlayer] = nil -- Lösche nur den Eintrag für den letzten Spieler
         end
+
         isRolling = false
         rollingDone = false
         diceCount = 0
-        currentDice = {}
-        log(currentDice)
-    else
-        return
+        lastPlayer = playerColor -- Aktualisiere lastPlayer auf den neuen Spieler
     end
 end
 
 -- clickFunction to start dice process
 function wuerfeln(player, value, id)
     self.UI.setAttribute("resultIMG", "color", "rgba(0,0,0,0)")
-    local playerObj = Player[player.color]
-    playerName = playerObj.steam_name -- Oder .getName(), falls benötigt
-
+    playerColor = player.color
     checkCurrentPlayer(player)
 
     -- Nur für Spielerfarben, nicht für DM
-    if allowedPlayerColors[player.color] then 
+    if allowedPlayerColors[playerColor] or allowedDMColor [playerColor] then 
+        local playerObj = Player[playerColor]
+        playerName = playerObj.steam_name -- Oder .getName(), falls benötigt
+
         if isRolling == true then
             log("würfel rollen noch")
             return
         end
         if rollingDone == true then
             log(currentDice)
-            for _, cube in ipairs(currentDice[player.color]) do
+            for _, cube in ipairs(currentDice[playerColor]) do
                 destroyObject(cube)
             end
             isRolling = false
             rollingDone = false
             diceCount = 0
             currentDice = {}
+            --lasPlayer = player.color
+            --log(lastPlayer)
         end
         if diceCount >= maxDice then
             log("maximale anzahl an würfel wurde erreicht!")
             return
         end
        
-        if wuerfel[id] then
-            local url = wuerfel[id].url
-            local startPos = vector(-8, 10, 8) -- Anfangsposition (nur einmal festgelegt)
-
-            if currentDice[player.color] == nil  then
-                currentDice[player.color] = {}
-            end
-                
-            
-           
-            local diceForPlayer = currentDice[player.color]
-            local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
-            
-            -- Würfel spawnen
-            spawnObjFromCloud(url, id, callback, newDicePos, player)
-            lastPlayer = player.color
-        end
-    elseif allowedDMColor[player.color] then
-        
-
-        -- check if dices still rolling
-        if isRollingDM == true then
-            log("würfel rollen noch")
-            return
-        end
-
-        --check if dices are rolled out
-        if rollingDoneDM == true then
-            log(currentDice)
-            for key, diceTbl in pairs(currentDice) do
-                if key == "White" then
-                    for _,dice in ipairs(currentDice[key]) do
-                        destroyObject(dice)
-                    end
-                end   
-            end
-            isRollingDM = false
-            rollingDoneDM = false
-            diceCountDM = 0
+        if currentDice[player.color] == nil  then
             currentDice[player.color] = {}
         end
-        -- check maximum of possible dices
-        if diceCountDM >= maxDice then
-            log("maximale anzahl an würfel wurde erreicht!")
-            return
-        end
-       
+
         if wuerfel[id] then
             local url = wuerfel[id].url
-            local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
-
-            if currentDice[player.color] == nil  then
-                currentDice[player.color] = {}
+            if allowedPlayerColors[playerColor] then
+                local startPos = vector(-8, 10, 8)
+                local diceForPlayer = currentDice[playerColor]
+                local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
+                spawnObjFromCloud(url, id, callback, newDicePos, player)
+            elseif allowedDMColor [playerColor] then
+                local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
+                local diceForPlayer = currentDice[playerColor]
+                local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
+                spawnObjFromCloud(url, id, callback, newDicePos, player)
             end
-                
-            
-           
-            local diceForPlayer = currentDice[player.color]
-            local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
-            
-            -- Würfel spawnen
-            spawnObjFromCloud(url, id, callback, newDicePos, player)
-            
         end
-
-    else
-        log("nichts passiert")
     end
 end
 
@@ -286,7 +259,6 @@ end
 
 function spawnObjFromCloud (url, id, callback, newDicePos, player)
     
-    playerColor = player.color
     if allowedPlayerColors [playerColor] then
         diceCount = diceCount + 1
         log(diceCount)
@@ -308,7 +280,6 @@ function spawnObjFromCloud (url, id, callback, newDicePos, player)
                 end
                 
                 table.insert(currentDice[playerColor], obj)
-               
                 
                 --table.insert(currentDice, obj)
                 --startRollTimer(obj)
@@ -351,14 +322,27 @@ function rollDice(params)
     -- Wenn der Würfel still ist, beenden
     if math.abs(velocity.x) < 0.01 and math.abs(velocity.y) < 0.01 and math.abs(velocity.z) < 0.01 then
         Timer.destroy("dice_check_" .. diceGUID)  -- Timer stoppen, wenn der Würfel gestoppt ist
-        
-        if diceCount > 0 then
-            diceCount = diceCount - 1
+        if allowedPlayerColors[playerColor] then
+            if diceCount > 0 then
+                diceCount = diceCount - 1
+            end
+            if diceCount == 0 then
+                local result, imgURL, resultToPrint = displayResults()
+                showResult(result, imgURL, resultToPrint)
+            end 
+        elseif allowedDMColor [playerColor] then
+            if diceCountDM > 0 then
+                diceCountDM = diceCountDM - 1
+            end
+            if diceCountDM == 0 then
+                local result, imgURL, resultToPrint = displayResults()
+                showResult(result, imgURL, resultToPrint)
+            end 
         end
-        if diceCount == 0 then
-           local result, imgURL, resultToPrint = displayResults()
-           showResult(result, imgURL, resultToPrint)
-        end 
+
+        if allowedPlayerColors[playerColor] or allowedDMColor[playerColor] then
+            lastPlayer = playerColor
+        end
         return
     end
 
@@ -369,11 +353,10 @@ end
 -- callback Funktion for rolling dices
 function callback(obj, playerColor)
     Wait.time(function()
-        if playerColor ~= "White" then
+        if allowedPlayerColors[playerColor] or allowedDMColor[playerColor] then
             isRolling = true
-        else
-            isRollingDM = true
         end
+        
         local diceTbl = currentDice[playerColor]  -- Hole die Würfel des entsprechenden Spielers
         if diceTbl then
             for _, dice in ipairs(diceTbl) do
@@ -382,24 +365,21 @@ function callback(obj, playerColor)
             end
         end
         Wait.time(function()
-            if playerColor ~= "White" then
+            if allowedPlayerColors[playerColor] or allowedDMColor[playerColor] then
                 isRolling = false
                 rollingDone = true
-            else
-                isRollingDM = false
-                rollingDoneDM = true
             end
         end, 3)
     end, 3)
 end
 
 function displayResults()
-    diceResults = {} -- Stelle sicher, dass das Array leer ist.
+    diceResults = {}
+    diceResultsDM = {} -- Stelle sicher, dass das Array leer ist.
     local diceImgTbl = {}
+    local diceImgTblDM = {}
     local diceIMG = ""
-    if playerColor == "White" then
-        currentDice[lastPlayer] = {}
-    end
+  
     for key, diceList in pairs (currentDice) do
         for i = 1, #diceList do
             local dice = diceList[i]
@@ -434,41 +414,60 @@ function displayResults()
                 color = "#734c0a"
             end
 
-
-            if value then
-                table.insert(diceResults, {value = value, color = color})
-            end
-            if diceIMG then
-                table.insert(diceImgTbl, diceIMG)
-            -- log(diceImgTbl)
+            if allowedPlayerColors[playerColor] or allowedDMColor[playerColor] then
+                if value then
+                    table.insert(diceResults, {value = value, color = color})
+                end
+                if diceIMG then
+                    table.insert(diceImgTbl, diceIMG)
+                -- log(diceImgTbl)
+                end
             end
         end
     end
-    local imgURL = ""
-    for i = 1, #diceImgTbl do
-        imgURL = diceImgTbl[i]
-        --imgURL = string.format([["%s"]], diceImgTbl[i])
-    end
-
+    log(diceResults)
     local result = ""
     local resultToPrint = ""
-    for _, dice in ipairs(diceResults) do
-        local coloredText = string.format("<color=%s>%s</color>", dice.color, dice.value)
-
-        resultToPrint = resultToPrint .. dice.value .. " | "
-        result = result .. coloredText .. " | " 
-    end
+    local imgURL = ""
+    if allowedPlayerColors[playerColor] or allowedDMColor[playerColor] then
+        for i = 1, #diceImgTbl do
+            imgURL = diceImgTbl[i]
+            --imgURL = string.format([["%s"]], diceImgTbl[i])
+        end
+        for _, dice in ipairs(diceResults) do
+            local coloredText = string.format("<color=%s>%s</color>", dice.color, dice.value)
     
+            resultToPrint = resultToPrint .. dice.value .. " | "
+            result = result .. coloredText .. " | " 
+        end
+    end
     return result, imgURL, resultToPrint
 end        
 
 function showResult(result, imgURL, resultToPrint)
-    self.UI.setAttribute("spielerName", "text", playerName)
-    self.UI.setAttribute("showResultID", "text", result)
-    self.UI.setAttribute("resultIMG", "image", imgURL)
-    self.UI.setAttribute("resultIMG", "color", "rgba(255,255,255,1)")
-    print(playerName .. ": " .. resultToPrint)
-    Wait.time(function()
-        self.UI.setAttribute("showResultID", "text", "")
-    end, 8)
+    if playerColor == "White" then
+        log(playerColor)
+        log(result)
+        log(tostring(allowedDMColor[playerColor]))
+        local resultDM = result
+        local imgURLDM = imgURL
+
+        self.UI.setAttribute("showResultID", "text", resultDM)
+        self.UI.setAttribute("resultIMGDM", "image", imgURLDM)
+        self.UI.setAttribute("resultIMGDM", "color", "rgba(255,255,255,1)")
+        print("Dungeon Master: "  .. resultToPrint)
+        Wait.time(function()
+            self.UI.setAttribute("showResultID", "text", "")
+        end, 5)
+    elseif allowedPlayerColors[playerColor] then
+        log(result)
+        self.UI.setAttribute("spielerName", "text", playerName)
+        self.UI.setAttribute("showResultID", "text", result)
+        self.UI.setAttribute("resultIMG", "image", imgURL)
+        self.UI.setAttribute("resultIMG", "color", "rgba(255,255,255,1)")
+        print(playerName .. ": " .. resultToPrint)
+        Wait.time(function()
+            self.UI.setAttribute("showResultID", "text", "")
+        end, 5)
+    end
 end
