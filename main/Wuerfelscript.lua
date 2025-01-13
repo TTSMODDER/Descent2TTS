@@ -103,7 +103,33 @@ function createWuerfelButton()
                     alignment = "UpperCenter",
                     position = "0 -100",
                     text = "", -- Der Text mit den <color>-Tags
-
+                },
+            },
+            {
+                tag = "Text",
+                attributes = {
+                    id = "NameDM",
+                    richText = "true",
+                    fontSize = "20",
+                    color = "white",
+                    alignment = "UpperRight",
+                    position = "0 -225",
+                    text = "Dungeon Master", -- Der Text mit den <color>-Tags
+                },
+            },
+            {
+                tag = "HorizontalLayout",
+                attributes = {
+                    width = nil,
+                    height = 50,
+                    rectAlignment = "MiddleRight",
+                    offsetXY = "-10 45",
+                    --position = "-100 50",
+                    anchorMin="1 0.7",
+                    anchorMax="1 0.7",
+                    spacing = 5,
+                    color = "rgba(0,0,0,0)",
+                    id = "diceResultDM",
                 },
             },
             {
@@ -134,20 +160,8 @@ function createWuerfelButton()
 
                 },
             },
-            {
-                tag = "Text",
-                attributes = {
-                    id = "NameDM",
-                    richText = "true",
-                    fontSize = "20",
-                    color = "white",
-                    alignment = "UpperRight",
-                    position = "-100 -225",
-                    text = "Dungeon Master", -- Der Text mit den <color>-Tags
-
-                },
-            },
-            {
+        
+            --[[ {
                 tag = "Image",
                 attributes = {
                     id = "resultIMGDM",
@@ -161,7 +175,7 @@ function createWuerfelButton()
                    
 
                 },
-            },
+            }, --]]
         }
     )
 end
@@ -434,17 +448,44 @@ function displayResults()
             result = result .. coloredText .. " | " 
         end
     end
-    return result, imgURL, resultToPrint
+    return result, diceImgTbl, resultToPrint
 end        
 
-function showResult(result, imgURL, resultToPrint)
+function showResult(result, diceImgTbl, resultToPrint)
     if playerColor == "White" then
         local resultDM = result
         local imgURLDM = imgURL
-
+        local currentUI = UI.getXmlTable()
+        local variableWidth = (#diceImgTbl * 50) + (#diceImgTbl * 3)
+        --log(currentUI)
+        for _,element in ipairs (currentUI) do
+            if element.attributes and element.attributes.id == "diceResultDM" then
+                for i = 1, #diceImgTbl do
+                    log(i)
+                    log(element)
+                    table.insert(element.children, {
+                        tag = "Image",
+                        attributes = {
+                            width = 50,
+                            height = 50,
+                           -- color = "white",
+                            image = diceImgTbl[i],
+                        },
+                    })
+                    log(image)
+                end
+            end
+        end
+        log(#diceImgTbl)
+        log(currentUI.children)
+        UI.setXmlTable(currentUI)
+        
         self.UI.setAttribute("showResultID", "text", resultDM)
-        self.UI.setAttribute("resultIMGDM", "image", imgURLDM)
-        self.UI.setAttribute("resultIMGDM", "color", "rgba(255,255,255,1)")
+        --self.UI.setAttribute("resultIMG", "image", imgURLDM)
+        
+        self.UI.setAttribute("diceResultDM", "width", variableWidth)
+        log(variableWidth)
+
         print("Dungeon Master: "  .. resultToPrint)
         Wait.time(function()
             self.UI.setAttribute("showResultID", "text", "")
