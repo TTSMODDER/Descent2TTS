@@ -11,6 +11,7 @@ function createWuerfelButton()
                 position = "-50 0",
                 anchorMin="1 0.5",
                 anchorMax="1 0.5",
+                visibility = "White|Blue|Yellow|Red|Green",
                 id = "wuerfelMenu",
                 },
                 children={
@@ -160,26 +161,31 @@ function createWuerfelButton()
                     id = "diceResult",
                 },
             },
-        
-            --[[ {
-                tag = "Image",
-                attributes = {
-                    id = "resultIMGDM",
-                    width = 50,
-                    height = 50,
-                    rectAlignment = "UpperRight",  -- Positionierung des Bildes in der oberen rechten Ecke
-                    offsetXY = "-25 -265",
-                    --visibility = "True",
-                    color = "rgba(0,0,0,0)",
-                    image = "",
-                   
-
-                },
-            }, --]]
         }
     )
+    hideUIForPlayerColor ("Grey")
+    --self.UI.setAttribute("wuerfelMenu", "visibility", visibilityList)
 end
 
+function hideUIForPlayerColor(colorToHide)
+    -- Alle verfügbaren Spielerfarben abrufen
+    local availableColors = Player.getAvailableColors()
+    local visibleColors = {}
+
+    -- Erstelle eine Liste mit Farben, die das UI sehen dürfen
+    for _, color in ipairs(availableColors) do
+        if color ~= colorToHide then
+            table.insert(visibleColors, color)
+        end
+    end
+
+    -- Erstelle die "|"-getrennte Liste der sichtbaren Farben
+    local visibilityList = table.concat(visibleColors, "|")
+
+    -- Setze die Sichtbarkeit des UI-Elements
+    self.UI.setAttribute("wuerfelMenu", "visibility", visibilityList)
+    print("UI sichtbar für: " .. visibilityList)
+end
 
 local currentDice = {}
 local playerName = ""
