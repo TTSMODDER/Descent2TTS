@@ -106,18 +106,6 @@ function createWuerfelButton()
                 },
             },
             {
-                tag = "Text",
-                attributes = {
-                    id = "NameDM",
-                    richText = "true",
-                    fontSize = "20",
-                    color = "white",
-                    alignment = "UpperRight",
-                    position = "0 -225",
-                    text = "Dungeon Master", -- Der Text mit den <color>-Tags
-                },
-            },
-            {
                 tag = "HorizontalLayout",
                 attributes = {
                     width = nil,
@@ -133,18 +121,15 @@ function createWuerfelButton()
                 },
             },
             {
-                tag = "Image",
+                tag = "Text",
                 attributes = {
-                    id = "resultIMG",
-                    width = 50,
-                    height = 50,
-                    rectAlignment = "UpperRight",  -- Positionierung des Bildes in der oberen rechten Ecke
-                    offsetXY = "-25 -150",
-                    --visibility = "True",
-                    color = "rgba(0,0,0,0)",
-                    image = "",
-                   
-
+                    id = "NameDM",
+                    richText = "true",
+                    fontSize = "20",
+                    color = "white",
+                    alignment = "UpperRight",
+                    position = "-25 -225",
+                    text = "Dungeon Master: ", -- Der Text mit den <color>-Tags
                 },
             },
             {
@@ -155,9 +140,24 @@ function createWuerfelButton()
                     fontSize = "20",
                     color = "white",
                     alignment = "UpperRight",
-                    position = "-100 -125",
-                    text = "Spieler", -- Der Text mit den <color>-Tags
+                    position = "-115 -125",
+                    text = "Spieler:", -- Der Text mit den <color>-Tags
 
+                },
+            },
+            {
+                tag = "HorizontalLayout",
+                attributes = {
+                    width = nil,
+                    height = 50,
+                    rectAlignment = "UpperRight",
+                    offsetXY = "-10 170",
+                    --position = "-100 50",
+                    anchorMin="1 0.7",
+                    anchorMax="1 0.7",
+                    spacing = 5,
+                    color = "rgba(0,0,0,0)",
+                    id = "diceResult",
                 },
             },
         
@@ -185,6 +185,7 @@ local currentDice = {}
 local playerName = ""
 local playerColor = ""
 local lastPlayer = ""
+
 
 function checkCurrentPlayer(player)
     if lastPlayer == "" or lastPlayer == playerColor then
@@ -457,9 +458,12 @@ function showResult(result, diceImgTbl, resultToPrint)
         local imgURLDM = imgURL
         local currentUI = UI.getXmlTable()
         local variableWidth = (#diceImgTbl * 50) + (#diceImgTbl * 3)
+        --self.UI.setAttributes("diceResultDM", "color", "rgba(0,0,0,0)")
         --log(currentUI)
         for _,element in ipairs (currentUI) do
             if element.attributes and element.attributes.id == "diceResultDM" then
+                element.children = {}
+                
                 for i = 1, #diceImgTbl do
                     log(i)
                     log(element)
@@ -468,34 +472,58 @@ function showResult(result, diceImgTbl, resultToPrint)
                         attributes = {
                             width = 50,
                             height = 50,
-                           -- color = "white",
                             image = diceImgTbl[i],
                         },
                     })
-                    log(image)
                 end
             end
         end
-        log(#diceImgTbl)
-        log(currentUI.children)
         UI.setXmlTable(currentUI)
         
-        self.UI.setAttribute("showResultID", "text", resultDM)
-        --self.UI.setAttribute("resultIMG", "image", imgURLDM)
         
+        self.UI.setAttribute("showResultID", "text", resultDM)
         self.UI.setAttribute("diceResultDM", "width", variableWidth)
-        log(variableWidth)
-
         print("Dungeon Master: "  .. resultToPrint)
+
         Wait.time(function()
             self.UI.setAttribute("showResultID", "text", "")
         end, 5)
     elseif allowedPlayerColors[playerColor] then
+        local currentUI = UI.getXmlTable()
+        local variableWidth = (#diceImgTbl * 50) + (#diceImgTbl * 3)
+
+        for _,element in ipairs (currentUI) do
+            if element.attributes and element.attributes.id == "diceResult" then
+                element.children = {}
+                
+                for i = 1, #diceImgTbl do
+                    table.insert(element.children, {
+                        tag = "Image",
+                        attributes = {
+                            width = 50,
+                            height = 50,
+                            image = diceImgTbl[i],
+                        },
+                    })
+                end
+            end
+        end
+        UI.setXmlTable(currentUI)
+        
+        
+        self.UI.setAttribute("showResultID", "text", result)
+        self.UI.setAttribute("diceResult", "width", variableWidth)
+        print(playerName .. ": " .. resultToPrint)
+
+        Wait.time(function()
+            self.UI.setAttribute("showResultID", "text", "")
+        end, 5)
+
+
         self.UI.setAttribute("spielerName", "text", playerName)
         self.UI.setAttribute("showResultID", "text", result)
         self.UI.setAttribute("resultIMG", "image", imgURL)
-        self.UI.setAttribute("resultIMG", "color", "rgba(255,255,255,1)")
-        print(playerName .. ": " .. resultToPrint)
+        
         Wait.time(function()
             self.UI.setAttribute("showResultID", "text", "")
         end, 5)
