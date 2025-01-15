@@ -163,28 +163,6 @@ function createWuerfelButton()
             },
         }
     )
-    hideUIForPlayerColor ("Grey")
-    --self.UI.setAttribute("wuerfelMenu", "visibility", visibilityList)
-end
-
-function hideUIForPlayerColor(colorToHide)
-    -- Alle verfügbaren Spielerfarben abrufen
-    local availableColors = Player.getAvailableColors()
-    local visibleColors = {}
-
-    -- Erstelle eine Liste mit Farben, die das UI sehen dürfen
-    for _, color in ipairs(availableColors) do
-        if color ~= colorToHide then
-            table.insert(visibleColors, color)
-        end
-    end
-
-    -- Erstelle die "|"-getrennte Liste der sichtbaren Farben
-    local visibilityList = table.concat(visibleColors, "|")
-
-    -- Setze die Sichtbarkeit des UI-Elements
-    self.UI.setAttribute("wuerfelMenu", "visibility", visibilityList)
-    print("UI sichtbar für: " .. visibilityList)
 end
 
 local currentDice = {}
