@@ -1,0 +1,454 @@
+<!-- Spieler_1 -->
+    <Panel id="Parent_PlayerPanel_1" position="0 0 0" width="250" height="500" alignment="MiddleCenter"  color="#2F2F2F0000" allowDragging="true" returntooriginalpositionwhenreleased="false">
+
+    <Image id="image-panelbck_1" imageId="image-panelbck_1"/>
+        <!-- Inner Player Panel -->
+        <Panel id="PlayerPanel_1" width="220" height="270" alignment="MiddleCenter" position="0 100">
+    
+
+
+            <!-- Name Panel -->
+            <Text id="name_1_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20" fontStyle="Bold" color="rgba(0,0,0,1)"  />
+            <Text id="description_1_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)" />
+             
+
+                    <!-- Health Controls -->
+                    <Panel id="health_controls_1" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+                        <Button id="health_down_1" text=" "  fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_1" />
+                        <Text id="health_1_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FF0000" alignment="MiddleCenter" />
+                        <Button id="health_up_1" text=" "  fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthUp_1" />
+                    </Panel>
+
+                    <!-- Exhaustion Controls -->
+                    <Panel id="exhaustion_controls_1" position="0 -25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+                        <Button id="exhaustion_down_1" text="" fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionDown_1" />
+                        <Text id="exhaustion_1_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FFFF00" alignment="MiddleCenter" />
+                        <Button id="exhaustion_up_1" text="" fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_1" />
+                    </Panel>
+
+                                    <!-- Marker Parent -->
+                    <Panel id="panelmarker_Parent_a1" rectAlignment="MiddleCenter" width="110" height="40.5"  offsetXY="0 -90">
+
+                        <!-- MANUELL_ Marker Container 1 -->
+                                    <Panel id="marker_container1_1" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="-13 0" color="#FFFFFF00">
+                                                    <Button id="button2_1_1" 
+                                        width="40"     
+                                        height="40.5"    
+                                        rectAlignment="MiddleCenter"
+                                        onClick="removeMarker(1)" 
+                                        color="transparent">
+                                                        <Image id="image_1_1" 
+                                        width="40" 
+                                        height="40.5" 
+                                        rectAlignment="MiddleCenter"
+                                                        imageId="image_1_1" />
+                                </Button>
+                            </Panel>
+
+
+                    <!--MANUELL_ Marker Container 2 -->
+                            <Panel id="marker_container2_1" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="29.5 0" color="#FFFFFF00">
+                                                                <Button id="button2_1_2" 
+                                        width="40"     
+                                        height="40.5"    
+                                        rectAlignment="MiddleCenter"
+                                        onClick="removeMarker(2)" 
+                                        color="transparent">
+                                                                        <Image id="image_1_2" 
+                                            width="40" 
+                                            height="40.5" 
+                                            rectAlignment="MiddleCenter"
+                                                                        imageId="image_1_2" />
+                                </Button>
+                            </Panel>
+
+                <!-- MANUELL_ Marker Container 3 -->
+                            <Panel id="marker_container3_1" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="72 0" color="#FFFFFF00">
+                                <Button id="button2_1_3" 
+                                        width="40"     
+                                        height="40.5"    
+                                        rectAlignment="MiddleCenter"
+                                        onClick="removeMarker(3)" 
+                                        color="transparent">
+                                    <Image id="image_1_3" 
+                                        width="40" 
+                                        height="40.5" 
+                                        rectAlignment="MiddleCenter"
+                                        imageId="image_1_3" />
+                                </Button>
+                            </Panel>
+
+
+                            <!-- Marker Container refresh -->
+                        <Panel id="marker_container6_1" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="110 0" color="#FFFFFF00"> 
+                            <Button id="refresh_markerpanel_1" 
+                                    width="40"     
+                                    height="40.5"    
+                                    rectAlignment="MiddleCenter"
+                                    onClick="updateOnlyMarkerPanels"
+                                    color="transparent">
+                                <Image id="image-refresh_1" 
+                                    width="25" 
+                                    height="25" 
+                                    rectAlignment="MiddleCenter"
+                                    imageId="image-refresh_1" />
+                                </Button>
+                        </Panel>          
+                    </Panel>
+    <!-- Dice box -->
+    <Panel id="dice_panel_1" rectAlignment="MiddleCenter" width="220" height="140" offsetXY="0 -200" color="#FFFFFF00">
+        <!-- Erste Reihe -->
+        <Panel id="dice_row_1" rectAlignment="UpperCenter" width="220" height="50" offsetXY="0 -10">
+            <Button id="dice1_1" 
+                    width="90" 
+                    height="50"
+                    rectAlignment="MiddleLeft"
+                    offsetXY="10 0"
+                    onClick="angriff"
+                    color="transparent">
+                <Image id="image-angriff_1" imageId="image-angriff_1" width="90"  color="#FFFFFF00" height="50" rectAlignment="MiddleCenter"/>
+            </Button>
+            <Button id="dice2_1" 
+                    width="90" 
+                    height="50"
+                    rectAlignment="MiddleRight"
+                    offsetXY="-10 0"
+                    onClick="abwehr"
+                    color="transparent">
+                <Image id="image-abwehr_1" imageId="image_abwehr_1" width="90" color="#FFFFFF00" height="50" rectAlignment="MiddleCenter"/>
+            </Button>
+        </Panel>
+
+        <!-- Zweite Reihe -->
+        <Panel id="dice_row_2" rectAlignment="LowerCenter" width="220" height="50" offsetXY="0 10">
+            <Button id="dice3_1" 
+                    width="90" 
+                    height="50"
+                    rectAlignment="MiddleLeft"
+                    offsetXY="10 0"
+                    onClick="probe"
+                    color="transparent">
+                <Image id="image-probe_1" imageId="image_probe_1" width="90"  color="#FFFFFF00" height="50" rectAlignment="MiddleCenter"/>
+            </Button>
+            <Button id="dice4_1" 
+                    width="90" 
+                    height="50"
+                    rectAlignment="MiddleRight"
+                    offsetXY="-10 0"
+                    onClick="heilung"
+                    color="transparent">
+                    <Image id="image-heilung_1" imageId="immage-heilung_1" width="90"  color="#FFFFFF00" height="50" rectAlignment="MiddleCenter"/>
+            </Button>
+        </Panel>
+    </Panel>
+    
+        </Panel>
+    </Panel>
+
+<!-- Spieler_2 -->
+    <Panel id="Parent_PlayerPanel_2" position="0 0 0" width="250" height="500" alignment="MiddleCenter"  color="#2F2F2F00" allowDragging="true" returntooriginalpositionwhenreleased="false">
+
+    <Image id="image-panelbck_2" imageId="image-panelbck_2"/>
+        <!-- Inner Player Panel -->
+        <Panel id="PlayerPanel_2" width="220" height="270" alignment="MiddleCenter" position="0 100">
+    
+            <!-- Name Panel -->
+            <Text id="name_2_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20" fontStyle="Bold" color="rgba(0,0,0,1)" />
+            <Text id="description_2_panel" text="" alignment="MiddleCenter" position="0 72" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)" />
+
+                    <!-- Health Controls -->
+                    <Panel id="health_controls_2" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+                        <Button id="health_down_2" text=" "  fontSize="25" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_2" />
+                        <Text id="health_2_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FF0000" alignment="MiddleCenter" />
+                        <Button id="health_up_2" text=" "  fontSize="25" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthUp_2" />
+                    </Panel>
+
+                    <!-- Exhaustion Controls -->
+                    <Panel id="exhaustion_controls_2" position="0 -25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+                        <Button id="exhaustion_down_2" text=" " fontSize="25" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionDown_2" />
+                        <Text id="exhaustion_2_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FFFF00" alignment="MiddleCenter" />
+                        <Button id="exhaustion_up_2" text=" " fontSize="25" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_2" />
+                    </Panel>
+
+                                    <!-- Marker Parent -->
+                    <Panel id="panelmarker_Parent_a1" rectAlignment="MiddleCenter" width="110" height="40.5"  offsetXY="0 -90">
+
+                        <!-- MANUELL_ Marker Container 1 -->
+                                    <Panel id="marker_container1_2" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="-13 0" color="#FFFFFF00">
+                                                    <Button id="button2_2_1" 
+                                        width="40"     
+                                        height="40.5"    
+                                        rectAlignment="MiddleCenter"
+                                        onClick="removeMarker(1)" 
+                                        color="transparent">
+                                                        <Image id="image_2_1" 
+                                        width="40" 
+                                        height="40.5" 
+                                        rectAlignment="MiddleCenter"
+                                                        imageId="image_2_1" />
+                                </Button>
+                            </Panel>
+
+
+                    <!--MANUELL_ Marker Container 2 -->
+                            <Panel id="marker_container2_2" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="29.5 0" color="#FFFFFF00">
+                                                                <Button id="button2_2_2" 
+                                        width="40"     
+                                        height="40.5"    
+                                        rectAlignment="MiddleCenter"
+                                        onClick="removeMarker(2)" 
+                                        color="transparent">
+                                                                        <Image id="image_2_2" 
+                                            width="40" 
+                                            height="40.5" 
+                                            rectAlignment="MiddleCenter"
+                                                                        imageId="image_2_2" />
+                                </Button>
+                            </Panel>
+
+                <!-- MANUELL_ Marker Container 3 -->
+                            <Panel id="marker_container3_2" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="72 0" color="#FFFFFF00">
+                                <Button id="button2_2_3" 
+                                        width="40"     
+                                        height="40.5"    
+                                        rectAlignment="MiddleCenter"
+                                        onClick="removeMarker(3)" 
+                                        color="transparent">
+                                                        <Image id="image_2_3" 
+                                        width="40" 
+                                        height="40.5" 
+                                        rectAlignment="MiddleCenter"
+                                                    imageId="image_2_3" />
+                                </Button>
+                            </Panel>
+
+
+                            <!-- Marker Container refresh -->
+                        <Panel id="marker_container6_2" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="110 0" color="#FFFFFF00"> 
+                            <Button id="refresh_markerpanel_2" 
+                                    width="40"     
+                                    height="40.5"    
+                                    rectAlignment="MiddleCenter"
+                                    onClick="updateOnlyMarkerPanels"
+                                    color="transparent">
+                                <Image id="image-refresh_2" 
+                                    width="25" 
+                                    height="25" 
+                                    rectAlignment="MiddleCenter"
+                                    imageId="image-refresh_2" />
+                                </Button>
+                        </Panel>          
+                    </Panel>
+    <!-- Dice box -->
+    <Panel id="dice_panel_2" rectAlignment="MiddleCenter" width="220" height="140" offsetXY="0 -200" color="#FFFFFF00">
+        <!-- Erste Reihe -->
+        <Panel id="dice_row_2" rectAlignment="UpperCenter" width="220" height="50" offsetXY="0 -10">
+            <Button id="dice1_2" 
+                    width="90" 
+                    height="50"
+                    rectAlignment="MiddleLeft"
+                    offsetXY="10 0"
+                    onClick="angriff"
+                    color="transparent">
+                <Image id="image-angriff_2" imageId="image-angriff_2" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+            </Button>
+            <Button id="dice2_2" 
+                    width="90" 
+                    height="50"
+                    rectAlignment="MiddleRight"
+                    offsetXY="-10 0"
+                    onClick="abwehr"
+                    color="transparent">
+                <Image id="image-abwehr_2" imageId="image_abwehr_2" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+            </Button>
+        </Panel>
+
+        <!-- Zweite Reihe -->
+        <Panel id="dice_row_2" rectAlignment="LowerCenter" width="220" height="50" offsetXY="0 10">
+            <Button id="dice3_2" 
+                    width="90" 
+                    height="50"
+                    rectAlignment="MiddleLeft"
+                    offsetXY="10 0"
+                    onClick="probe"
+                    color="transparent">
+                <Image id="image-probe_2" imageId="image_probe_2" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+            </Button>
+            <Button id="dice4_2" 
+                    width="90" 
+                    height="50"
+                    rectAlignment="MiddleRight"
+                    offsetXY="-10 0"
+                    onClick="heilung"
+                    color="transparent">
+                    <Image id="image-heilung_2" imageId="immage-heilung_2" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+            </Button>
+        </Panel>
+    </Panel>
+    
+        </Panel>
+    </Panel>
+
+
+<!-- Spieler_3 -->
+    <Panel id="Parent_PlayerPanel_3" position="0 0 0" width="250" height="500" alignment="MiddleCenter" color="#2F2F2F00" allowDragging="true" returntooriginalpositionwhenreleased="false">
+
+    <Image id="image-panelbck_3" imageId="image-panelbck_3"/>
+        <!-- Inner Player Panel -->
+        <Panel id="PlayerPanel_3" width="220" height="270" alignment="MiddleCenter" position="0 100">
+    
+            <!-- Name Panel -->
+            <Text id="name_3_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20" fontStyle="Bold" color="rgba(0,0,0,1)" />
+            <Text id="description_3_panel" text="" alignment="MiddleCenter" position="0 72" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)" />
+
+            <!-- Health Controls -->
+            <Panel id="health_controls_3" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+                <Button id="health_down_3" text=" " fontSize="25" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_3" />
+                <Text id="health_3_panel" text=" " position="0 0" fontStyle="Bold" width="100" height="40" fontSize="25" color="#FF0000" alignment="MiddleCenter" />
+                <Button id="health_up_3" text=" " fontSize="25" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthUp_3" />
+            </Panel>
+
+            <!-- Exhaustion Controls -->
+            <Panel id="exhaustion_controls_3" position="0 -25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+                <Button id="exhaustion_down_3" text=" " fontSize="25" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionDown_3" />
+                <Text id="exhaustion_3_panel" text=" " fontStyle="Bold" position="0 0" width="100" height="40" fontSize="25" color="#FFFF00" alignment="MiddleCenter" />
+                <Button id="exhaustion_up_3" text=" " fontSize="25" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_3" />
+            </Panel>
+
+            <!-- Marker Parent -->
+            <Panel id="panelmarker_Parent_a3" rectAlignment="MiddleCenter" width="110" height="40.5" offsetXY="0 -90">
+                <!-- Marker Container 1-5 -->
+                <Panel id="marker_container1_3" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="-13 0" color="#FFFFFF00">
+                    <Button id="button2_3_1" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(1)" color="transparent">
+                        <Image id="image_3_1" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_3_1" />
+                    </Button>
+                </Panel>
+
+                <Panel id="marker_container2_3" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="29.5 0" color="#FFFFFF00">
+                    <Button id="button2_3_2" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(2)" color="transparent">
+                        <Image id="image_3_2" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_3_2" />
+                    </Button>
+                </Panel>
+
+                <Panel id="marker_container3_3" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="72 0" color="#FFFFFF00">
+                    <Button id="button2_3_3" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(3)" color="transparent">
+                        <Image id="image_3_3" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_3_3" />
+                    </Button>
+                </Panel>
+
+
+                <!-- Marker Container refresh -->
+                <Panel id="marker_container6_3" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="110 0" color="#FFFFFF00">
+                    <Button id="refresh_markerpanel_3" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="updateOnlyMarkerPanels" color="transparent">
+                        <Image id="image-refresh_3" width="25" height="25" rectAlignment="MiddleCenter" imageId="image-refresh_3" />
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box -->
+            <Panel id="dice_panel_3" rectAlignment="MiddleCenter" width="220" height="140" offsetXY="0 -200" color="#FFFFFF00">
+                <!-- Erste Reihe -->
+                <Panel id="dice_row_3" rectAlignment="UpperCenter" width="220" height="50" offsetXY="0 -10">
+                    <Button id="dice1_3" width="90" height="50" rectAlignment="MiddleLeft" offsetXY="10 0" onClick="angriff" color="transparent">
+                        <Image id="image-angriff_3" imageId="image-angriff_3" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="dice2_3" width="90" height="50" rectAlignment="MiddleRight" offsetXY="-10 0" onClick="abwehr" color="transparent">
+                        <Image id="image-abwehr_3" imageId="image_abwehr_3" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+
+                <!-- Zweite Reihe -->
+                <Panel id="dice_row_3" rectAlignment="LowerCenter" width="220" height="50" offsetXY="0 10">
+                    <Button id="dice3_3" width="90" height="50" rectAlignment="MiddleLeft" offsetXY="10 0" onClick="probe" color="transparent">
+                        <Image id="image-probe_3" imageId="image_probe_3" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="dice4_3" width="90" height="50" rectAlignment="MiddleRight" offsetXY="-10 0" onClick="heilung" color="transparent">
+                        <Image id="image-heilung_3" imageId="image-heilung_3" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+
+
+
+<!-- Spieler_4 -->
+    <Panel id="Parent_PlayerPanel_4" position="0 0 0" width="250" height="500" alignment="MiddleCenter" color="#2F2F2F00" allowDragging="true" returntooriginalpositionwhenreleased="false">
+
+    <Image id="image-panelbck_4" imageId="image-panelbck_4"/>
+        <!-- Inner Player Panel -->
+        <Panel id="PlayerPanel_4" width="220" height="270" alignment="MiddleCenter" position="0 100">
+    
+            <!-- Name Panel -->
+            <Text id="name_4_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20" fontStyle="Bold" color="rgba(0,0,0,1)" />
+            <Text id="description_4_panel" text="" alignment="MiddleCenter" position="0 72" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)" />
+
+            <!-- Health Controls -->
+            <Panel id="health_controls_4" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+                <Button id="health_down_4" text=" " fontSize="25" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_4" />
+                <Text id="health_4_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FF0000" alignment="MiddleCenter" />
+                <Button id="health_up_4" text=" " fontSize="25" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthUp_4" />
+            </Panel>
+
+            <!-- Exhaustion Controls -->
+            <Panel id="exhaustion_controls_4" position="0 -25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+                <Button id="exhaustion_down_4" text=" " fontSize="25" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionDown_4" />
+                <Text id="exhaustion_4_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FFFF00" alignment="MiddleCenter" />
+                <Button id="exhaustion_up_4" text=" " fontSize="25" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_4" />
+            </Panel>
+
+            <!-- Marker Parent -->
+            <Panel id="panelmarker_Parent_a4" rectAlignment="MiddleCenter" width="110" height="40.5" offsetXY="0 -90">
+                <!-- Marker Container 1-5 -->
+                <Panel id="marker_container1_4" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="-13 0" color="#FFFFFF00">
+                    <Button id="button2_4_1" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(1)" color="transparent">
+                        <Image id="image_4_1" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_4_1" />
+                    </Button>
+                </Panel>
+
+                <Panel id="marker_container2_4" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="29.5 0" color="#FFFFFF00">
+                    <Button id="button2_4_2" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(2)" color="transparent">
+                        <Image id="image_4_2" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_4_2" />
+                    </Button>
+                </Panel>
+
+                <Panel id="marker_container3_4" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="72 0" color="#FFFFFF00">
+                    <Button id="button2_4_3" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(3)" color="transparent">
+                        <Image id="image_4_3" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_4_3" />
+                    </Button>
+                </Panel>
+
+
+
+                <!-- Marker Container refresh -->
+                <Panel id="marker_container6_4" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="110 0" color="#FFFFFF00">
+                    <Button id="refresh_markerpanel_4" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="updateOnlyMarkerPanels" color="transparent">
+                        <Image id="image-refresh_4" width="25" height="25" rectAlignment="MiddleCenter" imageId="image-refresh_4" />
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box -->
+            <Panel id="dice_panel_4" rectAlignment="MiddleCenter" width="220" height="140" offsetXY="0 -200" color="#FFFFFF00">
+                <!-- Erste Reihe -->
+                <Panel id="dice_row_4" rectAlignment="UpperCenter" width="220" height="50" offsetXY="0 -10">
+                    <Button id="dice1_4" width="90" height="50" rectAlignment="MiddleLeft" offsetXY="10 0" onClick="angriff" color="transparent">
+                        <Image id="image-angriff_4" imageId="image-angriff_4" width="90" color="#FFFFFF80"  height="50" rectAlignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="dice2_4" width="90" height="50" rectAlignment="MiddleRight" offsetXY="-10 0" onClick="abwehr" color="transparent">
+                        <Image id="image-abwehr_4" imageId="image_abwehr_4" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+
+                <!-- Zweite Reihe -->
+                <Panel id="dice_row_4" rectAlignment="LowerCenter" width="220" height="50" offsetXY="0 10">
+                    <Button id="dice3_4" width="90" height="50" rectAlignment="MiddleLeft" offsetXY="10 0" onClick="probe" color="transparent">
+                        <Image id="image-probe_4" imageId="image_probe_4" width="90" color="#FFFFFF80"  height="50" rectAlignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="dice4_4" width="90" height="50" rectAlignment="MiddleRight" offsetXY="-10 0" onClick="heilung" color="transparent">
+                        <Image id="image-heilung_4" imageId="image-heilung_4" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
