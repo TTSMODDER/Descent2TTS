@@ -1,7 +1,17 @@
 require ("/Librarys/Constants")
 
 function createWuerfelButton()
-    UI.setXmlTable({
+    --[[ local xml2lua = require("xml2lua")
+    log("xml2lua v" .. xml2lua._VERSION.."\n")
+
+    local success, xml2lua = pcall(require, "xml2lua")
+    if not success then
+        log("Fehler beim Laden von xml2lua: " .. tostring(xml2lua))
+        return
+    end
+    log("xml2lua erfolgreich geladen!") --]]
+
+    local xmlTable = {
         {
             tag="VerticalLayout",
             attributes={
@@ -162,7 +172,11 @@ function createWuerfelButton()
                 },
             },
         }
-    )
+--[[     xml2lua.printable(xmlTable)
+    log()
+    log("XML Representation\n")
+    log(xml2lua.toXml(xmlTable, "xmlTable"))
+ --]]
 end
 
 local currentDice = {}
