@@ -1224,7 +1224,7 @@
         end
     end
 
---Action Panels
+--[[ --Action Panels
     --Action Panels Funktionen für Spieler 1
 function angriff_1()
     local dice_1_1 = Dice_value_1_1
@@ -1331,7 +1331,7 @@ end
 function heilung_4()
     local dice_2_4 = 2
     print("Heilung Spieler 4: Würfelwert - Dice 2: " .. dice_2_4)
-end
+end --]]
 
 --ONLOAD Bereich
     function initHeldenpanel()

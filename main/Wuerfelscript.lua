@@ -1,15 +1,7 @@
 require ("/Librarys/Constants")
+require ("/main/Heldenpanel")
 
 function createWuerfelButton()
-    --[[ local xml2lua = require("xml2lua")
-    log("xml2lua v" .. xml2lua._VERSION.."\n")
-
-    local success, xml2lua = pcall(require, "xml2lua")
-    if not success then
-        log("Fehler beim Laden von xml2lua: " .. tostring(xml2lua))
-        return
-    end
-    log("xml2lua erfolgreich geladen!") --]]
 
     local xmlTable = {
         {
@@ -208,6 +200,10 @@ function checkCurrentPlayer(player)
         diceCount = 0
         lastPlayer = playerColor -- Aktualisiere lastPlayer auf den neuen Spieler
     end
+end
+
+function angriff_1 ()
+    log("Hallo")
 end
 
 -- clickFunction to start dice process
