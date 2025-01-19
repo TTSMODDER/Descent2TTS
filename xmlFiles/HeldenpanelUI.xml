@@ -115,8 +115,8 @@
                                                 color="#FF000000">
                                                 
                                                 <Text
-                                                    id="counterText_1_1"
-                                                    text="0"
+                                                    id="counterText_White"
+                                                    text= "0"
                                                     fontSize="17"
                                                     color="#FFFFFF80"
                                                     alignment="MiddleCenter"/>
@@ -132,7 +132,7 @@
                                                         width="30"
                                                         height="30"
                                                         colors= "Green"
-                                                        onClick="decreaseCounter_1_1">
+                                                        onClick="redDiceCounter">
                                                         <Text
                                                             text=""
                                                             fontSize="18"
@@ -152,7 +152,7 @@
                                                         width="10"
                                                         height="10"
                                                         colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
-                                                        onClick="increaseCounter_1_1">
+                                                        onClick="redDiceCounter">
                                                         <Text
                                                             text="+"
                                                             fontSize="18"

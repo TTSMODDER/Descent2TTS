@@ -202,21 +202,38 @@ function checkCurrentPlayer(player)
     end
 end
 
-function decreaseCounter_1_1()
+--[[ function decreaseCounter_1_1()
     if counter_1_1 > 0 then
         counter_1_1 = counter_1_1 - 1
         UI.setValue("counterText_1_1", tostring(counter_1_1))
         Dice_value_1_1 = counter_1_1  -- Wert speichern
     end
-end
+end --]]
 
-function increaseCounter_1_1(player, value, id)
-    log("hallo")
-    local redDiceCounter = 0
-    if redDiceCounter < 6 then
-        redDiceCounter = redDiceCounter + 1
-        UI.setValue("counterText_1_1", tostring(redDiceCounter))
-        Dice_value_1_1 = redDiceCounter  -- Wert speichern
+function redDiceCounter(player, value, id)
+    log(value)
+    playerColor = player.color
+    local panelID = "counterText_" .. playerColor
+    log(playerColor)
+    if allowedDMColor then
+        local redDiceCount = tonumber(UI.getValue(panelID))
+        log(redDiceCount)
+        if redDiceCount == nil then
+            redDiceCount = 0
+        end
+        if value == "-1" then
+            if redDiceCount < 6 and redDiceCount >= 0 then
+                redDiceCount = redDiceCount + 1
+                UI.setValue(panelID, tostring(redDiceCount))
+                Dice_value_1_1 = redDiceCount  -- Wert speichern
+            end
+        elseif value == "-2" then
+            if redDiceCount <= 6 and redDiceCount > 0 then
+                redDiceCount = redDiceCount - 1
+                UI.setValue(panelID, tostring(redDiceCount))
+                Dice_value_1_1 = redDiceCount  -- Wert speichern
+            end
+        end
     end
 end
 
