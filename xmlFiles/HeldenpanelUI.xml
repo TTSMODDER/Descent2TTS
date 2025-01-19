@@ -125,16 +125,16 @@
                                                     id="minusButtonPanel_1_1"
                                                     width="10"
                                                     height="10"
-                                                    position="-15 -15 0"
+                                                    position="0 0 0"
                                                     color="#00000000">
                                                     <Button
-                                                        id="minusButton_1_1"
-                                                        width="10"
-                                                        height="10"
-                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        id="Red"
+                                                        width="30"
+                                                        height="30"
+                                                        colors= "Green"
                                                         onClick="decreaseCounter_1_1">
                                                         <Text
-                                                            text="-"
+                                                            text=""
                                                             fontSize="18"
                                                             color="#FFFFFF"
                                                             alignment="MiddleCenter"/>

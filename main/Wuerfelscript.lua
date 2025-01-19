@@ -202,8 +202,68 @@ function checkCurrentPlayer(player)
     end
 end
 
-function angriff_1 ()
-    log("Hallo")
+function decreaseCounter_1_1()
+    if counter_1_1 > 0 then
+        counter_1_1 = counter_1_1 - 1
+        UI.setValue("counterText_1_1", tostring(counter_1_1))
+        Dice_value_1_1 = counter_1_1  -- Wert speichern
+    end
+end
+
+function increaseCounter_1_1(player, value, id)
+    log("hallo")
+    local redDiceCounter = 0
+    if redDiceCounter < 6 then
+        redDiceCounter = redDiceCounter + 1
+        UI.setValue("counterText_1_1", tostring(redDiceCounter))
+        Dice_value_1_1 = redDiceCounter  -- Wert speichern
+    end
+end
+
+function angriff_1 (player, value, id)
+    playerColor = player.color
+    log(playerColor)
+    if allowedPlayerColors[playerColor] or allowedDMColor [playerColor] then 
+        local playerObj = Player[playerColor]
+        playerName = playerObj.steam_name -- Oder .getName(), falls benötigt
+
+        if isRolling == true then
+            log("würfel rollen noch")
+            return
+        end
+        if rollingDone == true then
+            for _, cube in ipairs(currentDice[playerColor]) do
+                destroyObject(cube)
+            end
+            isRolling = false
+            rollingDone = false
+            diceCount = 0
+            currentDice = {}
+        end
+        if diceCount >= maxDice then
+            log("maximale anzahl an würfel wurde erreicht!")
+            return
+        end
+       
+        if currentDice[player.color] == nil  then
+            currentDice[player.color] = {}
+        end
+
+        if wuerfel[id] then
+            local url = wuerfel[id].url
+            if allowedPlayerColors[playerColor] then
+                local startPos = vector(-8, 10, 8)
+                local diceForPlayer = currentDice[playerColor]
+                local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
+                spawnObjFromCloud(url, id, callback, newDicePos, player)
+            elseif allowedDMColor [playerColor] then
+                local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
+                local diceForPlayer = currentDice[playerColor]
+                local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
+                spawnObjFromCloud(url, id, callback, newDicePos, player)
+            end
+        end
+    end
 end
 
 -- clickFunction to start dice process
