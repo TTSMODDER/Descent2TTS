@@ -21,6 +21,126 @@
     local linkedObjects = {} -- Verknüpfte Miniaturen
     local panelSpacing = 10 -- Abstand zwischen Panels
 
+
+        -- Dicepanel spieler_1
+            counter_1_1 = 0
+            counter_2_1 = 0
+            counter_3_1 = 0
+            counter_4_1 = 0
+            counter_5_1 = 0
+            counter_6_1 = 0
+            counter_7_1 = 0
+        
+        Dice_value_1_1 = 0
+        Dice_value_2_1 = 0
+        Dice_value_3_1 = 0
+        Dice_value_4_1 = 0
+        Dice_value_5_1 = 0
+        Dice_value_6_1 = 0
+        Dice_value_7_1 = 0
+
+        -- Dicepanel spieler_2
+        counter_1_2 = 0
+        counter_2_2 = 0
+        counter_3_2 = 0
+        counter_4_2 = 0
+        counter_5_2 = 0
+        counter_6_2 = 0
+        counter_7_2 = 0
+
+        Dice_value_1_2 = 0
+        Dice_value_2_2 = 0
+        Dice_value_3_2 = 0
+        Dice_value_4_2 = 0
+        Dice_value_5_2 = 0
+        Dice_value_6_2 = 0
+        Dice_value_7_2 = 0
+
+        -- Dicepanel spieler_3
+        counter_1_3 = 0
+        counter_2_3 = 0
+        counter_3_3 = 0
+        counter_4_3 = 0
+        counter_5_3 = 0
+        counter_6_3 = 0
+        counter_7_3 = 0
+
+        Dice_value_1_3 = 0
+        Dice_value_2_3 = 0
+        Dice_value_3_3 = 0
+        Dice_value_4_3 = 0
+        Dice_value_5_3 = 0
+        Dice_value_6_3 = 0
+        Dice_value_7_3 = 0
+
+        -- Dicepanel spieler_4
+        counter_1_4 = 0
+        counter_2_4 = 0
+        counter_3_4 = 0
+        counter_4_4 = 0
+        counter_5_4 = 0
+        counter_6_4 = 0
+        counter_7_4 = 0
+
+        Dice_value_1_4 = 0
+        Dice_value_2_4 = 0
+        Dice_value_3_4 = 0
+        Dice_value_4_4 = 0
+        Dice_value_5_4 = 0
+        Dice_value_6_4 = 0
+        Dice_value_7_4 = 0
+
+        -- Dicepanel spieler_5
+        counter_1_5 = 0
+        counter_2_5 = 0
+        counter_3_5 = 0
+        counter_4_5 = 0
+        counter_5_5 = 0
+        counter_6_5 = 0
+        counter_7_5 = 0
+
+        Dice_value_1_5 = 0
+        Dice_value_2_5 = 0
+        Dice_value_3_5 = 0
+        Dice_value_4_5 = 0
+        Dice_value_5_5 = 0
+        Dice_value_6_5 = 0
+        Dice_value_7_5 = 0
+
+        -- Dicepanel spieler_6
+        counter_1_6 = 0
+        counter_2_6 = 0
+        counter_3_6 = 0
+        counter_4_6 = 0
+        counter_5_6 = 0
+        counter_6_6 = 0
+        counter_7_6 = 0
+
+        Dice_value_1_6 = 0
+        Dice_value_2_6 = 0
+        Dice_value_3_6 = 0
+        Dice_value_4_6 = 0
+        Dice_value_5_6 = 0
+        Dice_value_6_6 = 0
+        Dice_value_7_6 = 0
+
+        -- Dicepanel spieler_7
+        counter_1_7 = 0
+        counter_2_7 = 0
+        counter_3_7 = 0
+        counter_4_7 = 0
+        counter_5_7 = 0
+        counter_6_7 = 0
+        counter_7_7 = 0
+
+        Dice_value_1_7 = 0
+        Dice_value_2_7 = 0
+        Dice_value_3_7 = 0
+        Dice_value_4_7 = 0
+        Dice_value_5_7 = 0
+        Dice_value_6_7 = 0
+        Dice_value_7_7 = 0
+
     -- GUID des Datencontainers wo alle betroffen minis aus der TTRS Controller objekt übernommen werden
     local dataContainerGUID = "e894f6"
     targetGUIDs = {} -- Globale Variable für die Ziel-GUIDs
@@ -619,106 +739,665 @@
         end
 
 
--- Debugging-Funktion zum Überprüfen der GUID-Formate
-function checkGUIDFormat()
-    --print("Prüfe GUID Formate:")
-    
-    -- targetGUIDs Format
-    --print("targetGUIDs Format:")
-    for i, guid in ipairs(targetGUIDs) do
-        --print(string.format("Index %d: %s (Typ: %s)", i, guid, type(guid)))
-    end
-    
-    -- FIGURE_GUIDS Format
-    --print("FIGURE_GUIDS Format:")
-    for i, guid in ipairs(FIGURE_GUIDS) do
-        --print(string.format("Index %d: %s (Typ: %s)", i, guid, type(guid)))
-    end
-end
+            -- Debugging-Funktion zum Überprüfen der GUID-Formate
+            function checkGUIDFormat()
+                --print("Prüfe GUID Formate:")
+                
+                -- targetGUIDs Format
+                --print("targetGUIDs Format:")
+                for i, guid in ipairs(targetGUIDs) do
+                    --print(string.format("Index %d: %s (Typ: %s)", i, guid, type(guid)))
+                end
+                
+                -- FIGURE_GUIDS Format
+                --print("FIGURE_GUIDS Format:")
+                for i, guid in ipairs(FIGURE_GUIDS) do
+                    --print(string.format("Index %d: %s (Typ: %s)", i, guid, type(guid)))
+                end
+            end
+
+
 
 --DICE Pannel
-function angriff()
-    print("Angriff")
-end
 
-function abwehr()
-    print("Abwehr")
-end
+        --DICE Pannel Spieler _1
+        
+            function decreaseCounter_1_1()
+                if counter > 0 then
+                    counter = counter - 1
+                    UI.setValue("counterText_1_1", tostring(counter))
+                    Dice_value_1_1 = counter  -- Wert speichern
+                end
+            end
 
-function probe()
-    print("Probe")
-end
+            function decreaseCounter_1_1()
+                if counter_1_1 > 0 then
+                    counter_1_1 = counter_1_1 - 1
+                    UI.setValue("counterText_1_1", tostring(counter_1_1))
+                    Dice_value_1_1 = counter_1_1  -- Wert speichern
+                end
+            end
+            
+            function increaseCounter_1_1()
+                if counter_1_1 < 6 then
+                    counter_1_1 = counter_1_1 + 1
+                    UI.setValue("counterText_1_1", tostring(counter_1_1))
+                    Dice_value_1_1 = counter_1_1  -- Wert speichern
+                end
+            end
+            
+            function decreaseCounter_2_1()
+                if counter_2_1 > 0 then
+                    counter_2_1 = counter_2_1 - 1
+                    UI.setValue("counterText_2_1", tostring(counter_2_1))
+                    Dice_value_2_1 = counter_2_1  -- Wert speichern
+                end
+            end
+            
+            function increaseCounter_2_1()
+                if counter_2_1 < 6 then
+                    counter_2_1 = counter_2_1 + 1
+                    UI.setValue("counterText_2_1", tostring(counter_2_1))
+                    Dice_value_2_1 = counter_2_1  -- Wert speichern
+                end
+            end
+            
+            function decreaseCounter_3_1()
+                if counter_3_1 > 0 then
+                    counter_3_1 = counter_3_1 - 1
+                    UI.setValue("counterText_3_1", tostring(counter_3_1))
+                    Dice_value_3_1 = counter_3_1  -- Wert speichern
+                end
+            end
+            
+            function increaseCounter_3_1()
+                if counter_3_1 < 6 then
+                    counter_3_1 = counter_3_1 + 1
+                    UI.setValue("counterText_3_1", tostring(counter_3_1))
+                    Dice_value_3_1 = counter_3_1  -- Wert speichern
+                end
+            end
+            
+            function decreaseCounter_4_1()
+                if counter_4_1 > 0 then
+                    counter_4_1 = counter_4_1 - 1
+                    UI.setValue("counterText_4_1", tostring(counter_4_1))
+                    Dice_value_4_1 = counter_4_1  -- Wert speichern
+                end
+            end
+            
+            function increaseCounter_4_1()
+                if counter_4_1 < 6 then
+                    counter_4_1 = counter_4_1 + 1
+                    UI.setValue("counterText_4_1", tostring(counter_4_1))
+                    Dice_value_4_1 = counter_4_1  -- Wert speichern
+                end
+            end
+            
+            function decreaseCounter_5_1()
+                if counter_5_1 > 0 then
+                    counter_5_1 = counter_5_1 - 1
+                    UI.setValue("counterText_5_1", tostring(counter_5_1))
+                    Dice_value_5_1 = counter_5_1  -- Wert speichern
+                end
+            end
+            
+            function increaseCounter_5_1()
+                if counter_5_1 < 6 then
+                    counter_5_1 = counter_5_1 + 1
+                    UI.setValue("counterText_5_1", tostring(counter_5_1))
+                    Dice_value_5_1 = counter_5_1  -- Wert speichern
+                end
+            end
+            
+            function decreaseCounter_6_1()
+                if counter_6_1 > 0 then
+                    counter_6_1 = counter_6_1 - 1
+                    UI.setValue("counterText_6_1", tostring(counter_6_1))
+                    Dice_value_6_1 = counter_6_1  -- Wert speichern
+                end
+            end
+            
+            function increaseCounter_6_1()
+                if counter_6_1 < 6 then
+                    counter_6_1 = counter_6_1 + 1
+                    UI.setValue("counterText_6_1", tostring(counter_6_1))
+                    Dice_value_6_1 = counter_6_1  -- Wert speichern
+                end
+            end
+            
+            function decreaseCounter_7_1()
+                if counter_7_1 > 0 then
+                    counter_7_1 = counter_7_1 - 1
+                    UI.setValue("counterText_7_1", tostring(counter_7_1))
+                    Dice_value_7_1 = counter_7_1  -- Wert speichern
+                end
+            end
+            
+            function increaseCounter_7_1()
+                if counter_7_1 < 6 then
+                    counter_7_1 = counter_7_1 + 1
+                    UI.setValue("counterText_7_1", tostring(counter_7_1))
+                    Dice_value_7_1 = counter_7_1  -- Wert speichern
+                end
+            end
 
-function heilung()
-    print("Heilung")
-end
+        --DICE Pannel Spieler _2
 
+        function decreaseCounter_1_2()
+            if counter_1_2 > 0 then
+                counter_1_2 = counter_1_2 - 1
+                UI.setValue("counterText_1_2", tostring(counter_1_2))
+                Dice_value_1_2 = counter_1_2  -- Wert speichern
+            end
+        end
 
-        --ONLOAD Bereich
-function initHeldenPanel()
+        function increaseCounter_1_2()
+            if counter_1_2 < 6 then
+                counter_1_2 = counter_1_2 + 1
+                UI.setValue("counterText_1_2", tostring(counter_1_2))
+                Dice_value_1_2 = counter_1_2  -- Wert speichern
+            end
+        end
 
-    local panelIds = {
-        "Parent_PlayerPanel_1",
-        "Parent_PlayerPanel_2",
-        "Parent_PlayerPanel_3",
-        "Parent_PlayerPanel_4",
-    }
-    
-    -- Initiale Sichtbarkeit setzen
-    for _, panelId in ipairs(panelIds) do
-        UI.setAttribute(panelId, "visibility", "Black,White,Yellow,Red,Blue,Green")
-        --print("Sichtbarkeit von " .. panelId .. " auf 'Keine' gesetzt.")
+        function decreaseCounter_2_2()
+            if counter_2_2 > 0 then
+                counter_2_2 = counter_2_2 - 1
+                UI.setValue("counterText_2_2", tostring(counter_2_2))
+                Dice_value_2_2 = counter_2_2  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_2_2()
+            if counter_2_2 < 6 then
+                counter_2_2 = counter_2_2 + 1
+                UI.setValue("counterText_2_2", tostring(counter_2_2))
+                Dice_value_2_2 = counter_2_2  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_3_2()
+            if counter_3_2 > 0 then
+                counter_3_2 = counter_3_2 - 1
+                UI.setValue("counterText_3_2", tostring(counter_3_2))
+                Dice_value_3_2 = counter_3_2  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_3_2()
+            if counter_3_2 < 6 then
+                counter_3_2 = counter_3_2 + 1
+                UI.setValue("counterText_3_2", tostring(counter_3_2))
+                Dice_value_3_2 = counter_3_2  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_4_2()
+            if counter_4_2 > 0 then
+                counter_4_2 = counter_4_2 - 1
+                UI.setValue("counterText_4_2", tostring(counter_4_2))
+                Dice_value_4_2 = counter_4_2  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_4_2()
+            if counter_4_2 < 6 then
+                counter_4_2 = counter_4_2 + 1
+                UI.setValue("counterText_4_2", tostring(counter_4_2))
+                Dice_value_4_2 = counter_4_2  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_5_2()
+            if counter_5_2 > 0 then
+                counter_5_2 = counter_5_2 - 1
+                UI.setValue("counterText_5_2", tostring(counter_5_2))
+                Dice_value_5_2 = counter_5_2  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_5_2()
+            if counter_5_2 < 6 then
+                counter_5_2 = counter_5_2 + 1
+                UI.setValue("counterText_5_2", tostring(counter_5_2))
+                Dice_value_5_2 = counter_5_2  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_6_2()
+            if counter_6_2 > 0 then
+                counter_6_2 = counter_6_2 - 1
+                UI.setValue("counterText_6_2", tostring(counter_6_2))
+                Dice_value_6_2 = counter_6_2  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_6_2()
+            if counter_6_2 < 6 then
+                counter_6_2 = counter_6_2 + 1
+                UI.setValue("counterText_6_2", tostring(counter_6_2))
+                Dice_value_6_2 = counter_6_2  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_7_2()
+            if counter_7_2 > 0 then
+                counter_7_2 = counter_7_2 - 1
+                UI.setValue("counterText_7_2", tostring(counter_7_2))
+                Dice_value_7_2 = counter_7_2  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_7_2()
+            if counter_7_2 < 6 then
+                counter_7_2 = counter_7_2 + 1
+                UI.setValue("counterText_7_2", tostring(counter_7_2))
+                Dice_value_7_2 = counter_7_2  -- Wert speichern
+            end
+        end
+
+        --DICE Pannel Spieler _3
+
+        function decreaseCounter_1_3()
+            if counter_1_3 > 0 then
+                counter_1_3 = counter_1_3 - 1
+                UI.setValue("counterText_1_3", tostring(counter_1_3))
+                Dice_value_1_3 = counter_1_3  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_1_3()
+            if counter_1_3 < 6 then
+                counter_1_3 = counter_1_3 + 1
+                UI.setValue("counterText_1_3", tostring(counter_1_3))
+                Dice_value_1_3 = counter_1_3  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_2_3()
+            if counter_2_3 > 0 then
+                counter_2_3 = counter_2_3 - 1
+                UI.setValue("counterText_2_3", tostring(counter_2_3))
+                Dice_value_2_3 = counter_2_3  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_2_3()
+            if counter_2_3 < 6 then
+                counter_2_3 = counter_2_3 + 1
+                UI.setValue("counterText_2_3", tostring(counter_2_3))
+                Dice_value_2_3 = counter_2_3  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_3_3()
+            if counter_3_3 > 0 then
+                counter_3_3 = counter_3_3 - 1
+                UI.setValue("counterText_3_3", tostring(counter_3_3))
+                Dice_value_3_3 = counter_3_3  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_3_3()
+            if counter_3_3 < 6 then
+                counter_3_3 = counter_3_3 + 1
+                UI.setValue("counterText_3_3", tostring(counter_3_3))
+                Dice_value_3_3 = counter_3_3  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_4_3()
+            if counter_4_3 > 0 then
+                counter_4_3 = counter_4_3 - 1
+                UI.setValue("counterText_4_3", tostring(counter_4_3))
+                Dice_value_4_3 = counter_4_3  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_4_3()
+            if counter_4_3 < 6 then
+                counter_4_3 = counter_4_3 + 1
+                UI.setValue("counterText_4_3", tostring(counter_4_3))
+                Dice_value_4_3 = counter_4_3  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_5_3()
+            if counter_5_3 > 0 then
+                counter_5_3 = counter_5_3 - 1
+                UI.setValue("counterText_5_3", tostring(counter_5_3))
+                Dice_value_5_3 = counter_5_3  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_5_3()
+            if counter_5_3 < 6 then
+                counter_5_3 = counter_5_3 + 1
+                UI.setValue("counterText_5_3", tostring(counter_5_3))
+                Dice_value_5_3 = counter_5_3  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_6_3()
+            if counter_6_3 > 0 then
+                counter_6_3 = counter_6_3 - 1
+                UI.setValue("counterText_6_3", tostring(counter_6_3))
+                Dice_value_6_3 = counter_6_3  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_6_3()
+            if counter_6_3 < 6 then
+                counter_6_3 = counter_6_3 + 1
+                UI.setValue("counterText_6_3", tostring(counter_6_3))
+                Dice_value_6_3 = counter_6_3  -- Wert speichern
+            end
+        end
+
+        function decreaseCounter_7_3()
+            if counter_7_3 > 0 then
+                counter_7_3 = counter_7_3 - 1
+                UI.setValue("counterText_7_3", tostring(counter_7_3))
+                Dice_value_7_3 = counter_7_3  -- Wert speichern
+            end
+        end
+
+        function increaseCounter_7_3()
+            if counter_7_3 < 6 then
+                counter_7_3 = counter_7_3 + 1
+                UI.setValue("counterText_7_3", tostring(counter_7_3))
+                Dice_value_7_3 = counter_7_3  -- Wert speichern
+            end
+        end
+
+        --DICE Pannel Spieler _4
+
+    function decreaseCounter_1_4()
+        if counter_1_4 > 0 then
+            counter_1_4 = counter_1_4 - 1
+            UI.setValue("counterText_1_4", tostring(counter_1_4))
+            Dice_value_1_4 = counter_1_4  -- Wert speichern
+        end
     end
-    
-    --print("Initiale Sichtbarkeit für alle Panels gesetzt.")
-    --print("Skript geladen, GUID-Ermittlung wird gestartet...")
-    
-    extractMinisGUIDs()
-    updateNameAndDescription()
-    updateListAndPanels()
-    createDynamicTable()
-    
-    local allMarkers = getAllMarkersFromJSON()
-    updateMarkerImages(allMarkers)
 
-    -- Korrekte Syntax für Asset-Registrierung
-    UI.setAttributes("image_refresh", {
-        image = refreshImageUrl
-    })
+    function increaseCounter_1_4()
+        if counter_1_4 < 6 then
+            counter_1_4 = counter_1_4 + 1
+            UI.setValue("counterText_1_4", tostring(counter_1_4))
+            Dice_value_1_4 = counter_1_4  -- Wert speichern
+        end
+    end
 
+    function decreaseCounter_2_4()
+        if counter_2_4 > 0 then
+            counter_2_4 = counter_2_4 - 1
+            UI.setValue("counterText_2_4", tostring(counter_2_4))
+            Dice_value_2_4 = counter_2_4  -- Wert speichern
+        end
+    end
 
+    function increaseCounter_2_4()
+        if counter_2_4 < 6 then
+            counter_2_4 = counter_2_4 + 1
+            UI.setValue("counterText_2_4", tostring(counter_2_4))
+            Dice_value_2_4 = counter_2_4  -- Wert speichern
+        end
+    end
 
-    UI.setAttributes("image-angriff_1", { image = angriffImageUrl })
-    UI.setAttributes("image-angriff_2", { image = angriffImageUrl })
-    UI.setAttributes("image-angriff_3", { image = angriffImageUrl })
-    UI.setAttributes("image-angriff_4", { image = angriffImageUrl })
+    function decreaseCounter_3_4()
+        if counter_3_4 > 0 then
+            counter_3_4 = counter_3_4 - 1
+            UI.setValue("counterText_3_4", tostring(counter_3_4))
+            Dice_value_3_4 = counter_3_4  -- Wert speichern
+        end
+    end
 
-    UI.setAttributes("image-abwehr_1", { image = abwehrImageUrl })
-    UI.setAttributes("image-abwehr_2", { image = abwehrImageUrl })
-    UI.setAttributes("image-abwehr_3", { image = abwehrImageUrl })
-    UI.setAttributes("image-abwehr_4", { image = abwehrImageUrl })
+    function increaseCounter_3_4()
+        if counter_3_4 < 6 then
+            counter_3_4 = counter_3_4 + 1
+            UI.setValue("counterText_3_4", tostring(counter_3_4))
+            Dice_value_3_4 = counter_3_4  -- Wert speichern
+        end
+    end
 
-    UI.setAttributes("image-probe_1", { image = probeImageUrl })
-    UI.setAttributes("image-probe_2", { image = probeImageUrl })
-    UI.setAttributes("image-probe_3", { image = probeImageUrl })
-    UI.setAttributes("image-probe_4", { image = probeImageUrl })
+    function decreaseCounter_4_4()
+        if counter_4_4 > 0 then
+            counter_4_4 = counter_4_4 - 1
+            UI.setValue("counterText_4_4", tostring(counter_4_4))
+            Dice_value_4_4 = counter_4_4  -- Wert speichern
+        end
+    end
 
-    UI.setAttributes("image-heilung_1", { image = heilungImageUrl })
-    UI.setAttributes("image-heilung_2", { image = heilungImageUrl })
-    UI.setAttributes("image-heilung_3", { image = heilungImageUrl })
-    UI.setAttributes("image-heilung_4", { image = heilungImageUrl })
+    function increaseCounter_4_4()
+        if counter_4_4 < 6 then
+            counter_4_4 = counter_4_4 + 1
+            UI.setValue("counterText_4_4", tostring(counter_4_4))
+            Dice_value_4_4 = counter_4_4  -- Wert speichern
+        end
+    end
 
-    UI.setAttributes("image-refresh_1", { image = refreshImageUrl })
-    UI.setAttributes("image-refresh_2", { image = refreshImageUrl })
-    UI.setAttributes("image-refresh_3", { image = refreshImageUrl })
-    UI.setAttributes("image-refresh_4", { image = refreshImageUrl })
+    function decreaseCounter_5_4()
+        if counter_5_4 > 0 then
+            counter_5_4 = counter_5_4 - 1
+            UI.setValue("counterText_5_4", tostring(counter_5_4))
+            Dice_value_5_4 = counter_5_4  -- Wert speichern
+        end
+    end
 
-    UI.setAttributes("image-panelbck_1", { image = panelImageImageUrl })
-    UI.setAttributes("image-panelbck_2", { image = panelImageImageUrl })
-    UI.setAttributes("image-panelbck_3", { image = panelImageImageUrl })
-    UI.setAttributes("image-panelbck_4", { image = panelImageImageUrl })
+    function increaseCounter_5_4()
+        if counter_5_4 < 6 then
+            counter_5_4 = counter_5_4 + 1
+            UI.setValue("counterText_5_4", tostring(counter_5_4))
+            Dice_value_5_4 = counter_5_4  -- Wert speichern
+        end
+    end
 
+    function decreaseCounter_6_4()
+        if counter_6_4 > 0 then
+            counter_6_4 = counter_6_4 - 1
+            UI.setValue("counterText_6_4", tostring(counter_6_4))
+            Dice_value_6_4 = counter_6_4  -- Wert speichern
+        end
+    end
 
+    function increaseCounter_6_4()
+        if counter_6_4 < 6 then
+            counter_6_4 = counter_6_4 + 1
+            UI.setValue("counterText_6_4", tostring(counter_6_4))
+            Dice_value_6_4 = counter_6_4  -- Wert speichern
+        end
+    end
 
+    function decreaseCounter_7_4()
+        if counter_7_4 > 0 then
+            counter_7_4 = counter_7_4 - 1
+            UI.setValue("counterText_7_4", tostring(counter_7_4))
+            Dice_value_7_4 = counter_7_4  -- Wert speichern
+        end
+    end
 
+    function increaseCounter_7_4()
+        if counter_7_4 < 6 then
+            counter_7_4 = counter_7_4 + 1
+            UI.setValue("counterText_7_4", tostring(counter_7_4))
+            Dice_value_7_4 = counter_7_4  -- Wert speichern
+        end
+    end
+
+--Action Panels
+    --Action Panels Funktionen für Spieler 1
+function angriff_1()
+    local dice_1_1 = Dice_value_1_1
+    local dice_2_1 = Dice_value_2_1
+    local dice_3_1 = Dice_value_3_1
+    local dice_4_1 = Dice_value_4_1
+    print("Angriff Spieler 1: Würfelwerte - Dice 1: " .. dice_1_1 .. ", Dice 2: " .. dice_2_1 .. ", Dice 3: " .. dice_3_1 .. ", Dice 4: " .. dice_4_1)
 end
+
+function abwehr_1()
+    local dice_5_1 = Dice_value_5_1
+    local dice_6_1 = Dice_value_6_1
+    local dice_7_1 = Dice_value_7_1
+    print("Abwehr Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1 .. ", Dice 7: " .. dice_7_1)
+end
+
+function probe_1()
+    local dice_5_1 = 1
+    local dice_6_1 = 1
+    print("Probe Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1)
+end
+
+function heilung_1()
+    local dice_2_1 = 2
+    print("Heilung Spieler 1: Würfelwert - Dice 2: " .. dice_2_1)
+end
+
+--Action Panels Funktionen für Spieler 2
+function angriff_2()
+    local dice_1_2 = Dice_value_1_2
+    local dice_2_2 = Dice_value_2_2
+    local dice_3_2 = Dice_value_3_2
+    local dice_4_2 = Dice_value_4_2
+    print("Angriff Spieler 2: Würfelwerte - Dice 1: " .. dice_1_2 .. ", Dice 2: " .. dice_2_2 .. ", Dice 3: " .. dice_3_2 .. ", Dice 4: " .. dice_4_2)
+end
+
+function abwehr_2()
+    local dice_5_2 = Dice_value_5_2
+    local dice_6_2 = Dice_value_6_2
+    local dice_7_2 = Dice_value_7_2
+    print("Abwehr Spieler 2: Würfelwerte - Dice 5: " .. dice_5_2 .. ", Dice 6: " .. dice_6_2 .. ", Dice 7: " .. dice_7_2)
+end
+
+function probe_2()
+    local dice_5_2 = 1
+    local dice_6_2 = 1
+    print("Probe Spieler 2: Würfelwerte - Dice 5: " .. dice_5_2 .. ", Dice 6: " .. dice_6_2)
+end
+
+function heilung_2()
+    local dice_2_2 = 2
+    print("Heilung Spieler 2: Würfelwert - Dice 2: " .. dice_2_2)
+end
+
+--Action Panels Funktionen für Spieler 3
+function angriff_3()
+    local dice_1_3 = Dice_value_1_3
+    local dice_2_3 = Dice_value_2_3
+    local dice_3_3 = Dice_value_3_3
+    local dice_4_3 = Dice_value_4_3
+    print("Angriff Spieler 3: Würfelwerte - Dice 1: " .. dice_1_3 .. ", Dice 2: " .. dice_2_3 .. ", Dice 3: " .. dice_3_3 .. ", Dice 4: " .. dice_4_3)
+end
+
+function abwehr_3()
+    local dice_5_3 = Dice_value_5_3
+    local dice_6_3 = Dice_value_6_3
+    local dice_7_3 = Dice_value_7_3
+    print("Abwehr Spieler 3: Würfelwerte - Dice 5: " .. dice_5_3 .. ", Dice 6: " .. dice_6_3 .. ", Dice 7: " .. dice_7_3)
+end
+
+function probe_3()
+    local dice_5_3 = 1
+    local dice_6_3 = 1
+    print("Probe Spieler 3: Würfelwerte - Dice 5: " .. dice_5_3 .. ", Dice 6: " .. dice_6_3)
+end
+
+function heilung_3()
+    local dice_2_3 = 2
+    print("Heilung Spieler 3: Würfelwert - Dice 2: " .. dice_2_3)
+end
+
+--Action Panels Funktionen für Spieler 4
+function angriff_4()
+    local dice_1_4 = Dice_value_1_4
+    local dice_2_4 = Dice_value_2_4
+    local dice_3_4 = Dice_value_3_4
+    local dice_4_4 = Dice_value_4_4
+    print("Angriff Spieler 4: Würfelwerte - Dice 1: " .. dice_1_4 .. ", Dice 2: " .. dice_2_4 .. ", Dice 3: " .. dice_3_4 .. ", Dice 4: " .. dice_4_4)
+end
+
+function abwehr_4()
+    local dice_5_4 = Dice_value_5_4
+    local dice_6_4 = Dice_value_6_4
+    local dice_7_4 = Dice_value_7_4
+    print("Abwehr Spieler 4: Würfelwerte - Dice 5: " .. dice_5_4 .. ", Dice 6: " .. dice_6_4 .. ", Dice 7: " .. dice_7_4)
+end
+
+function probe_4()
+    local dice_5_4 = 1
+    local dice_6_4 = 1
+    print("Probe Spieler 4: Würfelwerte - Dice 5: " .. dice_5_4 .. ", Dice 6: " .. dice_6_4)
+end
+
+function heilung_4()
+    local dice_2_4 = 2
+    print("Heilung Spieler 4: Würfelwert - Dice 2: " .. dice_2_4)
+end
+
+--ONLOAD Bereich
+    function initHeldenpanel()
+
+        local panelIds = {
+            "Parent_PlayerPanel_1",
+            "Parent_PlayerPanel_2",
+            "Parent_PlayerPanel_3",
+            "Parent_PlayerPanel_4",
+        }
+        
+        -- Initiale Sichtbarkeit setzen
+        for _, panelId in ipairs(panelIds) do
+            UI.setAttribute(panelId, "visibility", "Black,White,Yellow,Red,Blue,Green")
+            --print("Sichtbarkeit von " .. panelId .. " auf 'Keine' gesetzt.")
+        end
+        
+        --print("Initiale Sichtbarkeit für alle Panels gesetzt.")
+        --print("Skript geladen, GUID-Ermittlung wird gestartet...")
+        
+        extractMinisGUIDs()
+        updateNameAndDescription()
+        updateListAndPanels()
+        createDynamicTable()
+        
+        local allMarkers = getAllMarkersFromJSON()
+        updateMarkerImages(allMarkers)
+
+        -- Korrekte Syntax für Asset-Registrierung
+        UI.setAttributes("image_refresh", {
+            image = refreshImageUrl
+        })
+
+
+
+        UI.setAttributes("image-angriff_1", { image = angriffImageUrl })
+        UI.setAttributes("image-angriff_2", { image = angriffImageUrl })
+        UI.setAttributes("image-angriff_3", { image = angriffImageUrl })
+        UI.setAttributes("image-angriff_4", { image = angriffImageUrl })
+
+        UI.setAttributes("image-abwehr_1", { image = abwehrImageUrl })
+        UI.setAttributes("image-abwehr_2", { image = abwehrImageUrl })
+        UI.setAttributes("image-abwehr_3", { image = abwehrImageUrl })
+        UI.setAttributes("image-abwehr_4", { image = abwehrImageUrl })
+
+        UI.setAttributes("image-probe_1", { image = probeImageUrl })
+        UI.setAttributes("image-probe_2", { image = probeImageUrl })
+        UI.setAttributes("image-probe_3", { image = probeImageUrl })
+        UI.setAttributes("image-probe_4", { image = probeImageUrl })
+
+        UI.setAttributes("image-heilung_1", { image = heilungImageUrl })
+        UI.setAttributes("image-heilung_2", { image = heilungImageUrl })
+        UI.setAttributes("image-heilung_3", { image = heilungImageUrl })
+        UI.setAttributes("image-heilung_4", { image = heilungImageUrl })
+
+        UI.setAttributes("image-refresh_1", { image = refreshImageUrl })
+        UI.setAttributes("image-refresh_2", { image = refreshImageUrl })
+        UI.setAttributes("image-refresh_3", { image = refreshImageUrl })
+        UI.setAttributes("image-refresh_4", { image = refreshImageUrl })
+
+        UI.setAttributes("image-panelbck_1", { image = panelImageImageUrl })
+        UI.setAttributes("image-panelbck_2", { image = panelImageImageUrl })
+        UI.setAttributes("image-panelbck_3", { image = panelImageImageUrl })
+        UI.setAttributes("image-panelbck_4", { image = panelImageImageUrl })
+
+
+
+
+    end
