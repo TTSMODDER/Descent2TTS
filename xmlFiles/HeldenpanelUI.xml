@@ -1,5 +1,5 @@
 <!-- Spieler_1 -->
-    <Panel id="Parent_PlayerPanel_1" position="0 0 0" width="250" height="500" alignment="MiddleCenter"  color="#2F2F2F0000" allowDragging="true" returntooriginalpositionwhenreleased="false">
+    <Panel id="Parent_PlayerPanel_1" position="-600 0 0" width="250" height="500" alignment="MiddleCenter"  color="#2F2F2F0000" allowDragging="true" returntooriginalpositionwhenreleased="false">
 
     <Image id="image-panelbck_1" imageId="image-panelbck_1"/>
         <!-- Inner Player Panel -->
@@ -7,7 +7,7 @@
     
 
 
-            <!-- Name Panel -->
+    <!-- Name Panel -->
             <Text id="name_1_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20" fontStyle="Bold" color="rgba(0,0,0,1)"  />
             <Text id="description_1_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)" />
              
@@ -26,7 +26,7 @@
                         <Button id="exhaustion_up_1" text="" fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_1" />
                     </Panel>
 
-                                    <!-- Marker Parent -->
+         <!-- Marker Parent  Panel-->
                     <Panel id="panelmarker_Parent_a1" rectAlignment="MiddleCenter" width="110" height="40.5"  offsetXY="0 -90">
 
                         <!-- MANUELL_ Marker Container 1 -->
@@ -95,58 +95,494 @@
                                 </Button>
                         </Panel>          
                     </Panel>
-    <!-- Dice box -->
-    <Panel id="dice_panel_1" rectAlignment="MiddleCenter" width="220" height="140" offsetXY="0 -200" color="#FFFFFF00">
-        <!-- Erste Reihe -->
-        <Panel id="dice_row_1" rectAlignment="UpperCenter" width="220" height="50" offsetXY="0 -10">
-            <Button id="dice1_1" 
-                    width="90" 
-                    height="50"
-                    rectAlignment="MiddleLeft"
-                    offsetXY="10 0"
-                    onClick="angriff"
-                    color="transparent">
-                <Image id="image-angriff_1" imageId="image-angriff_1" width="90"  color="#FFFFFF00" height="50" rectAlignment="MiddleCenter"/>
-            </Button>
-            <Button id="dice2_1" 
-                    width="90" 
-                    height="50"
-                    rectAlignment="MiddleRight"
-                    offsetXY="-10 0"
-                    onClick="abwehr"
-                    color="transparent">
-                <Image id="image-abwehr_1" imageId="image_abwehr_1" width="90" color="#FFFFFF00" height="50" rectAlignment="MiddleCenter"/>
-            </Button>
-        </Panel>
 
-        <!-- Zweite Reihe -->
-        <Panel id="dice_row_2" rectAlignment="LowerCenter" width="220" height="50" offsetXY="0 10">
-            <Button id="dice3_1" 
-                    width="90" 
-                    height="50"
-                    rectAlignment="MiddleLeft"
-                    offsetXY="10 0"
-                    onClick="probe"
-                    color="transparent">
-                <Image id="image-probe_1" imageId="image_probe_1" width="90"  color="#FFFFFF00" height="50" rectAlignment="MiddleCenter"/>
-            </Button>
-            <Button id="dice4_1" 
-                    width="90" 
-                    height="50"
-                    rectAlignment="MiddleRight"
-                    offsetXY="-10 0"
-                    onClick="heilung"
-                    color="transparent">
-                    <Image id="image-heilung_1" imageId="immage-heilung_1" width="90"  color="#FFFFFF00" height="50" rectAlignment="MiddleCenter"/>
-            </Button>
-        </Panel>
-    </Panel>
-    
-        </Panel>
+                                
+
+            <!-- Dice box -->
+                                <!-- Dice box MAin -->
+                                            <Panel
+                                                id="Dice_Ziffer_Panel1_1"
+                                                width="205"
+                                                height="90"
+                                                position="0 -180 0"
+                                                color="#FFFFFF00">
+                                 <!-- Dice box 1 rot -->               
+                                                <Panel
+                                                    id="Dice_1_1"
+                                                    width="40"
+                                                    height="40"
+                                                                                                                                 position="-74 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_1_1"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_1_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_1_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_1_1">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_1_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_1_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_1_1">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box2 blau -->
+                                            <Panel
+                                                id="Dice_2_1"
+                                                width="40"
+                                                height="40"
+                                                                                                                                          position="-24.5 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_2_1"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_2_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_2_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_2_1">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_2_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_2_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_2_1">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box3 gelb-->
+                                            <Panel
+                                                id="Dice_3_1"
+                                                width="40"
+                                                height="40"
+                                                                                                                                         position="26 30 0"
+                                              color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_3_1"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_3_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_3_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_3_1">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_3_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_3_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_3_1">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box4  grün-->
+                                            <Panel
+                                                id="Dice_4_1"
+                                                width="40"
+                                                height="40"
+                                position="79 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_4_1"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_4_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_4_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_4_1">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_4_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_4_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_4_1">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+
+                                <!-- Dice box5 weiss-->
+                                            <Panel
+                                                id="Dice_5_1"
+                                                width="40"
+                                                height="40"
+                                                                                                                                position="-45 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_5_1"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_5_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_5_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_5_1">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_5_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_5_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_5_1">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box6 schwarz-->
+                                            <Panel
+                                                id="Dice_6_1"
+                                                width="40"
+                                                height="40"
+                                                                                                                                            position="2 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_6_1"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_6_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_6_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_6_1">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_6_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_6_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_6_1">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+                                <!-- Dice box7 braun -->
+                                            <Panel
+                                                id="Dice_7_1"
+                                                width="40"
+                                                height="40"
+                                                                                                                                      position="53 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_7_1"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_7_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_7_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_7_1">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+
+
+                                
+                                                <Panel
+                                                    id="plusButtonPanel_7_1"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#FF000000">
+                                                    <Button
+                                                        id="plusButton_7_1"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_7_1">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+                                        </Panel>
+                                    ]]
+                                    
+  
+    <!-- Action Buttons Panel _1 -->
+
+    <Panel
+        id="Action_Buttons_1"
+        width="250"
+        height="50"
+        position="0 -300 0"
+        color="#FFFFFF00">
+        
+        <Button
+            id="angriffButton_1"
+            width="35"
+            height="30"
+            position="-85 0 0"
+            color="#00000000"
+            onClick="angriff_1">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="probeButton_1"
+            width="30"
+            height="30"
+            position="-25 0 0"
+            color="#00000000"
+            onClick="probe_1">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="heilungButton_1"
+            width="30"
+            height="30"
+            position="20 0 0"
+            color="#00000000"
+            onClick="heilung_1">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="abwehrButton_1"
+            width="35"
+            height="30"
+            position="85 0 0"
+            onClick="abwehr_1"
+            color="#00000000">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
     </Panel>
 
+                                    
+                                        </Panel>
+                                   </Panel>
+                            
 <!-- Spieler_2 -->
-    <Panel id="Parent_PlayerPanel_2" position="0 0 0" width="250" height="500" alignment="MiddleCenter"  color="#2F2F2F00" allowDragging="true" returntooriginalpositionwhenreleased="false">
+
+    <Panel id="Parent_PlayerPanel_2" position="-300 0 0" width="250" height="500" alignment="MiddleCenter"  color="#2F2F2F00" allowDragging="true" returntooriginalpositionwhenreleased="false">
 
     <Image id="image-panelbck_2" imageId="image-panelbck_2"/>
         <!-- Inner Player Panel -->
@@ -239,56 +675,487 @@
                                 </Button>
                         </Panel>          
                     </Panel>
-    <!-- Dice box -->
-    <Panel id="dice_panel_2" rectAlignment="MiddleCenter" width="220" height="140" offsetXY="0 -200" color="#FFFFFF00">
-        <!-- Erste Reihe -->
-        <Panel id="dice_row_2" rectAlignment="UpperCenter" width="220" height="50" offsetXY="0 -10">
-            <Button id="dice1_2" 
-                    width="90" 
-                    height="50"
-                    rectAlignment="MiddleLeft"
-                    offsetXY="10 0"
-                    onClick="angriff"
-                    color="transparent">
-                <Image id="image-angriff_2" imageId="image-angriff_2" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-            </Button>
-            <Button id="dice2_2" 
-                    width="90" 
-                    height="50"
-                    rectAlignment="MiddleRight"
-                    offsetXY="-10 0"
-                    onClick="abwehr"
-                    color="transparent">
-                <Image id="image-abwehr_2" imageId="image_abwehr_2" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-            </Button>
-        </Panel>
+   <!-- Dice box -->
+                                <!-- Dice box MAin -->
+                                            <Panel
+                                                id="Dice_Ziffer_Panel1_2"
+                                                width="205"
+                                                height="90"
+                                                position="0 -180 0"
+                                                color="#FFFFFF00">
+                                 <!-- Dice box 1 rot -->               
+                                                <Panel
+                                                    id="Dice_1_2"
+                                                    width="40"
+                                                    height="40"
+                                                    position="-74 30 0"
+                                                    color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_1_2"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_1_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_1_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_1_2">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
 
-        <!-- Zweite Reihe -->
-        <Panel id="dice_row_2" rectAlignment="LowerCenter" width="220" height="50" offsetXY="0 10">
-            <Button id="dice3_2" 
-                    width="90" 
-                    height="50"
-                    rectAlignment="MiddleLeft"
-                    offsetXY="10 0"
-                    onClick="probe"
-                    color="transparent">
-                <Image id="image-probe_2" imageId="image_probe_2" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-            </Button>
-            <Button id="dice4_2" 
-                    width="90" 
-                    height="50"
-                    rectAlignment="MiddleRight"
-                    offsetXY="-10 0"
-                    onClick="heilung"
-                    color="transparent">
-                    <Image id="image-heilung_2" imageId="immage-heilung_2" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-            </Button>
-        </Panel>
-    </Panel>
-    
-        </Panel>
-    </Panel>
+                                                <Panel
+                                                    id="plusButtonPanel_1_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_1_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_1_2">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
 
+
+                                <!-- Dice box2 blau -->
+                                            <Panel
+                                                id="Dice_2_2"
+                                                width="40"
+                                                height="40"
+                                                position="-24.5 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_2_2"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_2_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_2_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_2_2">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_2_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_2_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_2_2">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box3 gelb-->
+                                            <Panel
+                                                id="Dice_3_2"
+                                                width="40"
+                                                height="40"
+                                                position="26 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_3_2"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_3_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_3_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_3_2">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_3_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_3_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_3_2">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box4  grün-->
+                                            <Panel
+                                                id="Dice_4_2"
+                                                width="40"
+                                                height="40"
+                                                position="79 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_4_2"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_4_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_4_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_4_2">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_4_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_4_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_4_2">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+
+                                <!-- Dice box5 weiss-->
+                                            <Panel
+                                                id="Dice_5_2"
+                                                width="40"
+                                                height="40"
+                                                position="-45 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_5_2"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_5_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_5_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_5_2">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_5_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_5_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_5_2">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box6 schwarz-->
+                                            <Panel
+                                                id="Dice_6_2"
+                                                width="40"
+                                                height="40"
+                                                position="2 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_6_2"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_6_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_6_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_6_2">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_6_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_6_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_6_2">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+                                <!-- Dice box7 braun -->
+                                            <Panel
+                                                id="Dice_7_2"
+                                                width="40"
+                                                height="40"
+                                                position="53 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_7_2"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_7_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_7_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_7_2">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+
+
+                                
+                                                <Panel
+                                                    id="plusButtonPanel_7_2"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#FF000000">
+                                                    <Button
+                                                        id="plusButton_7_2"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_7_2">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+                                        </Panel>
+                                    ]]
+                                    
+    <!-- Action Buttons Panel _2 -->
+
+    <Panel
+        id="Action_Buttons_2"
+        width="250"
+        height="50"
+        position="0 -300 0"
+        color="#FFFFFF00">
+        
+        <Button
+            id="angriffButton_2"
+            width="35"
+            height="30"
+            position="-85 0 0"
+            color="#00000000"
+            onClick="angriff_2">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="probeButton_2"
+            width="30"
+            height="30"
+            position="-25 0 0"
+            color="#00000000"
+            onClick="probe_2">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="heilungButton_2"
+            width="30"
+            height="30"
+            position="20 0 0"
+            color="#00000000"
+            onClick="heilung_2">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="abwehrButton_2"
+            width="35"
+            height="30"
+            position="85 0 0"
+            onClick="abwehr_2"
+            color="#00000000">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+    </Panel>
+                                        
+
+                                    
+                                        </Panel>
+                                   </Panel>
 
 <!-- Spieler_3 -->
     <Panel id="Parent_PlayerPanel_3" position="0 0 0" width="250" height="500" alignment="MiddleCenter" color="#2F2F2F00" allowDragging="true" returntooriginalpositionwhenreleased="false">
@@ -345,35 +1212,490 @@
                 </Panel>
             </Panel>
 
-            <!-- Dice box -->
-            <Panel id="dice_panel_3" rectAlignment="MiddleCenter" width="220" height="140" offsetXY="0 -200" color="#FFFFFF00">
-                <!-- Erste Reihe -->
-                <Panel id="dice_row_3" rectAlignment="UpperCenter" width="220" height="50" offsetXY="0 -10">
-                    <Button id="dice1_3" width="90" height="50" rectAlignment="MiddleLeft" offsetXY="10 0" onClick="angriff" color="transparent">
-                        <Image id="image-angriff_3" imageId="image-angriff_3" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-                    </Button>
-                    <Button id="dice2_3" width="90" height="50" rectAlignment="MiddleRight" offsetXY="-10 0" onClick="abwehr" color="transparent">
-                        <Image id="image-abwehr_3" imageId="image_abwehr_3" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-                    </Button>
-                </Panel>
+    <!-- Dice box -->
+                                <!-- Dice box MAin -->
+                                            <Panel
+                                                id="Dice_Ziffer_Panel1_3"
+                                                width="205"
+                                                height="90"
+                                                position="0 -180 0"
+                                                color="#FFFFFF00">
+                                 <!-- Dice box 1 rot -->               
+                                                <Panel
+                                                    id="Dice_1_3"
+                                                    width="40"
+                                                    height="40"
+                                                    position="-74 30 0"
+                                                    color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_1_3"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_1_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_1_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_1_3">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
 
-                <!-- Zweite Reihe -->
-                <Panel id="dice_row_3" rectAlignment="LowerCenter" width="220" height="50" offsetXY="0 10">
-                    <Button id="dice3_3" width="90" height="50" rectAlignment="MiddleLeft" offsetXY="10 0" onClick="probe" color="transparent">
-                        <Image id="image-probe_3" imageId="image_probe_3" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-                    </Button>
-                    <Button id="dice4_3" width="90" height="50" rectAlignment="MiddleRight" offsetXY="-10 0" onClick="heilung" color="transparent">
-                        <Image id="image-heilung_3" imageId="image-heilung_3" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-                    </Button>
-                </Panel>
-            </Panel>
-        </Panel>
+                                                <Panel
+                                                    id="plusButtonPanel_1_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_1_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_1_3">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box2 blau -->
+                                            <Panel
+                                                id="Dice_2_3"
+                                                width="40"
+                                                height="40"
+                                                position="-24.5 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_2_3"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_2_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_2_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_2_3">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_2_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_2_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_2_3">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box3 gelb-->
+                                            <Panel
+                                                id="Dice_3_3"
+                                                width="40"
+                                                height="40"
+                                                position="26 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_3_3"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_3_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_3_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_3_3">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_3_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_3_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_3_3">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box4  grün-->
+                                            <Panel
+                                                id="Dice_4_3"
+                                                width="40"
+                                                height="40"
+                                                position="79 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_4_3"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_4_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_4_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_4_3">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_4_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_4_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_4_3">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+
+                                <!-- Dice box5 weiss-->
+                                            <Panel
+                                                id="Dice_5_3"
+                                                width="40"
+                                                height="40"
+                                                position="-45 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_5_3"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_5_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_5_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_5_3">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_5_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_5_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_5_3">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box6 schwarz-->
+                                            <Panel
+                                                id="Dice_6_3"
+                                                width="40"
+                                                height="40"
+                                                position="2 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_6_3"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_6_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_6_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_6_3">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_6_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_6_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_6_3">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+                                <!-- Dice box7 braun -->
+                                            <Panel
+                                                id="Dice_7_3"
+                                                width="40"
+                                                height="40"
+                                                position="53 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_7_3"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_7_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_7_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_7_3">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+
+
+                                
+                                                <Panel
+                                                    id="plusButtonPanel_7_3"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#FF000000">
+                                                    <Button
+                                                        id="plusButton_7_3"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_7_3">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+                                        </Panel>
+                                    ]]
+                                    
+    <!-- Action Buttons Panel _3 -->
+
+    <Panel
+        id="Action_Buttons_3"
+        width="250"
+        height="50"
+        position="0 -300 0"
+        color="#FFFFFF00">
+        
+        <Button
+            id="angriffButton_3"
+            width="35"
+            height="30"
+            position="-85 0 0"
+            color="#00000000"
+            onClick="angriff_3">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="probeButton_3"
+            width="30"
+            height="30"
+            position="-25 0 0"
+            color="#00000000"
+            onClick="probe_3">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="heilungButton_3"
+            width="30"
+            height="30"
+            position="20 0 0"
+            color="#00000000"
+            onClick="heilung_3">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
+        
+        <Button
+            id="abwehrButton_3"
+            width="35"
+            height="30"
+            position="85 0 0"
+            onClick="abwehr_3"
+            color="#00000000">
+            <Text
+                text=""
+                fontSize="12"
+                color="#FFFFFF"
+                alignment="MiddleCenter"/>
+        </Button>
     </Panel>
+                                        
 
-
+                                    
+                                        </Panel>
+                                   </Panel>
 
 <!-- Spieler_4 -->
-    <Panel id="Parent_PlayerPanel_4" position="0 0 0" width="250" height="500" alignment="MiddleCenter" color="#2F2F2F00" allowDragging="true" returntooriginalpositionwhenreleased="false">
+    <Panel id="Parent_PlayerPanel_4" position="300 0 0" width="250" height="500" alignment="MiddleCenter" color="#2F2F2F00" allowDragging="true" returntooriginalpositionwhenreleased="false">
 
     <Image id="image-panelbck_4" imageId="image-panelbck_4"/>
         <!-- Inner Player Panel -->
@@ -429,26 +1751,485 @@
             </Panel>
 
             <!-- Dice box -->
-            <Panel id="dice_panel_4" rectAlignment="MiddleCenter" width="220" height="140" offsetXY="0 -200" color="#FFFFFF00">
-                <!-- Erste Reihe -->
-                <Panel id="dice_row_4" rectAlignment="UpperCenter" width="220" height="50" offsetXY="0 -10">
-                    <Button id="dice1_4" width="90" height="50" rectAlignment="MiddleLeft" offsetXY="10 0" onClick="angriff" color="transparent">
-                        <Image id="image-angriff_4" imageId="image-angriff_4" width="90" color="#FFFFFF80"  height="50" rectAlignment="MiddleCenter"/>
-                    </Button>
-                    <Button id="dice2_4" width="90" height="50" rectAlignment="MiddleRight" offsetXY="-10 0" onClick="abwehr" color="transparent">
-                        <Image id="image-abwehr_4" imageId="image_abwehr_4" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-                    </Button>
-                </Panel>
 
-                <!-- Zweite Reihe -->
-                <Panel id="dice_row_4" rectAlignment="LowerCenter" width="220" height="50" offsetXY="0 10">
-                    <Button id="dice3_4" width="90" height="50" rectAlignment="MiddleLeft" offsetXY="10 0" onClick="probe" color="transparent">
-                        <Image id="image-probe_4" imageId="image_probe_4" width="90" color="#FFFFFF80"  height="50" rectAlignment="MiddleCenter"/>
-                    </Button>
-                    <Button id="dice4_4" width="90" height="50" rectAlignment="MiddleRight" offsetXY="-10 0" onClick="heilung" color="transparent">
-                        <Image id="image-heilung_4" imageId="image-heilung_4" width="90"  color="#FFFFFF80" height="50" rectAlignment="MiddleCenter"/>
-                    </Button>
-                </Panel>
-            </Panel>
-        </Panel>
-    </Panel>
+    <!-- Dice box -->
+                                <!-- Dice box MAin -->
+                                            <Panel
+                                                id="Dice_Ziffer_Panel1_4"
+                                                width="205"
+                                                height="90"
+                                                position="0 -180 0"
+                                                color="#FFFFFF00">
+                                 <!-- Dice box 1 rot -->               
+                                                <Panel
+                                                    id="Dice_1_4"
+                                                    width="40"
+                                                    height="40"
+                                                    position="-74 30 0"
+                                                    color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_1_4"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_1_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_1_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_1_4">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_1_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_1_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_1_4">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box2 blau -->
+                                            <Panel
+                                                id="Dice_2_4"
+                                                width="40"
+                                                height="40"
+                                                position="-24.5 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_2_4"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_2_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_2_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_2_4">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_2_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_2_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_2_4">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box3 gelb-->
+                                            <Panel
+                                                id="Dice_3_4"
+                                                width="40"
+                                                height="40"
+                                                position="26 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_3_4"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_3_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_3_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_3_4">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_3_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_3_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_3_4">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box4  grün-->
+                                            <Panel
+                                                id="Dice_4_4"
+                                                width="40"
+                                                height="40"
+                                                position="79 30 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_4_4"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_4_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_4_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_4_4">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_4_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_4_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_4_4">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+
+                                <!-- Dice box5 weiss-->
+                                            <Panel
+                                                id="Dice_5_4"
+                                                width="40"
+                                                height="40"
+                                                position="-45 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_5_4"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_5_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_5_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_5_4">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_5_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_5_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_5_4">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+
+                                <!-- Dice box6 schwarz-->
+                                            <Panel
+                                                id="Dice_6_4"
+                                                width="40"
+                                                height="40"
+                                                position="2 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_6_4"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_6_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_6_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_6_4">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+                                                <Panel
+                                                    id="plusButtonPanel_6_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="plusButton_6_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_6_4">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+
+                                <!-- Dice box7 braun -->
+                                            <Panel
+                                                id="Dice_7_4"
+                                                width="40"
+                                                height="40"
+                                                position="53 -20 0"
+                                                color="#FF000000">
+                                                
+                                                <Text
+                                                    id="counterText_7_4"
+                                                    text="0"
+                                                    fontSize="17"
+                                                    color="#FFFFFF80"
+                                                    alignment="MiddleCenter"/>
+                                                
+                                                <Panel
+                                                    id="minusButtonPanel_7_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="-15 -15 0"
+                                                    color="#00000000">
+                                                    <Button
+                                                        id="minusButton_7_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="decreaseCounter_7_4">
+                                                        <Text
+                                                            text="-"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+
+
+
+                                
+                                                <Panel
+                                                    id="plusButtonPanel_7_4"
+                                                    width="10"
+                                                    height="10"
+                                                    position="15 -15 0"
+                                                    color="#FF000000">
+                                                    <Button
+                                                        id="plusButton_7_4"
+                                                        width="10"
+                                                        height="10"
+                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
+                                                        onClick="increaseCounter_7_4">
+                                                        <Text
+                                                            text="+"
+                                                            fontSize="18"
+                                                            color="#FFFFFF"
+                                                            alignment="MiddleCenter"/>
+                                                    </Button>
+                                                </Panel>
+                                            </Panel>
+                                        </Panel>
+                                    ]]
+    <!-- Action Buttons Panel _4 -->
+
+        <Panel
+            id="Action_Buttons_4"
+            width="250"
+            height="50"
+            position="0 -300 0"
+            color="#FFFFFF00">
+            
+            <Button
+                id="angriffButton_4"
+                width="35"
+                height="30"
+                position="-85 0 0"
+                color="#00000000"
+                onClick="angriff_4">
+                <Text
+                    text=""
+                    fontSize="12"
+                    color="#FFFFFF"
+                    alignment="MiddleCenter"/>
+            </Button>
+            
+            <Button
+                id="probeButton_4"
+                width="30"
+                height="30"
+                position="-25 0 0"
+                color="#00000000"
+                onClick="probe_4">
+                <Text
+                    text=""
+                    fontSize="12"
+                    color="#FFFFFF"
+                    alignment="MiddleCenter"/>
+            </Button>
+            
+            <Button
+                id="heilungButton_4"
+                width="30"
+                height="30"
+                position="20 0 0"
+                color="#00000000"
+                onClick="heilung_4">
+                <Text
+                    text=""
+                    fontSize="12"
+                    color="#FFFFFF"
+                    alignment="MiddleCenter"/>
+            </Button>
+            
+            <Button
+                id="abwehrButton_4"
+                width="35"
+                height="30"
+                position="85 0 0"
+                onClick="abwehr_4"
+                color="#00000000">
+                <Text
+                    text=""
+                    fontSize="12"
+                    color="#FFFFFF"
+                    alignment="MiddleCenter"/>
+            </Button>
+        </Panel>                                
+        
+                                            
+
+                                            
+                                                </Panel>
+                                        </Panel>
