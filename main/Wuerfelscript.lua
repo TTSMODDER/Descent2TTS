@@ -211,13 +211,13 @@ end
 end --]]
 
 function redDiceCounter(player, value, id)
-    log(value)
+    local diceColor = id
+    
     playerColor = player.color
-    local panelID = "counterText_" .. playerColor
-    log(playerColor)
+    
+    local panelID = "redDiceCountText_" .. playerColor
     if allowedDMColor then
         local redDiceCount = tonumber(UI.getValue(panelID))
-        log(redDiceCount)
         if redDiceCount == nil then
             redDiceCount = 0
         end
@@ -225,68 +225,42 @@ function redDiceCounter(player, value, id)
             if redDiceCount < 6 and redDiceCount >= 0 then
                 redDiceCount = redDiceCount + 1
                 UI.setValue(panelID, tostring(redDiceCount))
-                Dice_value_1_1 = redDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Red = redDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if redDiceCount <= 6 and redDiceCount > 0 then
                 redDiceCount = redDiceCount - 1
                 UI.setValue(panelID, tostring(redDiceCount))
-                Dice_value_1_1 = redDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Red = redDiceCount  -- Wert speichern
             end
         end
+        log(dicesToThrow[playerColor].Red)
     end
 end
 
 function angriff_1 (player, value, id)
+    
     playerColor = player.color
-    log(playerColor)
-    if allowedPlayerColors[playerColor] or allowedDMColor [playerColor] then 
-        local playerObj = Player[playerColor]
-        playerName = playerObj.steam_name -- Oder .getName(), falls benötigt
-
-        if isRolling == true then
-            log("würfel rollen noch")
-            return
-        end
-        if rollingDone == true then
-            for _, cube in ipairs(currentDice[playerColor]) do
-                destroyObject(cube)
-            end
-            isRolling = false
-            rollingDone = false
-            diceCount = 0
-            currentDice = {}
-        end
-        if diceCount >= maxDice then
-            log("maximale anzahl an würfel wurde erreicht!")
-            return
-        end
-       
-        if currentDice[player.color] == nil  then
-            currentDice[player.color] = {}
-        end
-
-        if wuerfel[id] then
-            local url = wuerfel[id].url
-            if allowedPlayerColors[playerColor] then
-                local startPos = vector(-8, 10, 8)
-                local diceForPlayer = currentDice[playerColor]
-                local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
-                spawnObjFromCloud(url, id, callback, newDicePos, player)
-            elseif allowedDMColor [playerColor] then
-                local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
-                local diceForPlayer = currentDice[playerColor]
-                local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
-                spawnObjFromCloud(url, id, callback, newDicePos, player)
+    local atkDices = {"Red", "Blue", "Green", "Yellow"}
+    for k, count in pairs (dicesToThrow) do
+        if k == playerColor then
+            for i = 0, #atkDices do 
+                i = i + 1
+                if count[atkDices[i]] and count[atkDices[i]] > 0 then
+                    log(count[atkDices[i]])
+                    local diceNumber = count[atkDices[i]]
+                    local diceID = atkDices[i]
+                    wuerfeln(player, diceNumber, diceID)
+                end
             end
         end
     end
 end
 
 -- clickFunction to start dice process
-function wuerfeln(player, value, id)
-    self.UI.setAttribute("resultIMG", "color", "rgba(0,0,0,0)")
-    playerColor = player.color
+function wuerfeln(player, diceNumber, diceID)
+    --self.UI.setAttribute("resultIMG", "color", "rgba(0,0,0,0)")
+    --playerColor = player.color
     checkCurrentPlayer(player)
 
     -- Nur für Spielerfarben, nicht für DM
@@ -316,18 +290,19 @@ function wuerfeln(player, value, id)
             currentDice[player.color] = {}
         end
 
-        if wuerfel[id] then
-            local url = wuerfel[id].url
-            if allowedPlayerColors[playerColor] then
-                local startPos = vector(-8, 10, 8)
-                local diceForPlayer = currentDice[playerColor]
-                local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
-                spawnObjFromCloud(url, id, callback, newDicePos, player)
-            elseif allowedDMColor [playerColor] then
-                local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
-                local diceForPlayer = currentDice[playerColor]
-                local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
-                spawnObjFromCloud(url, id, callback, newDicePos, player)
+        if wuerfel[diceID] then
+                local url = wuerfel[diceID].url
+                if allowedPlayerColors[playerColor] then
+                    local startPos = vector(-8, 10, 8)
+                    local diceForPlayer = currentDice[playerColor]
+                    local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
+                    spawnObjFromCloud(url, diceID, callback, newDicePos, player)
+                elseif allowedDMColor [playerColor] then
+                    local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
+                    local diceForPlayer = currentDice[playerColor]
+                    local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
+                    spawnObjFromCloud(url, diceID, callback, newDicePos, player)
+                end
             end
         end
     end

@@ -115,14 +115,14 @@
                                                 color="#FF000000">
                                                 
                                                 <Text
-                                                    id="counterText_White"
+                                                    id="redDiceCountText_White"
                                                     text= "0"
                                                     fontSize="17"
                                                     color="#FFFFFF80"
                                                     alignment="MiddleCenter"/>
                                                 
                                                 <Panel
-                                                    id="minusButtonPanel_1_1"
+                                                    id="redButtonPanel_White"
                                                     width="10"
                                                     height="10"
                                                     position="0 0 0"
