@@ -237,9 +237,14 @@ function redDiceCounter(player, value, id)
     end
 end
 
+<<<<<<< HEAD
 function blueDiceCounter(player, value, id)
     local diceColor = id
     
+=======
+function angriff_1 (player, value, id)
+    local diceSum = 0
+>>>>>>> 824f41a8eef38fd32a8760489ec3ab069a73b1c2
     playerColor = player.color
     
     local panelID = "redDiceCountText_" .. playerColor
