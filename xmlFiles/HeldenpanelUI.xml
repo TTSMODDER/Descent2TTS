@@ -131,30 +131,10 @@
                                                         id="Red"
                                                         width="30"
                                                         height="30"
-                                                        colors= "Green"
+                                                        colors= "Red"
                                                         onClick="redDiceCounter">
                                                         <Text
                                                             text=""
-                                                            fontSize="18"
-                                                            color="#FFFFFF"
-                                                            alignment="MiddleCenter"/>
-                                                    </Button>
-                                                </Panel>
-
-                                                <Panel
-                                                    id="plusButtonPanel_1_1"
-                                                    width="10"
-                                                    height="10"
-                                                    position="15 -15 0"
-                                                    color="#00000000">
-                                                    <Button
-                                                        id="plusButton_1_1"
-                                                        width="10"
-                                                        height="10"
-                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
-                                                        onClick="redDiceCounter">
-                                                        <Text
-                                                            text="+"
                                                             fontSize="18"
                                                             color="#FFFFFF"
                                                             alignment="MiddleCenter"/>
@@ -172,26 +152,26 @@
                                                 color="#FF000000">
                                                 
                                                 <Text
-                                                    id="counterText_2_1"
+                                                    id="blueDiceCountText_White"
                                                     text="0"
                                                     fontSize="17"
                                                     color="#FFFFFF80"
                                                     alignment="MiddleCenter"/>
                                                 
                                                 <Panel
-                                                    id="minusButtonPanel_2_1"
+                                                    id="blueButtonPanel_White"
                                                     width="10"
                                                     height="10"
-                                                    position="-15 -15 0"
+                                                    position="0 0 0"
                                                     color="#00000000">
                                                     <Button
-                                                        id="minusButton_2_1"
-                                                        width="10"
-                                                        height="10"
-                                                        colors="rgba(0,0,0,0.5)|#333333|#666666|rgba(0,0,0,0.5)"
-                                                        onClick="decreaseCounter_2_1">
+                                                        id="Blue"
+                                                        width="30"
+                                                        height="30"
+                                                        colors="Blue"
+                                                        onClick="blueDiceCounter">
                                                         <Text
-                                                            text="-"
+                                                            text=""
                                                             fontSize="18"
                                                             color="#FFFFFF"
                                                             alignment="MiddleCenter"/>
