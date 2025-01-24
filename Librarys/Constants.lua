@@ -110,3 +110,9 @@ diceCountDM = 0
 maxDice = 7
 diceResults = {}
 
+--- Counted dices for each player ---
+
+dicesToThrow = {
+    ["White"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0}
+    
+}

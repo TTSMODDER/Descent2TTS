@@ -151,15 +151,20 @@
     local abwehrImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38943008360279659/59BB959B7926B9B98445E8981DD131AA149FCEA8/"
     local probeImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38943008360279659/59BB959B7926B9B98445E8981DD131AA149FCEA8/"
     local heilungImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38943008360279659/59BB959B7926B9B98445E8981DD131AA149FCEA8/"
-    local panelImageImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38943008370325050/B96EC5A26757340FE2FA13396D0E132AADA17170/"
-    local stock1ImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38942555200066456/F8D294EB54ECCFA94F01D6FE6052F8D07E0BF3EC/"
+    local stock1ImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38943980803101104/3DA17A9455CF68A3240218E85E4C5781695A1A15/"
     local stock2ImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38942555189046648/497B687160D338C20740F469509CB90E8ED7E019/"
     local stock3ImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38942555200066456/F8D294EB54ECCFA94F01D6FE6052F8D07E0BF3EC/"
     local stock4ImageUrl = "https://steamusercontent-a.akamaihd.net/ugc/38942555200066456/F8D294EB54ECCFA94F01D6FE6052F8D07E0BF3EC/"
 
-
+--diverse hintergrundbilder für panels
+    local panelImageImageUrl_1 = "https://steamusercontent-a.akamaihd.net/ugc/38943980803174889/580A1953BD3004C423039F0DE124D19F8DA3C887/"    
+    local panelImageImageUrl_2 = "https://steamusercontent-a.akamaihd.net/ugc/38943980803174756/69EB5D1F3DB16E5BED64B3869E36EC68ED3CB1D7/"
+    local panelImageImageUrl_3 = "https://steamusercontent-a.akamaihd.net/ugc/38943980803174651/4BD1F3B82644DFD3323CF2AAE347F1A0836A5B9D/"
+    local panelImageImageUrl_4 = "https://steamusercontent-a.akamaihd.net/ugc/38943980803174831/CDF48C299A3E8FEFF4CC84C87D095879774305A2/"
+    local panelImageImageUrl_5 = "https://steamusercontent-a.akamaihd.net/ugc/38943008359440833/37A76A773237E05E3F5632DE8B706772DDD33EA7/"
+    local panelImageImageUrl_6 = "https://steamusercontent-a.akamaihd.net/ugc/38943008359440833/37A76A773237E05E3F5632DE8B706772DDD33EA7/"
+    local panelImageImageUrl_7 = "https://steamusercontent-a.akamaihd.net/ugc/38943008359440833/37A76A773237E05E3F5632DE8B706772DDD33EA7/"
     
-
 
 
 -- Funktion zur Ermittlung der Miniaturen-GUIDs  die gerade dort angemeldet sind
@@ -326,7 +331,7 @@
                         width = "150", 
                         height = "40",
                         color="#9999FF",
-                        position = "-950 100  ",
+                        position = "-650 100  ",
                         onClick = "toggleFarbpanel",
                         tooltip = "Helden-Panels für alle aktiven Spieler einblenden (GM -Funktion!)\nZunächst die jeweiligen aktiven Helden Figuren im „Helden-Panel Tracker“ registrieren (liegt unten rechts neben den Spielerkarten): \nHelden Figuren einzeln nacheinander in die Mitte dieses Treckers stellen  und „Track mini“ wählen\nFigur erscheint in der Liste des Trackers, aber auch  in der Liste  hier im Heldenpanel \nDort nun die  registrierten Figuren dem jeweiligen Spieler zuordnen.",
                     },
@@ -453,10 +458,10 @@
 
 
 
--- Funktionen für Buttons
-    -- Heldenpanel einlenden
 
-            -- Status der Sichtbarkeit des Farbpanels
+    -- Heldenpanelliste  einlenden
+
+            -- Status der Sichtbarkeit der Übersichtsliste
 
             function toggleFarbpanel(player, value, id)
                 isFarbpanelVisible = not isFarbpanelVisible -- Status umkehren
@@ -882,6 +887,18 @@
                 end
             end
 
+    --toggeln von diceboard spieler_1
+    function showDiceboard_1()
+        local currentVisibility = UI.getAttribute("diceboard_1", "visibility")
+        if currentVisibility == "hidden" then
+            UI.setAttribute("diceboard_1", "visibility", "")
+        else
+            UI.setAttribute("diceboard_1", "visibility", "hidden")
+        end
+    end
+
+   
+
         --DICE Pannel Spieler _2
 
         function decreaseCounter_1_2()
@@ -995,6 +1012,21 @@
                 Dice_value_7_2 = counter_7_2  -- Wert speichern
             end
         end
+
+
+                    --diceboard spieler_2
+            -- board sichtbarmachen:
+    --toggeln von diceboard spieler_
+    function showDiceboard_2()
+        local currentVisibility = UI.getAttribute("diceboard_2", "visibility")
+        if currentVisibility == "hidden" then
+            UI.setAttribute("diceboard_2", "visibility", "")
+        else
+            UI.setAttribute("diceboard_2", "visibility", "hidden")
+        end
+    end
+
+    --  functions  der Dice innerhalb des Diceboards gelten für alle, daheer sind diese ausserhalb der individuellen panels
 
         --DICE Pannel Spieler _3
 
@@ -1110,6 +1142,21 @@
             end
         end
 
+
+   --toggeln von diceboard spieler_
+   function showDiceboard_3()
+    local currentVisibility = UI.getAttribute("diceboard_3", "visibility")
+    if currentVisibility == "hidden" then
+        UI.setAttribute("diceboard_3", "visibility", "")
+    else
+        UI.setAttribute("diceboard_3", "visibility", "hidden")
+    end
+end
+
+
+    --  functions  der Dice innerhalb des Diceboards gelten für alle, daheer sind diese ausserhalb der individuellen panels
+
+
         --DICE Pannel Spieler _4
 
     function decreaseCounter_1_4()
@@ -1224,117 +1271,169 @@
         end
     end
 
---[[ --Action Panels
-    --Action Panels Funktionen für Spieler 1
-function angriff_1()
-    local dice_1_1 = Dice_value_1_1
-    local dice_2_1 = Dice_value_2_1
-    local dice_3_1 = Dice_value_3_1
-    local dice_4_1 = Dice_value_4_1
-    print("Angriff Spieler 1: Würfelwerte - Dice 1: " .. dice_1_1 .. ", Dice 2: " .. dice_2_1 .. ", Dice 3: " .. dice_3_1 .. ", Dice 4: " .. dice_4_1)
+
+   --toggeln von diceboard spieler_
+   function showDiceboard_4()
+    local currentVisibility = UI.getAttribute("diceboard_4", "visibility")
+    if currentVisibility == "hidden" then
+        UI.setAttribute("diceboard_4", "visibility", "")
+    else
+        UI.setAttribute("diceboard_4", "visibility", "hidden")
+    end
 end
 
-function abwehr_1()
-    local dice_5_1 = Dice_value_5_1
-    local dice_6_1 = Dice_value_6_1
-    local dice_7_1 = Dice_value_7_1
-    print("Abwehr Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1 .. ", Dice 7: " .. dice_7_1)
-end
 
-function probe_1()
-    local dice_5_1 = 1
-    local dice_6_1 = 1
-    print("Probe Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1)
-end
 
-function heilung_1()
-    local dice_2_1 = 2
-    print("Heilung Spieler 1: Würfelwert - Dice 2: " .. dice_2_1)
-end
+    --  functions  der Dice innerhalb des Diceboards gelten für alle, daheer sind diese ausserhalb der individuellen panels
 
---Action Panels Funktionen für Spieler 2
-function angriff_2()
-    local dice_1_2 = Dice_value_1_2
-    local dice_2_2 = Dice_value_2_2
-    local dice_3_2 = Dice_value_3_2
-    local dice_4_2 = Dice_value_4_2
-    print("Angriff Spieler 2: Würfelwerte - Dice 1: " .. dice_1_2 .. ", Dice 2: " .. dice_2_2 .. ", Dice 3: " .. dice_3_2 .. ", Dice 4: " .. dice_4_2)
-end
+     -- Diceboard funktionen , gelten für alle:
+        function showColorRot()
+            print("Dice: rot")
+        end
 
-function abwehr_2()
-    local dice_5_2 = Dice_value_5_2
-    local dice_6_2 = Dice_value_6_2
-    local dice_7_2 = Dice_value_7_2
-    print("Abwehr Spieler 2: Würfelwerte - Dice 5: " .. dice_5_2 .. ", Dice 6: " .. dice_6_2 .. ", Dice 7: " .. dice_7_2)
-end
+        function showColorBlau()
+            print("Dice: blau")
+        end
 
-function probe_2()
-    local dice_5_2 = 1
-    local dice_6_2 = 1
-    print("Probe Spieler 2: Würfelwerte - Dice 5: " .. dice_5_2 .. ", Dice 6: " .. dice_6_2)
-end
+        function showColorGelb()
+            print("Dice: gelb")
+        end
 
-function heilung_2()
-    local dice_2_2 = 2
-    print("Heilung Spieler 2: Würfelwert - Dice 2: " .. dice_2_2)
-end
+        function showColorGruen()
+            print("Dice: grün")
+        end
 
---Action Panels Funktionen für Spieler 3
-function angriff_3()
-    local dice_1_3 = Dice_value_1_3
-    local dice_2_3 = Dice_value_2_3
-    local dice_3_3 = Dice_value_3_3
-    local dice_4_3 = Dice_value_4_3
-    print("Angriff Spieler 3: Würfelwerte - Dice 1: " .. dice_1_3 .. ", Dice 2: " .. dice_2_3 .. ", Dice 3: " .. dice_3_3 .. ", Dice 4: " .. dice_4_3)
-end
+        function showColorHellgrau()
+            print("Dice: hellgrau")
+        end
 
-function abwehr_3()
-    local dice_5_3 = Dice_value_5_3
-    local dice_6_3 = Dice_value_6_3
-    local dice_7_3 = Dice_value_7_3
-    print("Abwehr Spieler 3: Würfelwerte - Dice 5: " .. dice_5_3 .. ", Dice 6: " .. dice_6_3 .. ", Dice 7: " .. dice_7_3)
-end
+        function showColorSchwarz()
+            print("Dice: schwarz")
+        end
 
-function probe_3()
-    local dice_5_3 = 1
-    local dice_6_3 = 1
-    print("Probe Spieler 3: Würfelwerte - Dice 5: " .. dice_5_3 .. ", Dice 6: " .. dice_6_3)
-end
+        function showColorBraun()
+            print("Dice: braun")
+        end
 
-function heilung_3()
-    local dice_2_3 = 2
-    print("Heilung Spieler 3: Würfelwert - Dice 2: " .. dice_2_3)
-end
 
---Action Panels Funktionen für Spieler 4
-function angriff_4()
-    local dice_1_4 = Dice_value_1_4
-    local dice_2_4 = Dice_value_2_4
-    local dice_3_4 = Dice_value_3_4
-    local dice_4_4 = Dice_value_4_4
-    print("Angriff Spieler 4: Würfelwerte - Dice 1: " .. dice_1_4 .. ", Dice 2: " .. dice_2_4 .. ", Dice 3: " .. dice_3_4 .. ", Dice 4: " .. dice_4_4)
-end
 
-function abwehr_4()
-    local dice_5_4 = Dice_value_5_4
-    local dice_6_4 = Dice_value_6_4
-    local dice_7_4 = Dice_value_7_4
-    print("Abwehr Spieler 4: Würfelwerte - Dice 5: " .. dice_5_4 .. ", Dice 6: " .. dice_6_4 .. ", Dice 7: " .. dice_7_4)
-end
 
-function probe_4()
-    local dice_5_4 = 1
-    local dice_6_4 = 1
-    print("Probe Spieler 4: Würfelwerte - Dice 5: " .. dice_5_4 .. ", Dice 6: " .. dice_6_4)
-end
+--Action Panels
+        --Action Panels Funktionen für Spieler 1
+    function angriff_1()
+        local dice_1_1 = Dice_value_1_1
+        local dice_2_1 = Dice_value_2_1
+        local dice_3_1 = Dice_value_3_1
+        local dice_4_1 = Dice_value_4_1
+        print("Angriff Spieler 1: Würfelwerte - Dice 1: " .. dice_1_1 .. ", Dice 2: " .. dice_2_1 .. ", Dice 3: " .. dice_3_1 .. ", Dice 4: " .. dice_4_1)
+    end
 
-function heilung_4()
-    local dice_2_4 = 2
-    print("Heilung Spieler 4: Würfelwert - Dice 2: " .. dice_2_4)
-end --]]
+    function abwehr_1()
+        local dice_5_1 = Dice_value_5_1
+        local dice_6_1 = Dice_value_6_1
+        local dice_7_1 = Dice_value_7_1
+        print("Abwehr Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1 .. ", Dice 7: " .. dice_7_1)
+    end
+
+    function probe_1()
+        local dice_5_1 = 1
+        local dice_6_1 = 1
+        print("Probe Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1)
+    end
+
+    function heilung_1()
+        local dice_2_1 = 2
+        print("Heilung Spieler 1: Würfelwert - Dice 2: " .. dice_2_1)
+    end
+
+    --Action Panels Funktionen für Spieler 2
+    function angriff_2()
+        local dice_1_2 = Dice_value_1_2
+        local dice_2_2 = Dice_value_2_2
+        local dice_3_2 = Dice_value_3_2
+        local dice_4_2 = Dice_value_4_2
+        print("Angriff Spieler 2: Würfelwerte - Dice 1: " .. dice_1_2 .. ", Dice 2: " .. dice_2_2 .. ", Dice 3: " .. dice_3_2 .. ", Dice 4: " .. dice_4_2)
+    end
+
+    function abwehr_2()
+        local dice_5_2 = Dice_value_5_2
+        local dice_6_2 = Dice_value_6_2
+        local dice_7_2 = Dice_value_7_2
+        print("Abwehr Spieler 2: Würfelwerte - Dice 5: " .. dice_5_2 .. ", Dice 6: " .. dice_6_2 .. ", Dice 7: " .. dice_7_2)
+    end
+
+    function probe_2()
+        local dice_5_2 = 1
+        local dice_6_2 = 1
+        print("Probe Spieler 2: Würfelwerte - Dice 5: " .. dice_5_2 .. ", Dice 6: " .. dice_6_2)
+    end
+
+    function heilung_2()
+        local dice_2_2 = 2
+        print("Heilung Spieler 2: Würfelwert - Dice 2: " .. dice_2_2)
+    end
+
+    --Action Panels Funktionen für Spieler 3
+    function angriff_3()
+        local dice_1_3 = Dice_value_1_3
+        local dice_2_3 = Dice_value_2_3
+        local dice_3_3 = Dice_value_3_3
+        local dice_4_3 = Dice_value_4_3
+        print("Angriff Spieler 3: Würfelwerte - Dice 1: " .. dice_1_3 .. ", Dice 2: " .. dice_2_3 .. ", Dice 3: " .. dice_3_3 .. ", Dice 4: " .. dice_4_3)
+    end
+
+    function abwehr_3()
+        local dice_5_3 = Dice_value_5_3
+        local dice_6_3 = Dice_value_6_3
+        local dice_7_3 = Dice_value_7_3
+        print("Abwehr Spieler 3: Würfelwerte - Dice 5: " .. dice_5_3 .. ", Dice 6: " .. dice_6_3 .. ", Dice 7: " .. dice_7_3)
+    end
+
+    function probe_3()
+        local dice_5_3 = 1
+        local dice_6_3 = 1
+        print("Probe Spieler 3: Würfelwerte - Dice 5: " .. dice_5_3 .. ", Dice 6: " .. dice_6_3)
+    end
+
+    function heilung_3()
+        local dice_2_3 = 2
+        print("Heilung Spieler 3: Würfelwert - Dice 2: " .. dice_2_3)
+    end
+
+    --Action Panels Funktionen für Spieler 4
+    function angriff_4()
+        local dice_1_4 = Dice_value_1_4
+        local dice_2_4 = Dice_value_2_4
+        local dice_3_4 = Dice_value_3_4
+        local dice_4_4 = Dice_value_4_4
+        print("Angriff Spieler 4: Würfelwerte - Dice 1: " .. dice_1_4 .. ", Dice 2: " .. dice_2_4 .. ", Dice 3: " .. dice_3_4 .. ", Dice 4: " .. dice_4_4)
+    end
+
+    function abwehr_4()
+        local dice_5_4 = Dice_value_5_4
+        local dice_6_4 = Dice_value_6_4
+        local dice_7_4 = Dice_value_7_4
+        print("Abwehr Spieler 4: Würfelwerte - Dice 5: " .. dice_5_4 .. ", Dice 6: " .. dice_6_4 .. ", Dice 7: " .. dice_7_4)
+    end
+
+    function probe_4()
+        local dice_5_4 = 1
+        local dice_6_4 = 1
+        print("Probe Spieler 4: Würfelwerte - Dice 5: " .. dice_5_4 .. ", Dice 6: " .. dice_6_4)
+    end
+
+    function heilung_4()
+        local dice_2_4 = 2
+        print("Heilung Spieler 4: Würfelwert - Dice 2: " .. dice_2_4)
+    end
+
+
+
+
+
 
 --ONLOAD Bereich
-    function initHeldenpanel()
+    function initHeldenpanelUI()
 
         local panelIds = {
             "Parent_PlayerPanel_1",
@@ -1392,10 +1491,10 @@ end --]]
         UI.setAttributes("image-refresh_3", { image = refreshImageUrl })
         UI.setAttributes("image-refresh_4", { image = refreshImageUrl })
 
-        UI.setAttributes("image-panelbck_1", { image = panelImageImageUrl })
-        UI.setAttributes("image-panelbck_2", { image = panelImageImageUrl })
-        UI.setAttributes("image-panelbck_3", { image = panelImageImageUrl })
-        UI.setAttributes("image-panelbck_4", { image = panelImageImageUrl })
+        UI.setAttributes("image-panelbck_1", { image = panelImageImageUrl_1 })
+        UI.setAttributes("image-panelbck_2", { image = panelImageImageUrl_2 })
+        UI.setAttributes("image-panelbck_3", { image = panelImageImageUrl_3 })
+        UI.setAttributes("image-panelbck_4", { image = panelImageImageUrl_4})
 
 
 
