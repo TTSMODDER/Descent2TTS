@@ -775,7 +775,7 @@
                 end
             end
 
-         --[[    function decreaseCounter_1_1()
+            function decreaseCounter_1_1()
                 if counter_1_1 > 0 then
                     counter_1_1 = counter_1_1 - 1
                     UI.setValue("counterText_1_1", tostring(counter_1_1))
@@ -789,7 +789,7 @@
                     UI.setValue("counterText_1_1", tostring(counter_1_1))
                     Dice_value_1_1 = counter_1_1  -- Wert speichern
                 end
-            end --]]
+            end
             
             function decreaseCounter_2_1()
                 if counter_2_1 > 0 then
@@ -1433,7 +1433,7 @@ end
 
 
 --ONLOAD Bereich
-    function initHeldenpanelUI()
+    function initHeldenpanel()
 
         local panelIds = {
             "Parent_PlayerPanel_1",
