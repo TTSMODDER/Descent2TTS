@@ -1,3 +1,5 @@
+
+
 -- I  Spielerpanels mit Bars & Health
     -- locals..zentraler speicher
     local listData = {

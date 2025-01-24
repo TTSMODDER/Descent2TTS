@@ -51,106 +51,64 @@
         <Panel id="diceboard_1" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
             <!-- Dice box 1 rot -->
             <Panel id="Dice_1_1" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
-                <Text id="counterText_1_1" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                <Panel id="minusButtonPanel_1_1" width="10" height="10" position="-15 -15 0" color="#00000000">
-                    <Button id="minusButton_1_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_1_1">
-                        <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                    </Button>
-                </Panel>
-                <Panel id="plusButtonPanel_1_1" width="10" height="10" position="15 -15 0" color="#00000000">
-                    <Button id="plusButton_1_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_1_1">
-                        <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                    </Button>
+               <Panel id="minusButtonPanel_1_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="redDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="redDiceCounter">
+                        <Text id="redDiceCountText_White" text="0" fontSize="18" color="Black" alignment="MiddleCenter"/>
+                   </Button>
                 </Panel>
             </Panel>
             <!-- Dice box2 blau -->
             <Panel id="Dice_2_1" width="40" height="40" position="-24.5 30 0" color="rgba(0,0,255,0.8)">
-                <Text id="counterText_2_1" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                <Panel id="minusButtonPanel_2_1" width="10" height="10" position="-15 -15 0" color="#00000000">
-                    <Button id="minusButton_2_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_2_1">
-                        <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                    </Button>
-                </Panel>
-                <Panel id="plusButtonPanel_2_1" width="10" height="10" position="15 -15 0" color="#00000000">
-                    <Button id="plusButton_2_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_2_1">
-                        <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                <Panel id="minusButtonPanel_2_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blueDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blueDiceCounter">
+                        <Text id="blueDiceCountText_White" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
                 </Panel>
             </Panel>
-                <!-- Dice box3 gelb-->
-                <Panel id="Dice_3_1" width="40" height="40" position="26 30 0" color="#FFB90F">
-                    <Text id="counterText_3_1" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_3_1" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_3_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_3_1">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_3_1" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_3_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_3_1">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box3 gelb-->
+            <Panel id="Dice_3_1" width="40" height="40" position="26 30 0" color="#FFB90F">
+               <Panel id="minusButtonPanel_3_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="yellowDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="yellowDiceCounter">
+                        <Text id="yellowDiceCountText_White" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
-                <!-- Dice box4 grün-->
-                <Panel id="Dice_4_1" width="40" height="40" position="79 30 0" color="rgba(0,255,0,0.8)">
-                    <Text id="counterText_4_1" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_4_1" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_4_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_4_1">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_4_1" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_4_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_4_1">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box4 grün-->
+            <Panel id="Dice_4_1" width="40" height="40" position="79 30 0" color="rgba(0,255,0,0.8)">
+                <Panel id="minusButtonPanel_4_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="greenDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="greenDiceCounter">
+                        <Text id="greenDiceCountText_White" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
-                <!-- Dice box5 weiss-->
-                <Panel id="Dice_5_1" width="40" height="40" position="-45 -20 0" color="#808080CC">
-                    <Text id="counterText_5_1" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_5_1" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_5_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_5_1">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_5_1" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_5_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_5_1">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box5 weiss-->
+            <Panel id="Dice_5_1" width="40" height="40" position="-45 -20 0" color="#808080CC">
+                 <Panel id="minusButtonPanel_5_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="whiteDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="whiteDiceCounter">
+                        <Text id="whiteDiceCountText_White" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
-                <!-- Dice box6 schwarz-->
-                <Panel id="Dice_6_1" width="40" height="40" position="2 -20 0" color="rgba(0,0,0,0.8)">
-                    <Text id="counterText_6_1" text="0" fontSize="20" color="#FFFFFF80" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_6_1" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_6_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_6_1">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_6_1" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_6_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_6_1">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box6 schwarz-->
+            <Panel id="Dice_6_1" width="40" height="40" position="2 -20 0" color="rgba(0,0,0,0.8)">
+                    <Panel id="minusButtonPanel_6_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blackDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blackDiceCounter">
+                        <Text id="blackDiceCountText_White" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
-                <!-- Dice box7 braun -->
-                <Panel id="Dice_7_1" width="40" height="40" position="53 -20 0" color="#A52A2ACC">
-                    <Text id="counterText_7_1" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_7_1" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_7_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_7_1">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_7_1" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_7_1" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_7_1">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box7 braun -->
+            <Panel id="Dice_7_1" width="40" height="40" position="53 -20 0" color="#A52A2ACC">
+                   <Panel id="minusButtonPanel_7_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="brownDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="brownDiceCounter">
+                        <Text id="brownDiceCountText_White" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
                 <!-- Minipanel_1 -->
                 <Panel id="dice_small_1" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
@@ -234,108 +192,65 @@
         </Panel>
  <!-- Einstellungen & Dice box -->
         <Panel id="diceboard_2" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
-            <!-- Dice box 1 rot -->
-            <Panel id="Dice_1_2" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
-                <Text id="counterText_1_2" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                <Panel id="minusButtonPanel_1_2" width="10" height="10" position="-15 -15 0" color="#00000000">
-                    <Button id="minusButton_1_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_1_2">
-                        <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                    </Button>
-                </Panel>
-                <Panel id="plusButtonPanel_1_2" width="10" height="10" position="15 -15 0" color="#00000000">
-                    <Button id="plusButton_1_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_1_2">
-                        <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                    </Button>
+           <Panel id="Dice_1_2" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
+               <Panel id="minusButtonPanel_1_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="redDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="redDiceCounter">
+                        <Text id="redDiceCountText_Blue" text="0" fontSize="18" color="Black" alignment="MiddleCenter"/>
+                   </Button>
                 </Panel>
             </Panel>
             <!-- Dice box2 blau -->
             <Panel id="Dice_2_2" width="40" height="40" position="-24.5 30 0" color="rgba(0,0,255,0.8)">
-                <Text id="counterText_2_2" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                <Panel id="minusButtonPanel_2_2" width="10" height="10" position="-15 -15 0" color="#00000000">
-                    <Button id="minusButton_2_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_2_2">
-                        <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                    </Button>
-                </Panel>
-                <Panel id="plusButtonPanel_2_2" width="10" height="10" position="15 -15 0" color="#00000000">
-                    <Button id="plusButton_2_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_2_2">
-                        <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                <Panel id="minusButtonPanel_2_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blueDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blueDiceCounter">
+                        <Text id="blueDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
                 </Panel>
             </Panel>
-                <!-- Dice box3 gelb-->
-                <Panel id="Dice_3_2" width="40" height="40" position="26 30 0" color="#FFB90F">
-                    <Text id="counterText_3_2" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_3_2" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_3_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_3_2">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_3_2" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_3_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_3_2">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box3 gelb-->
+            <Panel id="Dice_3_2" width="40" height="40" position="26 30 0" color="#FFB90F">
+               <Panel id="minusButtonPanel_3_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="yellowDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="yellowDiceCounter">
+                        <Text id="yellowDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
-                <!-- Dice box4 grün-->
-                <Panel id="Dice_4_2" width="40" height="40" position="79 30 0" color="rgba(0,255,0,0.8)">
-                    <Text id="counterText_4_2" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_4_2" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_4_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_4_2">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_4_2" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_4_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_4_2">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box4 grün-->
+            <Panel id="Dice_4_2" width="40" height="40" position="79 30 0" color="rgba(0,255,0,0.8)">
+                <Panel id="minusButtonPanel_4_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="greenDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="greenDiceCounter">
+                        <Text id="greenDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
-                <!-- Dice box5 weiss-->
-                <Panel id="Dice_5_2" width="40" height="40" position="-45 -20 0" color="#808080CC">
-                    <Text id="counterText_5_2" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_5_2" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_5_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_5_2">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_5_2" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_5_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_5_2">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box5 weiss-->
+            <Panel id="Dice_5_2" width="40" height="40" position="-45 -20 0" color="#808080CC">
+                 <Panel id="minusButtonPanel_5_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="whiteDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="whiteDiceCounter">
+                        <Text id="whiteDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
-                <!-- Dice box6 schwarz-->
-                <Panel id="Dice_6_2" width="40" height="40" position="2 -20 0" color="rgba(0,0,0,0.8)">
-                    <Text id="counterText_6_2" text="0" fontSize="20" color="#FFFFFF80" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_6_2" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_6_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_6_2">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_6_2" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_6_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_6_2">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box6 schwarz-->
+            <Panel id="Dice_6_2" width="40" height="40" position="2 -20 0" color="rgba(0,0,0,0.8)">
+                    <Panel id="minusButtonPanel_6_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blackDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blackDiceCounter">
+                        <Text id="blackDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
-                <!-- Dice box7 braun -->
-                <Panel id="Dice_7_2" width="40" height="40" position="53 -20 0" color="#A52A2ACC">
-                    <Text id="counterText_7_2" text="0" fontSize="20" color="rgba(0,0,0)" alignment="MiddleCenter"/>
-                    <Panel id="minusButtonPanel_7_2" width="10" height="10" position="-15 -15 0" color="#00000000">
-                        <Button id="minusButton_7_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="decreaseCounter_7_2">
-                            <Text text="-" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
-                    <Panel id="plusButtonPanel_7_2" width="10" height="10" position="15 -15 0" color="#00000000">
-                        <Button id="plusButton_7_2" width="10" height="10" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="increaseCounter_7_2">
-                            <Text text="+" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
-                        </Button>
-                    </Panel>
+            <!-- Dice box7 braun -->
+            <Panel id="Dice_7_2" width="40" height="40" position="53 -20 0" color="#A52A2ACC">
+                   <Panel id="minusButtonPanel_7_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="brownDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="brownDiceCounter">
+                        <Text id="brownDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
                 </Panel>
+            </Panel>
 
                 <!-- Minipanel_2 -->
                 <Panel id="dice_small_2" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
