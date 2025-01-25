@@ -214,19 +214,15 @@ function redDiceCounter(player, value, id)
     local diceColor = id
     
     playerColor = player.color
-    
     local panelID = "redDiceCountText_" .. playerColor
-    if allowedDMColor then
+    if allowedDMColor[playerColor] then
         local redDiceCount = tonumber(UI.getValue(panelID))
         if redDiceCount == nil then
             redDiceCount = 0
         end
         if value == "-1" then
-            log(redDiceCount)
             if redDiceCount < 6 and redDiceCount >= 0 then
                 redDiceCount = redDiceCount + 1
-                log(redDiceCount)
-                log(panelID)
                 UI.setValue(panelID, tostring(redDiceCount))
                 dicesToThrow[playerColor].Red = redDiceCount  -- Wert speichern
             end
@@ -237,20 +233,17 @@ function redDiceCounter(player, value, id)
                 dicesToThrow[playerColor].Red = redDiceCount  -- Wert speichern
             end
         end
-    elseif allowedPlayerColors then
-        log(panelID)
-        --local redDiceCount = tonumber(UI.getValue(panelID))
+    end
+    
+    if allowedPlayerColors[playerColor] then
         if redDiceCount == nil then
             redDiceCount = 0
         else
             redDiceCount = tonumber(redDiceCount) or 0
         end
         if value == "-1" then
-            log(redDiceCount)
             if redDiceCount < 6 and redDiceCount >= 0 then
                 redDiceCount = redDiceCount + 1
-                log(redDiceCount)
-                log(panelID)
                 UI.setValue(panelID, tostring(redDiceCount))
                 dicesToThrow[playerColor].Red = redDiceCount  -- Wert speichern
             end

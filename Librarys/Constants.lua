@@ -113,6 +113,9 @@ diceResults = {}
 --- Counted dices for each player ---
 
 dicesToThrow = {
-    ["White"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0}
-    
+    ["White"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
+    ["Blue"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
+    ["Green"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
+    ["Yellow"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
+    ["Red"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
 }
