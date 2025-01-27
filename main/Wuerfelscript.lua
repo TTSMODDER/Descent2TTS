@@ -164,11 +164,6 @@ function createWuerfelButton()
                 },
             },
         }
---[[     xml2lua.printable(xmlTable)
-    log()
-    log("XML Representation\n")
-    log(xml2lua.toXml(xmlTable, "xmlTable"))
- --]]
 end
 
 local currentDice = {}
@@ -484,10 +479,11 @@ function angriff_1 (player, value, id)
     end
 end
 
+
 -- clickFunction to start dice process
-function wuerfeln(player, diceNumber, diceID, diceSum)
-    --self.UI.setAttribute("resultIMG", "color", "rgba(0,0,0,0)")
-    --playerColor = player.color
+function wuerfeln(player, value, id)
+    self.UI.setAttribute("resultIMG", "color", "rgba(0,0,0,0)")
+    playerColor = player.color
     checkCurrentPlayer(player)
 
     -- Nur für Spielerfarben, nicht für DM
@@ -517,28 +513,19 @@ function wuerfeln(player, diceNumber, diceID, diceSum)
             currentDice[player.color] = {}
         end
 
-        if wuerfel[diceID] then
-            local url = wuerfel[diceID].url
+        if wuerfel[id] then
+            local url = wuerfel[id].url
             if allowedPlayerColors[playerColor] then
                 local startPos = vector(-8, 10, 8)
                 local diceForPlayer = currentDice[playerColor]
-                local newDicePos = startPos
-                spawnObjFromCloud(url, diceID, callback, newDicePos, player)
-                for i = 2, diceNumber do
-                    newDicePos = newDicePos + vector(3, 0, 0)
-                    spawnObjFromCloud(url, diceID, callback, newDicePos, player)
-                end
+                local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
+                spawnObjFromCloud(url, id, callback, newDicePos, player)
             elseif allowedDMColor [playerColor] then
                 local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
                 local diceForPlayer = currentDice[playerColor]
-                local newDicePos = startPos
-                spawnObjFromCloud(url, diceID, callback, newDicePos, player)
-                for i = 2, diceNumber do
-                    newDicePos = newDicePos + vector(3, 0, 0)
-                    spawnObjFromCloud(url, diceID, callback, newDicePos, player)
-                end
+                local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
+                spawnObjFromCloud(url, id, callback, newDicePos, player)
             end
-            
         end
     end
 end

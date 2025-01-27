@@ -1,10 +1,23 @@
+<!-- Würfelanzeige in der Mitte des Bildschirms -->
+<Text id = "showResultID" richtText = "true" fontSize = "40" color = "white" alignment = "UpperCenter" position = "0 -100"></Text>
+
+<!-- Anzeige Würfelergebniss Dungenmaster mit Würfelbilder -->
+<Text id = "NameDM" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-25 -225" text = "Dungeon Master: "></Text>
+<HorizontalLayout id = "diceResultDM" width = "0" height = "50" rectAlignment = "MiddleRight" offsetXY = "-10 45" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout>
+
+<!-- Anzeige Würfelergebniss Spieler mit Würfelbilder -->
+<Text id = "spielerName" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-115 -125" text = "Spieler: "></Text>
+<HorizontalLayout id = "diceResult" width = "0" height = "50" rectAlignment = "UpperRight" offsetXY = "-10 170" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout>
+
 <!-- Spieler_1 -->
     <Panel id="Parent_PlayerPanel_1" position="-600 0 0" width="250" height="500" alignment="MiddleCenter" color="#2F2F2F0000" allowDragging="true" returntooriginalpositionwhenreleased="false">
     <Image id="image-panelbck_1" imageId="image-panelbck_1"/>
     <!-- Inner Player Panel -->
     <Panel id="PlayerPanel_1" width="220" height="270" alignment="MiddleCenter" position="0 100">
         <!-- Diceboard Spieler_1 einschalten -->
-        <Button id="showDiceboardButton_1" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_1"/>
+
+        <!-- <Button id="showDiceboardButton_1" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_1"/> -->
+        
         <!-- Name Panel -->
         <Text id="name_1_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
         <Text id="description_1_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
@@ -47,6 +60,27 @@
                 </Button>
             </Panel>
         </Panel>
+
+         <!-- Minipanel_1 -->
+         <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
+            <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
+            <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
+            <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
+            <Button id="Green" width="30" height="30"  color="#00FF00CC" onClick="wuerfeln"/>
+            <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
+            <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
+            <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
+         </HorizontalLayout>
+      <!--   <Panel id="dice_small_1" width="210" height="35" position="0 -180 0" color="rgba(0,0,0)">
+            <Button id="Red" width="30" height="30" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+            <Button id="Blue" width="30" height="30" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+            <Button id="Yellow" width="30" height="30" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+            <Button id="Green" width="30" height="30" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+            <Button id="Grey" width="30" height="30" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+            <Button id="Black" width="30" height="30" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+            <Button id="Brown" width="30" height="30" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
+        </Panel> -->
+
         <!-- Einstellungen & Dice box -->
         <Panel id="diceboard_1" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
             <!-- Dice box 1 rot -->
@@ -110,16 +144,7 @@
                 </Panel>
             </Panel>
 
-                <!-- Minipanel_1 -->
-                <Panel id="dice_small_1" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
-                    <Button id="colorButton_1_1" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="showColorRot"/>
-                    <Button id="colorButton_2_1" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="showColorBlau"/>
-                    <Button id="colorButton_3_1" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="showColorGelb"/>
-                    <Button id="colorButton_4_1" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="showColorGruen"/>
-                    <Button id="colorButton_5_1" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="showColorHellgrau"/>
-                    <Button id="colorButton_6_1" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="showColorSchwarz"/>
-                    <Button id="colorButton_7_1" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="showColorBraun"/>
-                </Panel>
+               
                 </Panel>
                 <!-- Action Buttons Panel _1 -->
                 <Panel id="Action_Buttons_1" width="250" height="50" position="0 -300 0" color="#00000000">
@@ -147,7 +172,9 @@
     <!-- Inner Player Panel -->
     <Panel id="PlayerPanel_2" width="220" height="270" alignment="MiddleCenter" position="0 100">
         <!-- Diceboard Spieler_2 einschalten -->
-        <Button id="showDiceboardButton_2" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_2"/>
+
+       <!--  <Button id="showDiceboardButton_2" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_2"/> -->
+        
         <!-- Name Panel -->
         <Text id="name_2_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
         <Text id="description_2_panel" text="" alignment="MiddleCenter" position="0 75" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
@@ -191,6 +218,17 @@
             </Panel>
         </Panel>
  <!-- Einstellungen & Dice box -->
+
+         <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
+            <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
+            <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
+            <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
+            <Button id="Green" width="30" height="30"  color="#00FF00CC" onClick="wuerfeln"/>
+            <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
+            <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
+            <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
+        </HorizontalLayout>
+    
         <Panel id="diceboard_2" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
            <Panel id="Dice_1_2" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
                <Panel id="minusButtonPanel_1_2" width="40" height="40" position="0 0 0" color="none">
@@ -252,17 +290,19 @@
                 </Panel>
             </Panel>
 
+       
+
                 <!-- Minipanel_2 -->
-                <Panel id="dice_small_2" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
-                    <Button id="colorButton_1_2" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="showColorRot"/>
-                    <Button id="colorButton_2_2" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="showColorBlau"/>
-                    <Button id="colorButton_3_2" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="showColorGelb"/>
-                    <Button id="colorButton_4_2" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="showColorGruen"/>
-                    <Button id="colorButton_5_2" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="showColorHellgrau"/>
-                    <Button id="colorButton_6_2" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="showColorSchwarz"/>
-                    <Button id="colorButton_7_2" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="showColorBraun"/>
-                </Panel>
-                </Panel>
+               <!--  <Panel id="dice_small_2" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
+                    <Button id="Red" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+                    <Button id="Blue" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+                    <Button id="Yellow" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+                    <Button id="Green" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+                    <Button id="Grey" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+                    <Button id="Black" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+                    <Button id="Brown" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
+                </Panel> -->
+            </Panel>
 
                 <!-- Action Buttons Panel _2 -->
                 <Panel id="Action_Buttons_2" width="250" height="50" position="0 -300 0" color="#FFFFFF00">
@@ -290,7 +330,7 @@
     <!-- Inner Player Panel -->
     <Panel id="PlayerPanel_3" width="220" height="270" alignment="MiddleCenter" position="0 100">
         <!-- Diceboard Spieler_3 einschalten -->
-        <Button id="showDiceboardButton_3" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_3"/>
+        <!-- <Button id="showDiceboardButton_3" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_3"/> -->
         <!-- Name Panel -->
         <Text id="name_3_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20" color="rgba(0,0,0,1)"/>
         <Text id="description_3_panel" text="" alignment="MiddleCenter" position="0 72" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
@@ -333,6 +373,17 @@
                 </Button>
             </Panel>
         </Panel>
+
+         <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
+            <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
+            <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
+            <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
+            <Button id="Green" width="30" height="30"  color="#00FF00CC" onClick="wuerfeln"/>
+            <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
+            <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
+            <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
+        </HorizontalLayout>
+
         <!-- Einstellungen & Dice box -->
         <Panel id="diceboard_3" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
             <!-- Dice box 1 rot -->
@@ -440,13 +491,13 @@
 
     <!-- Minipanel_3 -->
     <Panel id="dice_small_3" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
-    <Button id="colorButton_1_3" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="showColorRot"/>
-    <Button id="colorButton_2_3" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="showColorBlau"/>
-    <Button id="colorButton_3_3" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="showColorGelb"/>
-    <Button id="colorButton_4_3" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="showColorGruen"/>
-    <Button id="colorButton_5_3" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="showColorHellgrau"/>
-    <Button id="colorButton_6_3" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="showColorSchwarz"/>
-    <Button id="colorButton_7_3" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="showColorBraun"/>
+    <Button id="Red" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+    <Button id="Blue" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+    <Button id="Yellow" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+    <Button id="Green" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+    <Button id="Grey" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+    <Button id="Black" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+    <Button id="Brown" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
     </Panel>
     </Panel>
 
@@ -474,7 +525,7 @@
     <!-- Inner Player Panel -->
     <Panel id="PlayerPanel_4" width="220" height="270" alignment="MiddleCenter" position="0 100">
         <!-- Diceboard Spieler_4 einschalten -->
-        <Button id="showDiceboardButton_4" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_4"/>
+ <!--        <Button id="showDiceboardButton_4" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_4"/> -->
         <!-- Name Panel -->
         <Text id="name_4_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
         <Text id="description_4_panel" text="" alignment="MiddleCenter" position="0 72" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
@@ -517,6 +568,17 @@
                 </Button>
             </Panel>
         </Panel>
+
+        <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
+            <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
+            <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
+            <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
+            <Button id="Green" width="30" height="30"  color="#00FF00CC" onClick="wuerfeln"/>
+            <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
+            <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
+            <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
+        </HorizontalLayout>
+
         <!-- Einstellungen & Dice box -->
         <Panel id="diceboard_4" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
             <!-- Dice box 1 rot -->
@@ -624,13 +686,13 @@
 
                 <!-- Minipanel_4 -->
     <Panel id="dice_small_4" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
-        <Button id="colorButton_1_4" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="showColorRot"/>
-        <Button id="colorButton_2_4" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="showColorBlau"/>
-        <Button id="colorButton_3_4" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="showColorGelb"/>
-        <Button id="colorButton_4_4" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="showColorGruen"/>
-        <Button id="colorButton_5_4" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="showColorHellgrau"/>
-        <Button id="colorButton_6_4" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="showColorSchwarz"/>
-        <Button id="colorButton_7_4" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="showColorBraun"/>
+        <Button id="Red" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+        <Button id="Blue" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+        <Button id="Yellow" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+        <Button id="Green" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+        <Button id="Grey" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+        <Button id="Black" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+        <Button id="Brown" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
     </Panel>
     </Panel>
 

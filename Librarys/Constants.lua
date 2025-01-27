@@ -107,6 +107,7 @@ rollingDone = false
 rollingDoneDM = false
 diceCount = 0
 diceCountDM = 0
+diceNumberMini = 0
 maxDice = 7
 diceResults = {}
 
