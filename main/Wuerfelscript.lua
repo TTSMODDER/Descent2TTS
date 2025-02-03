@@ -432,7 +432,7 @@ function brownDiceCounter(player, value, id)
     end
 end
 
-function angriff_1 (player, value, id)
+function angriff_1b (player, value, id)
     local diceSum = 0
     playerColor = player.color
     
@@ -458,7 +458,7 @@ function angriff_1 (player, value, id)
     end
 end
 
-function angriff_1 (player, value, id)
+function angriff_1c (player, value, id)
     local diceSum = 0
     playerColor = player.color
     local atkDices = {"Red", "Blue", "Green", "Yellow"}
@@ -479,6 +479,11 @@ function angriff_1 (player, value, id)
     end
 end
 
+function probe_1()
+    local dice_5_1 = 1
+    local dice_6_1 = 1
+    print("Probe Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1)
+end
 
 -- clickFunction to start dice process
 function wuerfeln(player, value, id)
@@ -798,3 +803,4 @@ function showResult(result, diceImgTbl, resultToPrint)
         end, 5)
     end
 end
+

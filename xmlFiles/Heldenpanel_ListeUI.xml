@@ -1,0 +1,104 @@
+<Panel id="Farbpanel_main" width="410" height="260" position="-300 300" 
+       color="#00000000" rectAlignment="MiddleCenter" allowDragging="true" 
+       returntooriginalpositionwhenreleased="false" visibility="Black|White">
+    
+    <!-- Toggle Button -->
+    <Button id="myButton" rectAlignment="MiddleLeft" width="150" height="40" 
+            color="#9999FF" position="-650 100" onClick="toggleFarbpanel"
+            tooltip="Helden-Panels für alle aktiven Spieler einblenden (GM -Funktion!)...">
+        <Text alignment="MiddleCenter" color="#FFFFFF" text="Helden-Panels"/>
+    </Button>
+
+    <!-- Haupttabellen-Panel -->
+    <Panel id="Farbpanel" width="400" height="150" position="0 0" color="White">
+        <TableLayout id="Spielerliste" columnWidths="100,70,100,80">
+            <!-- Header -->
+            <Row>
+                <Cell><Text text="GUID"/></Cell>
+                <Cell><Text text="Name"/></Cell>
+                <Cell><Text text="Beschreibung"/></Cell>
+                <Cell><Text text="Sichtbarkeit"/></Cell>
+            </Row>
+            
+            <!-- Zeile 1 -->
+            <Row id="row_1">
+                <Cell><Text id="guid_1" text=""/></Cell>
+                <Cell><Text id="name_1" text=""/></Cell>
+                <Cell><Text id="description_1" text=""/></Cell>
+                <Cell>
+                    <Dropdown id="visibility_1" onValueChanged="updatePanelVisibility">
+                        <Option>Alle</Option>
+                        <Option>Keine</Option>
+                        <Option>Rot</Option>
+                        <Option>Gelb</Option>
+                        <Option>Blau</Option>
+                        <Option>Grün</Option>
+                        <Option>GM</Option>
+                    </Dropdown>
+                </Cell>
+            </Row>
+
+            <!-- Zeile 2 -->
+            <Row id="row_2">
+                <Cell><Text id="guid_2" text=""/></Cell>
+                <Cell><Text id="name_2" text=""/></Cell>
+                <Cell><Text id="description_2" text=""/></Cell>
+                <Cell>
+                    <Dropdown id="visibility_2" onValueChanged="updatePanelVisibility">
+                        <Option>Alle</Option>
+                        <Option>Keine</Option>
+                        <Option>Rot</Option>
+                        <Option>Gelb</Option>
+                        <Option>Blau</Option>
+                        <Option>Grün</Option>
+                        <Option>GM</Option>
+                    </Dropdown>
+                </Cell>
+            </Row>
+
+            <!-- Zeile 3 -->
+            <Row id="row_3">
+                <Cell><Text id="guid_3" text=""/></Cell>
+                <Cell><Text id="name_3" text=""/></Cell>
+                <Cell><Text id="description_3" text=""/></Cell>
+                <Cell>
+                    <Dropdown id="visibility_3" onValueChanged="updatePanelVisibility">
+                        <Option>Alle</Option>
+                        <Option>Keine</Option>
+                        <Option>Rot</Option>
+                        <Option>Gelb</Option>
+                        <Option>Blau</Option>
+                        <Option>Grün</Option>
+                        <Option>GM</Option>
+                    </Dropdown>
+                </Cell>
+            </Row>
+
+            <!-- Zeile 4 -->
+            <Row id="row_4">
+                <Cell><Text id="guid_4" text=""/></Cell>
+                <Cell><Text id="name_4" text=""/></Cell>
+                <Cell><Text id="description_4" text=""/></Cell>
+                <Cell>
+                    <Dropdown id="visibility_4" onValueChanged="updatePanelVisibility">
+                        <Option>Alle</Option>
+                        <Option>Keine</Option>
+                        <Option>Rot</Option>
+                        <Option>Gelb</Option>
+                        <Option>Blau</Option>
+                        <Option>Grün</Option>
+                        <Option>GM</Option>
+                    </Dropdown>
+                </Cell>
+            </Row>
+        </TableLayout>
+
+        <!-- Aktualisieren Button Panel -->
+        <Panel id="AdditionalButtonPanel" width="10" height="10" position="120 0 0" rectAlignment="MiddleCenter">
+            <Button id="extraButton" rectAlignment="MiddleCenter" width="100" height="40"
+                    position="30 -100 0" color="#9999FF" onClick="onLoad">
+                <Text alignment="MiddleCenter" color="#FFFFFF" text="aktualisieren"/>
+            </Button>
+        </Panel>
+    </Panel>
+</Panel>

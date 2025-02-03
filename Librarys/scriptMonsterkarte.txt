@@ -1,0 +1,55 @@
+amount = {"M"}
+bag_GUIDw = {"ca96b4"}
+bag_GUIDr = {"81cf08"}
+
+
+ ab hier kopieren un din alle Monsterkarten setzten
+whiteCounter = 1
+redCounter = 1
+
+function onload()
+  local w_button_parameters = {}
+  w_button_parameters.click_function = 'spawnwhite'
+  w_button_parameters.label = 'Spawn'
+  w_button_parameters.function_owner = self
+  w_button_parameters.position = {0.85, 0.3, -0.7}
+  w_button_parameters.color = {1, 1, 1}
+  w_button_parameters.rotation = {0, 0, 0}
+  w_button_parameters.width = 200
+  w_button_parameters.height = 60
+  w_button_parameters.font_size = 50
+  w_button_parameters.font_color = {0, 0, 0}
+
+  local r_button_parameters = {}
+  r_button_parameters.click_function = 'spawnred'
+  r_button_parameters.label = 'Spawn'
+  r_button_parameters.function_owner = self
+  r_button_parameters.position = {0.85, 0.3, 0.7}
+  r_button_parameters.color = {1, 0.5, 0.5}
+  r_button_parameters.rotation = {0, 0, 0}
+  r_button_parameters.width = 200
+  r_button_parameters.height = 60
+  r_button_parameters.font_size = 50
+  r_button_parameters.font_color = {0, 0, 0}
+
+  self.createButton(w_button_parameters)
+  self.createButton(r_button_parameters)
+end
+
+function spawnwhite()
+    Global.call('spawnMonster', {
+        self,           -- das Objekt selbst
+        "white",        -- Typ
+        bag_GUIDw,     -- weiße Beutel GUIDs
+        bag_GUIDr      -- rote Beutel GUIDs
+    })
+end
+
+function spawnred()
+    Global.call('spawnMonster', {
+        self, 
+        "red",
+        bag_GUIDw,
+        bag_GUIDr
+    })
+end

@@ -1,0 +1,14 @@
+<Panel position="250 0 0" width="400" height="300" color="rgba(0,0,0,0.7)" allowDragging="true" returntooriginalpositionwhenreleased="false">
+  <TableLayout id="MonsterTableLayout" autoCalculateHeight="true">
+    <Row preferredHeight="30">
+      <Cell><Text color="white">GUID</Text></Cell>
+      <Cell><Text color="white">Name</Text></Cell>
+      <Cell><Text color="white">Suffix Nr</Text></Cell>
+      <Cell><Text color="white">Skill 1</Text></Cell>
+      <Cell><Text color="white">Skill 2</Text></Cell>
+      <Cell><Text color="white">Skill 3</Text></Cell>
+      <Cell><Text color="white">Skill 4</Text></Cell>
+    </Row>
+    <!-- Hier können Sie dynamisch Zeilen hinzufügen -->
+  </TableLayout>
+</Panel>

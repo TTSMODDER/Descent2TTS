@@ -21,7 +21,7 @@
 
 <!-- Spieler_1 -->
     <Panel id="Parent_PlayerPanel_1" position="-600 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00" allowDragging="true" returntooriginalpositionwhenreleased="false">
-        <GridLayout cellSize="10 10" spacing="20"><!-- Hintergrundbilder -->
+        <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
             <Button id="button_1_1" onClick="buttonClick_1_1" class="imageButton"/>
             <Button id="button_1_2" onClick="buttonClick_1_2" class="imageButton"/>
             <Button id="button_1_3" onClick="buttonClick_1_3" class="imageButton"/>
@@ -171,7 +171,7 @@
                 </Panel>
                 <!-- Action Buttons Panel _1 -->
                 <Panel id="Action_Buttons_1" width="250" height="50" position="0 -300 0" color="#00000000">
-                    <Button id="angriffButton_1" width="35" height="30" position="-85 0 0" color="#00000000" onClick="angriff_1">
+                    <Button id="angriffButton_1" width="35" height="30" position="-85 0 0" color="#00000000" onClick="spawnAndRollDices">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
                     <Button id="probeButton_1" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe_1">
@@ -191,7 +191,7 @@
                                             
 <!-- Spieler_2 -->
      <Panel id="Parent_PlayerPanel_2" position="-300 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00"  allowDragging="true" returntooriginalpositionwhenreleased="false">
-           <GridLayout cellSize="10 10" spacing="20"><!-- Hintergrundbilder -->
+           <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
             <Button id="button_2_1" onClick="buttonClick_2_1" class="imageButton"/>
             <Button id="button_2_2" onClick="buttonClick_2_2" class="imageButton"/>
             <Button id="button_2_3" onClick="buttonClick_2_3" class="imageButton"/>
@@ -362,7 +362,7 @@
 <!-- Spieler_3 -->
   
     <Panel id="Parent_PlayerPanel_3" position="0 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00"  allowDragging="true" returntooriginalpositionwhenreleased="false">
-            <GridLayout cellSize="10 10" spacing="20"><!-- Hintergrundbilder -->
+            <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
             <Button id="button_3_1" onClick="buttonClick_3_1" class="imageButton"/>
             <Button id="button_3_2" onClick="buttonClick_3_2" class="imageButton"/>
             <Button id="button_3_3" onClick="buttonClick_3_3" class="imageButton"/>
@@ -776,3 +776,9 @@
     </Panel>
     </Panel>
     </Panel>
+
+
+
+
+
+
