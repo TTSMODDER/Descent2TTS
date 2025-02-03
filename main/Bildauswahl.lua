@@ -1,7 +1,7 @@
 
 local Bildauswahl = {} 
 
-local Variablen = require("Librarys.Bilderadressen") 
+local Variablen = require("/Librarys/Bilderadressen") 
 
 function Bildauswahl_onLoad()
    
