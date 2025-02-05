@@ -263,7 +263,7 @@ function angriff (player, value, id)
                             wuerfeln(player, nil, diceType)
                         end, delay)
                         
-                        delay = delay + 0.2  -- Erhöhe Verzögerung um 0.5 Sekunden pro Wurf
+                        delay = delay + 0.3  -- Erhöhe Verzögerung um 0.5 Sekunden pro Wurf
                     end
                 end
             end
