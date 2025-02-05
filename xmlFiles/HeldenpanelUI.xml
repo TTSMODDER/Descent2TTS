@@ -2,8 +2,8 @@
 <Text id = "showResultID" richtText = "true" fontSize = "40" color = "white" alignment = "UpperCenter" position = "0 -100"></Text>
 
 <!-- Anzeige Würfelergebniss Dungenmaster mit Würfelbilder -->
-<Text id = "NameDM" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-25 -225" text = "Dungeon Master: "></Text>
-<HorizontalLayout id = "diceResultDM" width = "0" height = "50" rectAlignment = "MiddleRight" offsetXY = "-10 45" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout>
+<!-- <Text id = "NameDM" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-25 -225" text = "Dungeon Master: "></Text>
+<HorizontalLayout id = "diceResultDM" width = "0" height = "50" rectAlignment = "MiddleRight" offsetXY = "-10 45" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout> -->
 
 <!-- Anzeige Würfelergebniss Spieler mit Würfelbilder -->
 <!-- <Text id = "spielerName" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-115 -125" text = "Spieler: "></Text>
