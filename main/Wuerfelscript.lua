@@ -105,13 +105,13 @@ function blueDiceCounter(player, value, id)
                 log(blueDiceCount)
                 log(panelID)
                 UI.setValue(panelID, tostring(blueDiceCount))
-                dicesToThrow[playerColor].Red = blueDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Blue = blueDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if blueDiceCount <= 6 and blueDiceCount > 0 then
                 blueDiceCount = blueDiceCount - 1
                 UI.setValue(panelID, tostring(blueDiceCount))
-                dicesToThrow[playerColor].Red = blueDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Blue = blueDiceCount  -- Wert speichern
             end
         end
     end
@@ -135,13 +135,13 @@ function yellowDiceCounter(player, value, id)
                 log(yellowDiceCount)
                 log(panelID)
                 UI.setValue(panelID, tostring(yellowDiceCount))
-                dicesToThrow[playerColor].Red = yellowDiceCountceCount  -- Wert speichern
+                dicesToThrow[playerColor].Yellow = yellowDiceCountceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if yellowDiceCount <= 6 and yellowDiceCount > 0 then
                 yellowDiceCount = yellowDiceCount - 1
                 UI.setValue(panelID, tostring(yellowDiceCount))
-                dicesToThrow[playerColor].Red = yellowDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Yellow = yellowDiceCount  -- Wert speichern
             end
         end
     end
@@ -165,13 +165,13 @@ function greenDiceCounter(player, value, id)
                 log(greenDiceCount)
                 log(panelID)
                 UI.setValue(panelID, tostring(greenDiceCount))
-                dicesToThrow[playerColor].Red = greenDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Green = greenDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if greenDiceCount <= 6 and greenDiceCount > 0 then
                 greenDiceCount = greenDiceCount - 1
                 UI.setValue(panelID, tostring(greenDiceCount))
-                dicesToThrow[playerColor].Red = greenDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Green = greenDiceCount  -- Wert speichern
             end
         end
     end
@@ -195,13 +195,13 @@ function whiteDiceCounter(player, value, id)
                 log(whiteDiceCount)
                 log(panelID)
                 UI.setValue(panelID, tostring(whiteDiceCount))
-                dicesToThrow[playerColor].Red = whiteDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Grey = whiteDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if whiteDiceCount <= 6 and whiteDiceCount > 0 then
                 whiteDiceCount = whiteDiceCount - 1
                 UI.setValue(panelID, tostring(whiteDiceCount))
-                dicesToThrow[playerColor].Red = whiteDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Grey = whiteDiceCount  -- Wert speichern
             end
         end
     end
@@ -225,13 +225,13 @@ function blackDiceCounter(player, value, id)
                 log(blackDiceCount)
                 log(panelID)
                 UI.setValue(panelID, tostring(blackDiceCount))
-                dicesToThrow[playerColor].Red = blackDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Black = blackDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if blackDiceCount <= 6 and blackDiceCount > 0 then
                 blackDiceCount = blackDiceCount - 1
                 UI.setValue(panelID, tostring(blackDiceCount))
-                dicesToThrow[playerColor].Red = blackDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Black = blackDiceCount  -- Wert speichern
             end
         end
     end
@@ -255,47 +255,23 @@ function brownDiceCounter(player, value, id)
                 log(brownDiceCount)
                 log(panelID)
                 UI.setValue(panelID, tostring(brownDiceCount))
-                dicesToThrow[playerColor].Red = brownDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Brown = brownDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if brownDiceCount <= 6 and brownDiceCount > 0 then
                 brownDiceCount = brownDiceCount - 1
                 UI.setValue(panelID, tostring(brownDiceCount))
-                dicesToThrow[playerColor].Red = brownDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Brown = brownDiceCount  -- Wert speichern
             end
         end
     end
 end
 
-function angriff_1b (player, value, id)
-    local diceSum = 0
-    playerColor = player.color
-    
-    local panelID = "redDiceCountText_" .. playerColor
-    if allowedDMColor then
-        local blueDiceCount = tonumber(UI.getValue(panelID))
-        if blueDiceCount == nil then
-            blueDiceCount = 0
-        end
-        if value == "-1" then
-            if blueDiceCount < 6 and blueDiceCount >= 0 then
-                blueDiceCount = blueDiceCount + 1
-                UI.setValue(panelID, tostring(blueDiceCount))
-                dicesToThrow[playerColor].Blue = blueDiceCount  -- Wert speichern
-            end
-        elseif value == "-2" then
-            if blueDiceCount <= 6 and blueDiceCount > 0 then
-                blueDiceCount = blueDiceCount - 1
-                UI.setValue(panelID, tostring(blueDiceCount))
-                dicesToThrow[playerColor].Blue = blueDiceCount  -- Wert speichern
-            end
-        end
-    end
-end
 
-function angriff_1c (player, value, id)
+function angriff (player, value, id)
     local diceSum = 0
     playerColor = player.color
+    log(dicesToThrow[playerColor])
     local atkDices = {"Red", "Blue", "Green", "Yellow"}
     for k, count in pairs (dicesToThrow) do
         if k == playerColor then

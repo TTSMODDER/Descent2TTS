@@ -39,7 +39,7 @@
     <Panel id="PlayerPanel_1" width="220" height="270" alignment="MiddleCenter" position="0 100">
         <!-- Diceboard Spieler_1 einschalten -->
 
-        <!-- <Button id="showDiceboardButton_1" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_1"/> -->
+        <Button id="showDiceboardButton_1" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_1"/>
         
         <!-- Name Panel -->
         <Text id="name_1_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
@@ -85,7 +85,7 @@
         </Panel>
 
          <!-- Minipanel_1 -->
-         <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
+         <!-- <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
             <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
             <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
             <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
@@ -93,7 +93,8 @@
             <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
             <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
             <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
-         </HorizontalLayout>
+         </HorizontalLayout> -->
+
       <!--   <Panel id="dice_small_1" width="210" height="35" position="0 -180 0" color="rgba(0,0,0)">
             <Button id="Red" width="30" height="30" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
             <Button id="Blue" width="30" height="30" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
@@ -171,7 +172,7 @@
                 </Panel>
                 <!-- Action Buttons Panel _1 -->
                 <Panel id="Action_Buttons_1" width="250" height="50" position="0 -300 0" color="#00000000">
-                    <Button id="angriffButton_1" width="35" height="30" position="-85 0 0" color="#00000000" onClick="spawnAndRollDices">
+                    <Button id="angriffButton_1" width="35" height="30" position="-85 0 0" color="#00000000" onClick="angriff">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
                     <Button id="probeButton_1" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe_1">
