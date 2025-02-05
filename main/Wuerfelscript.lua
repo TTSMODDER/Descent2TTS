@@ -32,14 +32,6 @@ function checkCurrentPlayer(player)
     end
 end
 
---[[ function decreaseCounter_1_1()
-    if counter_1_1 > 0 then
-        counter_1_1 = counter_1_1 - 1
-        UI.setValue("counterText_1_1", tostring(counter_1_1))
-        Dice_value_1_1 = counter_1_1  -- Wert speichern
-    end
-end --]]
-
 function redDiceCounter(player, value, id)
     local diceColor = id
     
@@ -99,19 +91,16 @@ function blueDiceCounter(player, value, id)
             blueDiceCount = 0
         end
         if value == "-1" then
-            log(blueDiceCount)
             if blueDiceCount < 6 and blueDiceCount >= 0 then
                 blueDiceCount = blueDiceCount + 1
-                log(blueDiceCount)
-                log(panelID)
                 UI.setValue(panelID, tostring(blueDiceCount))
-                dicesToThrow[playerColor].Red = blueDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Blue = blueDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if blueDiceCount <= 6 and blueDiceCount > 0 then
                 blueDiceCount = blueDiceCount - 1
                 UI.setValue(panelID, tostring(blueDiceCount))
-                dicesToThrow[playerColor].Red = blueDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Blue = blueDiceCount  -- Wert speichern
             end
         end
     end
@@ -129,19 +118,17 @@ function yellowDiceCounter(player, value, id)
             yellowDiceCount = 0
         end
         if value == "-1" then
-            log(yellowDiceCount)
+
             if yellowDiceCount < 6 and yellowDiceCount >= 0 then
                 yellowDiceCount = yellowDiceCount + 1
-                log(yellowDiceCount)
-                log(panelID)
                 UI.setValue(panelID, tostring(yellowDiceCount))
-                dicesToThrow[playerColor].Red = yellowDiceCountceCount  -- Wert speichern
+                dicesToThrow[playerColor].Yellow = yellowDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if yellowDiceCount <= 6 and yellowDiceCount > 0 then
                 yellowDiceCount = yellowDiceCount - 1
                 UI.setValue(panelID, tostring(yellowDiceCount))
-                dicesToThrow[playerColor].Red = yellowDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Yellow = yellowDiceCount  -- Wert speichern
             end
         end
     end
@@ -159,19 +146,16 @@ function greenDiceCounter(player, value, id)
             greenDiceCount = 0
         end
         if value == "-1" then
-            log(greenDiceCount)
             if greenDiceCount < 6 and greenDiceCount >= 0 then
                 greenDiceCount = greenDiceCount + 1
-                log(greenDiceCount)
-                log(panelID)
                 UI.setValue(panelID, tostring(greenDiceCount))
-                dicesToThrow[playerColor].Red = greenDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Green = greenDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if greenDiceCount <= 6 and greenDiceCount > 0 then
                 greenDiceCount = greenDiceCount - 1
                 UI.setValue(panelID, tostring(greenDiceCount))
-                dicesToThrow[playerColor].Red = greenDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Green = greenDiceCount  -- Wert speichern
             end
         end
     end
@@ -189,19 +173,17 @@ function whiteDiceCounter(player, value, id)
             whiteDiceCount = 0
         end
         if value == "-1" then
-            log(whiteDiceCount)
+
             if whiteDiceCount < 6 and whiteDiceCount >= 0 then
                 whiteDiceCount = whiteDiceCount + 1
-                log(whiteDiceCount)
-                log(panelID)
                 UI.setValue(panelID, tostring(whiteDiceCount))
-                dicesToThrow[playerColor].Red = whiteDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Grey = whiteDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if whiteDiceCount <= 6 and whiteDiceCount > 0 then
                 whiteDiceCount = whiteDiceCount - 1
                 UI.setValue(panelID, tostring(whiteDiceCount))
-                dicesToThrow[playerColor].Red = whiteDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Grey = whiteDiceCount  -- Wert speichern
             end
         end
     end
@@ -219,19 +201,16 @@ function blackDiceCounter(player, value, id)
             blackDiceCount = 0
         end
         if value == "-1" then
-            log(blackDiceCount)
             if blackDiceCount < 6 and blackDiceCount >= 0 then
                 blackDiceCount = blackDiceCount + 1
-                log(blackDiceCount)
-                log(panelID)
                 UI.setValue(panelID, tostring(blackDiceCount))
-                dicesToThrow[playerColor].Red = blackDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Black = blackDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if blackDiceCount <= 6 and blackDiceCount > 0 then
                 blackDiceCount = blackDiceCount - 1
                 UI.setValue(panelID, tostring(blackDiceCount))
-                dicesToThrow[playerColor].Red = blackDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Black = blackDiceCount  -- Wert speichern
             end
         end
     end
@@ -249,75 +228,83 @@ function brownDiceCounter(player, value, id)
             brownDiceCount = 0
         end
         if value == "-1" then
-            log(brownDiceCount)
             if brownDiceCount < 6 and brownDiceCount >= 0 then
                 brownDiceCount = brownDiceCount + 1
-                log(brownDiceCount)
-                log(panelID)
                 UI.setValue(panelID, tostring(brownDiceCount))
-                dicesToThrow[playerColor].Red = brownDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Brown = brownDiceCount  -- Wert speichern
             end
         elseif value == "-2" then
             if brownDiceCount <= 6 and brownDiceCount > 0 then
                 brownDiceCount = brownDiceCount - 1
                 UI.setValue(panelID, tostring(brownDiceCount))
-                dicesToThrow[playerColor].Red = brownDiceCount  -- Wert speichern
+                dicesToThrow[playerColor].Brown = brownDiceCount  -- Wert speichern
             end
         end
     end
 end
 
-function angriff_1b (player, value, id)
-    local diceSum = 0
+function angriff (player, value, id)
     playerColor = player.color
-    
-    local panelID = "redDiceCountText_" .. playerColor
-    if allowedDMColor then
-        local blueDiceCount = tonumber(UI.getValue(panelID))
-        if blueDiceCount == nil then
-            blueDiceCount = 0
-        end
-        if value == "-1" then
-            if blueDiceCount < 6 and blueDiceCount >= 0 then
-                blueDiceCount = blueDiceCount + 1
-                UI.setValue(panelID, tostring(blueDiceCount))
-                dicesToThrow[playerColor].Blue = blueDiceCount  -- Wert speichern
-            end
-        elseif value == "-2" then
-            if blueDiceCount <= 6 and blueDiceCount > 0 then
-                blueDiceCount = blueDiceCount - 1
-                UI.setValue(panelID, tostring(blueDiceCount))
-                dicesToThrow[playerColor].Blue = blueDiceCount  -- Wert speichern
-            end
-        end
-    end
-end
+    local atkDices = {"Red", "Blue", "Yellow", "Green"}
+    local delay = 0  -- Startverzögerung
 
-function angriff_1c (player, value, id)
-    local diceSum = 0
-    playerColor = player.color
-    local atkDices = {"Red", "Blue", "Green", "Yellow"}
-    for k, count in pairs (dicesToThrow) do
-        if k == playerColor then
-            for i = 0, #atkDices do 
-                i = i + 1
-                if count[atkDices[i]] and count[atkDices[i]] > 0 then
-                    log(count[atkDices[i]])
-                    local diceNumber = count[atkDices[i]]
-                    local diceSum = diceSum + diceNumber 
-                    log(diceSum)
-                    local diceID = atkDices[i]
-                    wuerfeln(player, diceNumber, diceID, diceSum)
+    for k, count in pairs(dicesToThrow) do
+        if k == playerColor then -- Würfeltabelle des aktiven Spielers durchgehen
+            for i = 1, #atkDices do  -- i beginnt bei 1, nicht bei 0
+                local diceType = atkDices[i]
+                
+                if count[diceType] and count[diceType] > 0 then
+                    local numCurrentDice = count[diceType]
+                    
+                    for j = 1, numCurrentDice do
+                        -- Verzögerter Würfelwurf
+                        Wait.time(function()
+                            log("Würfelt Würfel: " .. diceType)
+                            wuerfeln(player, nil, diceType)
+                        end, delay)
+                        
+                        delay = delay + 0.3  -- Erhöhe Verzögerung um 0.5 Sekunden pro Wurf
+                    end
                 end
             end
         end
     end
 end
 
-function probe_1()
-    local dice_5_1 = 1
-    local dice_6_1 = 1
-    print("Probe Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1)
+function probe(player, value, id)
+    playerColor = player.color
+    wuerfeln(player, nil, "Black")
+    Wait.time(function()
+        wuerfeln(player, nil, "Grey")
+    end, 0.5)
+end
+
+function abwehr (player, value, id)
+    playerColor = player.color
+    local abwDices = {"Grey", "Black", "Brown"}
+    local delay = 0  -- Startverzögerung
+
+    for k, count in pairs(dicesToThrow) do
+        if k == playerColor then -- Würfeltabelle des aktiven Spielers durchgehen
+            for i = 1, #abwDices do  -- i beginnt bei 1, nicht bei 0
+                local diceType = abwDices[i]
+                
+                if count[diceType] and count[diceType] > 0 then
+                    local numCurrentDice = count[diceType]
+                    
+                    for j = 1, numCurrentDice do
+                        -- Verzögerter Würfelwurf
+                        Wait.time(function()
+                            log("Würfelt Würfel: " .. diceType)
+                            wuerfeln(player, nil, diceType)
+                        end, delay)
+                        
+                        delay = delay + 0.3  -- Erhöhe Verzögerung um 0.5 Sekunden pro Wurf
+                    end
+                end
+            end
+        end
+    end
 end
 
 -- clickFunction to start dice process
