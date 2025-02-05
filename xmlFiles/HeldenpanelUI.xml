@@ -6,8 +6,8 @@
 <HorizontalLayout id = "diceResultDM" width = "0" height = "50" rectAlignment = "MiddleRight" offsetXY = "-10 45" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout>
 
 <!-- Anzeige Würfelergebniss Spieler mit Würfelbilder -->
-<Text id = "spielerName" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-115 -125" text = "Spieler: "></Text>
-<HorizontalLayout id = "diceResult" width = "0" height = "50" rectAlignment = "UpperRight" offsetXY = "-10 170" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout>
+<!-- <Text id = "spielerName" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-115 -125" text = "Spieler: "></Text>
+<HorizontalLayout id = "diceResult" width = "0" height = "50" rectAlignment = "UpperRight" offsetXY = "-10 170" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout> -->
 
 <!-- hinweis: die Liste " Heldenpanels" wird in der Heldenpanellua. erstellt  -->
     <!-- Panel -->

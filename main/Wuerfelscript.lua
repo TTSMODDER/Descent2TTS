@@ -729,18 +729,47 @@ end
 function showResult(result, diceImgTbl, resultToPrint)
     if playerColor == "White" then
         local resultDM = result
+
+        ---------------------------------------------------------
+        --- Bildanzeige Würfelergebnisse aktuell ohne Funktion---
+        --showImginUI(result, diceImgTbl, resultToPrint)
+        ---------------------------------------------------------
+        
+        self.UI.setAttribute("showResultID", "text", resultDM) 
+        print("Dungeon Master: "  .. resultToPrint)
+        
+        Wait.time(function()
+            self.UI.setAttribute("showResultID", "text", "")
+        end, 5)
+
+    elseif allowedPlayerColors[playerColor] then
+        
+        ---------------------------------------------------------
+        --- Bildanzeige Würfelergebnisse aktuell ohne Funktion---
+            --showImginUI(result, diceImgTbl, resultToPrint)
+        ---------------------------------------------------------
+        
+        self.UI.setAttribute("showResultID", "text", result)
+        print(playerName .. ": " .. resultToPrint)
+
+        Wait.time(function()
+            self.UI.setAttribute("showResultID", "text", "")
+        end, 5)
+    end
+end
+
+function showImginUI(result, diceImgTbl, resultToPrint)
+    if playerColor == "White" then
         local imgURLDM = imgURL
         local currentUI = UI.getXmlTable()
         local variableWidth = (#diceImgTbl * 50) + (#diceImgTbl * 3)
-        --self.UI.setAttributes("diceResultDM", "color", "rgba(0,0,0,0)")
-        --log(currentUI)
+        self.UI.setAttributes("diceResultDM", "color", "rgba(0,0,0,0)")
+        log(currentUI)
         for _,element in ipairs (currentUI) do
             if element.attributes and element.attributes.id == "diceResultDM" then
                 element.children = {}
                 
                 for i = 1, #diceImgTbl do
-                    log(i)
-                    log(element)
                     table.insert(element.children, {
                         tag = "Image",
                         attributes = {
@@ -752,16 +781,9 @@ function showResult(result, diceImgTbl, resultToPrint)
                 end
             end
         end
-        UI.setXmlTable(currentUI)
-        
-        
-        self.UI.setAttribute("showResultID", "text", resultDM)
-        self.UI.setAttribute("diceResultDM", "width", variableWidth)
-        print("Dungeon Master: "  .. resultToPrint)
+        UI.setXmlTable(currentUI) 
 
-        Wait.time(function()
-            self.UI.setAttribute("showResultID", "text", "")
-        end, 5)
+        self.UI.setAttribute("diceResultDM", "width", variableWidth)
     elseif allowedPlayerColors[playerColor] then
         local currentUI = UI.getXmlTable()
         local variableWidth = (#diceImgTbl * 50) + (#diceImgTbl * 3)
@@ -783,24 +805,9 @@ function showResult(result, diceImgTbl, resultToPrint)
             end
         end
         UI.setXmlTable(currentUI)
-        
-        
-        self.UI.setAttribute("showResultID", "text", result)
+
         self.UI.setAttribute("diceResult", "width", variableWidth)
-        print(playerName .. ": " .. resultToPrint)
-
-        Wait.time(function()
-            self.UI.setAttribute("showResultID", "text", "")
-        end, 5)
-
-
         self.UI.setAttribute("spielerName", "text", playerName)
-        self.UI.setAttribute("showResultID", "text", result)
         self.UI.setAttribute("resultIMG", "image", imgURL)
-        
-        Wait.time(function()
-            self.UI.setAttribute("showResultID", "text", "")
-        end, 5)
     end
 end
-
