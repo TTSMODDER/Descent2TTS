@@ -120,3 +120,6 @@ dicesToThrow = {
     ["Yellow"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
     ["Red"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
 }
+
+---------------------- Variablen für Automatische Spielerzuweisung ----------------------------------------
+
