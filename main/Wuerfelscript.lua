@@ -271,10 +271,40 @@ function angriff (player, value, id)
     end
 end
 
-function probe_1()
-    local dice_5_1 = 1
-    local dice_6_1 = 1
-    print("Probe Spieler 1: Würfelwerte - Dice 5: " .. dice_5_1 .. ", Dice 6: " .. dice_6_1)
+function probe(player, value, id)
+    playerColor = player.color
+    wuerfeln(player, nil, "Black")
+    Wait.time(function()
+        wuerfeln(player, nil, "Grey")
+    end, 0.5)
+end
+
+function abwehr (player, value, id)
+    playerColor = player.color
+    local abwDices = {"Grey", "Black", "Brown"}
+    local delay = 0  -- Startverzögerung
+
+    for k, count in pairs(dicesToThrow) do
+        if k == playerColor then -- Würfeltabelle des aktiven Spielers durchgehen
+            for i = 1, #abwDices do  -- i beginnt bei 1, nicht bei 0
+                local diceType = abwDices[i]
+                
+                if count[diceType] and count[diceType] > 0 then
+                    local numCurrentDice = count[diceType]
+                    
+                    for j = 1, numCurrentDice do
+                        -- Verzögerter Würfelwurf
+                        Wait.time(function()
+                            log("Würfelt Würfel: " .. diceType)
+                            wuerfeln(player, nil, diceType)
+                        end, delay)
+                        
+                        delay = delay + 0.3  -- Erhöhe Verzögerung um 0.5 Sekunden pro Wurf
+                    end
+                end
+            end
+        end
+    end
 end
 
 -- clickFunction to start dice process
