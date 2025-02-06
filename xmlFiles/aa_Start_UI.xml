@@ -2,6 +2,7 @@
 
 <Include src="xmlFiles/HeldenpanelUI.xml"/> 
 <Include src="xmlFiles/Heldenpanel_ListeUI.xml" />
+<Include src="xmlFiles/Kamerapositionen.xml"/> 
 
 
  

@@ -1,0 +1,10 @@
+<Button width = "35" height = "35" color = "white" rectAlignment="LowerRight" offsetXY = "-5 75" onClick="showCamMenu"></Button>
+<Panel id="CamPanel" width="200" height="200" color="#00000040" visibility="hidden" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+    <Image image="https://steamusercontent-a.akamaihd.net/ugc/54708143742627375/22C8469590B585B0449689EC549A990D09DDE2A2/" width="200" height="200" preserveAspect="true"/>
+    <HorizontalLayout width="200" height="30" rectAlignment="LowerLeft" spacing="2" offsetXY="2 10">
+        <Button colors="#00000000|#00000000|#222222|#FF0000"></Button>
+        <Button colors="#00000000|#00000000|#222222|#FF0000"></Button>
+        <Button colors="#00000000|#00000000|#222222|#FF0000"></Button>
+        <Button colors="#00000000|#00000000|#222222|#FF0000"></Button>  
+    </HorizontalLayout>
+</Panel>
