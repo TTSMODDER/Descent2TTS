@@ -5,7 +5,7 @@ local currentDice = {}
 local playerName = ""
 local playerColor = ""
 local lastPlayer = ""
-
+local clickEvent = 0
 
 function checkCurrentPlayer(player)
     if lastPlayer == "" or lastPlayer == playerColor then
@@ -244,6 +244,11 @@ function brownDiceCounter(player, value, id)
 end
 
 function angriff (player, value, id)
+    --- verhindert doppeltes würfeln ---
+    if clickEvent == 1 then
+        return
+    end
+    clickEvent = clickEvent + 1
     playerColor = player.color
     local atkDices = {"Red", "Blue", "Yellow", "Green"}
     local delay = 0  -- Startverzögerung
@@ -272,44 +277,45 @@ function angriff (player, value, id)
 end
 
 function probe(player, value, id)
+    --- verhindert doppeltes würfeln ---
+    if clickEvent == 1 then
+        return
+    end
+    clickEvent = clickEvent + 1 
+
     playerColor = player.color
     wuerfeln(player, nil, "Black")
     Wait.time(function()
         wuerfeln(player, nil, "Grey")
-        isRolling = true
     end, 0.2)
 end
 
 function heal(player, value, id)
-    playerColor = player.color
-    wuerfeln(player, nil, "Red")
-    Wait.time(function()
-        wuerfeln(player, nil, "Red")
-        isRolling = true
-    end, 0.2)
-end
-
-local clickEvent = 0
-
-function abwehr (player, value, id)
+    --- verhindert doppeltes würfeln ---
     if clickEvent == 1 then
         return
     end
     clickEvent = clickEvent + 1
+
+    playerColor = player.color
+    wuerfeln(player, nil, "Red")
+    Wait.time(function()
+        wuerfeln(player, nil, "Red")
+    end, 0.2)
+end
+
+function abwehr (player, value, id)
+    --- verhindert doppeltes würfeln ---
+    if clickEvent == 1 then
+        return
+    end
+    clickEvent = clickEvent + 1
+
     playerColor = player.color
     local abwDices = {"Grey", "Black", "Brown"}
     local delay = 0  -- Startverzögerung
     for k, count in pairs(dicesToThrow) do
         if k == playerColor then -- Würfeltabelle des aktiven Spielers durchgehen
-            
-            ---- berechnet die Gesamtanzahl der Würfel ---
-            local diceSum = 0
-            for i = 1, #abwDices do
-                local diceType = abwDices[i]
-                if count[diceType] and count[diceType] > 0 then
-                    diceSum = diceSum + count[diceType]
-                end
-            end
             
             --- durchläuft alle Würfeltypen und spawned die eingestellten Werte ---
             for i = 1, #abwDices do  -- i beginnt bei 1, nicht bei 0
@@ -322,9 +328,7 @@ function abwehr (player, value, id)
                             log("Würfelt Würfel: " .. diceType)
                             wuerfeln(player, nil, diceType)
                         end, delay)
-                        diceSum = diceSum - 1
                         delay = delay + 0.2  -- Erhöhe Verzögerung um 0.2 Sekunden pro Wurf
-                        log(diceSum)
                     end
                 end
             end
@@ -390,8 +394,6 @@ end
 ---@return currentDice obj List element with all current dices
 
 function spawnObjFromCloud (url, id, callback, newDicePos, player)
-    
-    log(diceForPlayer)
     if allowedPlayerColors [playerColor] then
         diceCount = diceCount + 1
     elseif allowedDMColor [playerColor] then
@@ -410,9 +412,7 @@ function spawnObjFromCloud (url, id, callback, newDicePos, player)
                 end
                 
                 table.insert(currentDice[playerColor], obj)
-                
-                --table.insert(currentDice, obj)
-                --startRollTimer(obj)
+
                 if callback then
                     callback(obj, playerColor)
                 end
@@ -584,7 +584,7 @@ function showResult(result, diceImgTbl, resultToPrint)
         ---------------------------------------------------------
         
         self.UI.setAttribute("showResultID", "text", resultDM) 
-        print("Dungeon Master: "  .. resultToPrint)
+        printToAll("Dungeon Master: "  .. resultToPrint)
         
         Wait.time(function()
             self.UI.setAttribute("showResultID", "text", "")
@@ -598,7 +598,7 @@ function showResult(result, diceImgTbl, resultToPrint)
         ---------------------------------------------------------
         
         self.UI.setAttribute("showResultID", "text", result)
-        print(playerName .. ": " .. resultToPrint)
+        printToAll(playerName .. ": " .. resultToPrint)
 
         Wait.time(function()
             self.UI.setAttribute("showResultID", "text", "")
