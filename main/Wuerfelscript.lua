@@ -263,7 +263,7 @@ function angriff (player, value, id)
                             wuerfeln(player, nil, diceType)
                         end, delay)
                         
-                        delay = delay + 0.3  -- Erhöhe Verzögerung um 0.5 Sekunden pro Wurf
+                        delay = delay + 0.2  -- Erhöhe Verzögerung um 0.5 Sekunden pro Wurf
                     end
                 end
             end
@@ -276,30 +276,55 @@ function probe(player, value, id)
     wuerfeln(player, nil, "Black")
     Wait.time(function()
         wuerfeln(player, nil, "Grey")
-    end, 0.5)
+        isRolling = true
+    end, 0.2)
 end
 
+function heal(player, value, id)
+    playerColor = player.color
+    wuerfeln(player, nil, "Red")
+    Wait.time(function()
+        wuerfeln(player, nil, "Red")
+        isRolling = true
+    end, 0.2)
+end
+
+local clickEvent = 0
+
 function abwehr (player, value, id)
+    if clickEvent == 1 then
+        return
+    end
+    clickEvent = clickEvent + 1
     playerColor = player.color
     local abwDices = {"Grey", "Black", "Brown"}
     local delay = 0  -- Startverzögerung
-
     for k, count in pairs(dicesToThrow) do
         if k == playerColor then -- Würfeltabelle des aktiven Spielers durchgehen
+            
+            ---- berechnet die Gesamtanzahl der Würfel ---
+            local diceSum = 0
+            for i = 1, #abwDices do
+                local diceType = abwDices[i]
+                if count[diceType] and count[diceType] > 0 then
+                    diceSum = diceSum + count[diceType]
+                end
+            end
+            
+            --- durchläuft alle Würfeltypen und spawned die eingestellten Werte ---
             for i = 1, #abwDices do  -- i beginnt bei 1, nicht bei 0
                 local diceType = abwDices[i]
-                
                 if count[diceType] and count[diceType] > 0 then
                     local numCurrentDice = count[diceType]
-                    
                     for j = 1, numCurrentDice do
                         -- Verzögerter Würfelwurf
                         Wait.time(function()
                             log("Würfelt Würfel: " .. diceType)
                             wuerfeln(player, nil, diceType)
                         end, delay)
-                        
-                        delay = delay + 0.3  -- Erhöhe Verzögerung um 0.5 Sekunden pro Wurf
+                        diceSum = diceSum - 1
+                        delay = delay + 0.2  -- Erhöhe Verzögerung um 0.2 Sekunden pro Wurf
+                        log(diceSum)
                     end
                 end
             end
@@ -474,6 +499,7 @@ function callback(obj, playerColor)
             if allowedPlayerColors[playerColor] or allowedDMColor[playerColor] then
                 isRolling = false
                 rollingDone = true
+                clickEvent = 0
             end
         end, 3)
     end, 3)
