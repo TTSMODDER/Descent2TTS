@@ -188,7 +188,7 @@
                     <Button id="probeButton_1" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
-                    <Button id="heilungButton_1" width="30" height="30" position="20 0 0" color="#00000000" onClick="heilung_1">
+                    <Button id="heilungButton_1" width="30" height="30" position="20 0 0" color="#00000000" onClick="heal">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
                     <Button id="abwehrButton_1" width="35" height="30" position="85 0 0" onClick="abwehr" color="#00000000">
@@ -359,7 +359,7 @@
                     <Button id="probeButton_2" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
-                    <Button id="heilungButton_2" width="30" height="30" position="20 0 0" color="#00000000" onClick="heilung_2">
+                    <Button id="heilungButton_2" width="30" height="30" position="20 0 0" color="#00000000" onClick="heal">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
                     <Button id="abwehrButton_2" width="35" height="30" position="85 0 0" onClick="abwehr" color="#00000000">
@@ -527,7 +527,7 @@
         <Button id="probeButton_3" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="heilungButton_3" width="30" height="30" position="20 0 0" color="#00000000" onClick="heilung_3">
+        <Button id="heilungButton_3" width="30" height="30" position="20 0 0" color="#00000000" onClick="heal">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
         <Button id="abwehrButton_3" width="35" height="30" position="85 0 0" onClick="abwehr" color="#00000000">
@@ -694,7 +694,7 @@
         <Button id="probeButton_4" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="heilungButton_4" width="30" height="30" position="20 0 0" color="#00000000" onClick="heilung_4">
+        <Button id="heilungButton_4" width="30" height="30" position="20 0 0" color="#00000000" onClick="heal">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
         <Button id="abwehrButton_4" width="35" height="30" position="85 0 0" onClick="abwehr" color="#00000000">
