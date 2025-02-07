@@ -12,7 +12,7 @@ require("/main/Heldenpanel")
         extractMinisGUIDs()   
         updateNameAndDescription()
         updateListAndPanels()
-        createDynamicTable()
+        
         
         local allMarkers = getAllMarkersFromJSON()
         updateMarkerImages(allMarkers)
@@ -121,179 +121,15 @@ require("/main/Heldenpanel")
                 end
 
                 -- UI immer aktualisieren, unabhängig ob Objekt gefunden wurde oder nicht
-                UI.setAttribute("name_" .. i, "text", "Name: " .. playerData.name)
-                UI.setAttribute("description_" .. i, "text", "Bezeichnung: " .. playerData.description)
+                UI.setAttribute("name_" .. i, "text", "" .. playerData.name)
+                UI.setAttribute("description_" .. i, "text", " " .. playerData.description)
             end
         end
-
-
-
 
 
 
 -- Spielerliste erstellen und die Spielereinzelpanels vorbereitet
-        function createDynamicTable()
-            -- Bestehende XML abrufen und als Tabelle interpretieren
-            local xmlTable = UI.getXmlTable()
 
-            -- Überprüfen, ob das Panel existiert, und es entfernen
-            for i, element in ipairs(xmlTable) do
-                if element.attributes and element.attributes.id == "Farbpanel_main" then
-                    table.remove(xmlTable, i)
-                    --print("Bestehendes Farbpanel entfernt.")
-                    break
-                end
-            end
-
-            -- Aktuelle Spielerfarben abrufen
-            activeColors = getSeatedPlayers()
-
-            -- Optionen für Dropdown-Menü
-            local dropdownOptions = '<option value="none">Keine</option><option value="all">Alle</option>'
-            for _, color in ipairs(activeColors) do
-                dropdownOptions = dropdownOptions .. '<option value="' .. color .. '">' .. color .. '</option>'
-            end
-
-
-            -- Funktion zur Verarbeitung der Dropdown-Auswahl
-            function onDropdownChange(player, value, id)
-                --print("Dropdown " .. id .. " geändert auf: " .. value)
-            end
-
-            -- Tabelle dynamisch erstellen
-            local tableContent = ""
-
-            for i, playerData in ipairs(listData) do
-                tableContent = tableContent .. [[
-                    <Row>
-                        <!-- Spalte 1: Spielername -->
-                        
-                        <Cell><Text text="]] .. playerData.guid .. [[" /></Cell>
-                        <Cell><Text text="]] .. playerData.name .. [[" /></Cell>
-                        <Cell><Text text="]] .. playerData.description .. [[" /></Cell>
-
-                        <!-- Spalte 3: Dropdown-Menü -->
-        <Cell>
-            <Dropdown id="dropdown_]] .. i .. [[" onValueChanged="updatePanelVisibility">
-                <option value="Keine">Keine</option>
-                <option value="Alle">Alle</option>
-                <option value="Red">Rot</option>
-                <option value="Yellow">Gelb</option>
-                <option value="Blue">Blau</option>
-                <option value="Green">Grün</option>
-                <option value="GM">GM</option>
-            </Dropdown>
-        </Cell>
-                    </Row>
-                ]]
-            end
-
-            local newPanel = {
-                tag = "Panel",
-                attributes = {
-                    id = "Farbpanel_main",
-                    width = "410",
-                    height = "260",
-                    position = "-300 300",
-                    color = "#00000000",
-                    rectAlignment = "MiddleCenter",
-                    allowDragging = "true",
-                    returntooriginalpositionwhenreleased = "false",
-                    visibility = "Black|White", -- Sichtbarkeit für GM only
-                },
-                children = {
-                    {
-                        tag = "Button",
-                        attributes = {
-                            id = "myButton",
-                            rectAlignment = "MiddleLeft",
-                            width = "150", 
-                            height = "40",
-                            color="#9999FF",
-                            position = "-650 100  ",
-                            onClick = "toggleFarbpanel",
-                            tooltip = "Helden-Panels für alle aktiven Spieler einblenden (GM -Funktion!)\nZunächst die jeweiligen aktiven Helden Figuren im „Helden-Panel Tracker“ registrieren (liegt unten rechts neben den Spielerkarten): \nHelden Figuren einzeln nacheinander in die Mitte dieses Treckers stellen  und „Track mini“ wählen\nFigur erscheint in der Liste des Trackers, aber auch  in der Liste  hier im Heldenpanel \nDort nun die  registrierten Figuren dem jeweiligen Spieler zuordnen.",
-                        },
-                        children = {
-                            {
-                                tag = "Text",
-                                attributes = {
-                                    alignment = "MiddleCenter",
-                                    color="#FFFFFF",
-                                    text = "Helden-Panels",
-                                },
-                            },
-                        },
-                    },
-                    {
-                        tag = "Panel",
-                        attributes = {
-                            id = "Farbpanel",
-                            width = "400",
-                            height = "150",
-                            position = "0 0 ",
-                            color = "White",
-                            --padding = "10",
-                        },
-                        children = {
-                            {
-                                tag = "TableLayout",
-                                attributes = {
-                                    id = "Spielerliste",
-                                    columnWidths = "100,70,100",
-                                },
-                                value = tableContent,
-                            },
-                            {
-                                tag = "Panel",
-                                attributes = {
-                                    id = "AdditionalButtonPanel",
-                                    width = "10",
-                                    height = "10",
-                                    position = "120 0 0",
-                                    
-                                    rectAlignment = "MiddleCenter",
-                                },
-                                children = {
-                                    {
-                                        tag = "Button",
-                                        attributes = {
-                                            id = "extraButton",
-                                            rectAlignment = "MiddleCenter",
-                                            width = "100",
-                                            height = "40",
-                                            position = "30 -100 0",
-                                            color="#9999FF",
-                                            --onClick="updateListAndPanels",
-                                            onClick="onLoad()",
-                                        },
-                                        children = {
-                                            {
-                                                tag = "Text",
-                                                attributes = {
-                                                    alignment = "MiddleCenter",
-                                                    color="#FFFFFF",
-                                                    text = "aktualisieren",
-                                                },
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-            }
-            
-
-
-    -- Neues Panel zur XML-Tabelle hinzufügen
-            table.insert(xmlTable, newPanel)
-
-            -- Aktualisierte XML-Tabelle setzen
-            UI.setXmlTable(xmlTable)
-            --print("Dynamische Tabelle mit Buttons wurde erstellt und sollte sichtbar sein.")
-        end
 
 
      -- Heldenpanelliste  einlenden
@@ -303,10 +139,10 @@ require("/main/Heldenpanel")
                     function toggleFarbpanel(player, value, id)
                         isFarbpanelVisible = not isFarbpanelVisible -- Status umkehren
                         if isFarbpanelVisible then
-                            UI.show("Farbpanel")
+                            UI.show("Farbpanel_main")
                             --print("Farbpanel wird angezeigt.")
                         else
-                            UI.hide("Farbpanel")
+                            UI.hide("Farbpanel_main")
                             --print("Farbpanel wird versteckt.")
                         end
                     end
@@ -325,14 +161,15 @@ require("/main/Heldenpanel")
         end
 
 
-
             function updateListAndPanels()
                     extractMinisGUIDs()
                     updateNameAndDescription()
                     updatePlayerPanels()-- auf helden panel lua
-                    createDynamicTable()
+                    
                     --updateMarkerImages()
                     print("Liste und Panels wurden aktualisiert.")
                 end
 
 --   ==> Übergabe an Heldenpanel
+
+
