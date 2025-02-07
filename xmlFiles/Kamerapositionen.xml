@@ -1,6 +1,7 @@
 <Button width = "45" height = "45" rectAlignment="LowerRight" offsetXY = "-5 75" onClick="showCamMenu" colors="#ffffff40|#ffffff|#222222|#FF0000">
     <Image width="20" height="20" image="https://steamusercontent-a.akamaihd.net/ugc/54708143744389280/20E31C34A5C46E32AFAD9016B2FB2D1A8FCE1D09/"/> 
 </Button>
+
 <Panel id="CamPanel" width="200" height="200" color="rgba(0, 0, 0, 0.8)" visibility="hidden" allowDragging="true" returnToOriginalPositionWhenReleased="false" rectAlignment="LowerRight" offsetXY="-55 75">
     <Image image="https://steamusercontent-a.akamaihd.net/ugc/54708143742627375/22C8469590B585B0449689EC549A990D09DDE2A2/" width="200" height="200" preserveAspect="true"/>
     <Panel width="40" height="62" rectAlignment="LowerLeft" offsetXY="2 43">
