@@ -123,3 +123,13 @@ dicesToThrow = {
 
 
 ---------------------- Variablen für Kamerapositionen ----------------------------------------
+
+---GUIDS for Playermaps---
+playerMap = {
+    ["Red"]     = "1883e1",
+    ["Yellow"]  = "59bdbf",
+    ["Green"]   = "a2b262",
+    ["Blue"]    = "ad841d",
+    ["White"]   = "4a94d6",
+}
+reiseMap = "739c78"

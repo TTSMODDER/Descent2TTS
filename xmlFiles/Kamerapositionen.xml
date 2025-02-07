@@ -1,10 +1,19 @@
-<Button width = "35" height = "35" color = "white" rectAlignment="LowerRight" offsetXY = "-5 75" onClick="showCamMenu"></Button>
-<Panel id="CamPanel" width="200" height="200" color="#00000040" visibility="hidden" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+<Button width = "45" height = "45" rectAlignment="LowerRight" offsetXY = "-5 75" onClick="showCamMenu" colors="#ffffff40|#ffffff|#222222|#FF0000">
+    <Image width="30" height="30" image="https://steamusercontent-a.akamaihd.net/ugc/54708143744389280/20E31C34A5C46E32AFAD9016B2FB2D1A8FCE1D09/"/> 
+</Button>
+<Panel id="CamPanel" width="200" height="200" color="rgba(0, 0, 0, 0.8)" visibility="hidden" allowDragging="true" returnToOriginalPositionWhenReleased="false" rectAlignment="LowerRight" offsetXY="-55 75">
     <Image image="https://steamusercontent-a.akamaihd.net/ugc/54708143742627375/22C8469590B585B0449689EC549A990D09DDE2A2/" width="200" height="200" preserveAspect="true"/>
+    <Panel width="40" height="62" rectAlignment="LowerLeft" offsetXY="2 43">
+        <Button onClick="truheCam" colors="#00000000|#222222|#222222|#FF0000"></Button>
+    </Panel>
+    <Button onClick="whiteCam" width="106" height="50" rectAlignment="UpperLeft" offsetXY="45 -10" colors="#ffffff60|#222222|#222222|#FF0000"></Button>
+    <Button onClick="reiseCam" width="38" height="80" rectAlignment="UpperLeft" offsetXY="2 -10" colors="#00000000|#222222|#222222|#FF0000"></Button>
+    <Button onClick="mapCam" width="106" height="95" offsetXY="0 -10" colors="#00000000|#222222|#222222|#00000000"></Button>
+    <Button onClick="zustandCam" width="38" height="95" rectAlignment="MiddleRight" offsetXY="-2 -10" colors="#00000000|#222222|#222222|#FF0000"></Button>
     <HorizontalLayout width="200" height="30" rectAlignment="LowerLeft" spacing="2" offsetXY="2 10">
-        <Button colors="#00000000|#00000000|#222222|#FF0000"></Button>
-        <Button colors="#00000000|#00000000|#222222|#FF0000"></Button>
-        <Button colors="#00000000|#00000000|#222222|#FF0000"></Button>
-        <Button colors="#00000000|#00000000|#222222|#FF0000"></Button>  
+        <Button onClick="redCam" colors="#00000000|#222222|#222222|#FF0000"></Button>
+        <Button onClick="yellowCam" colors="#00000000|#222222|#222222|#FF0000"></Button>
+        <Button onClick="greenCam" colors="#00000000|#222222|#222222|#FF0000"></Button>
+        <Button onClick="blueCam" colors="#00000000|#222222|#222222|#FF0000"></Button>  
     </HorizontalLayout>
 </Panel>
