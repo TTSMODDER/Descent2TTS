@@ -6,10 +6,10 @@ require("/main/Heldenpanel_Liste")
 --ONLOAD Bereich
     function initHeldenpanel()
         Heldenliste_onlaod()
-        UI.setAttribute("Parent_PlayerPanel_1", "visibility", "Blue")
-        UI.setAttribute("Parent_PlayerPanel_2", "visibility", "Green")
-        UI.setAttribute("Parent_PlayerPanel_3", "visibility", "Yellow")
-        UI.setAttribute("Parent_PlayerPanel_4", "visibility", "Red")
+        UI.setAttribute("Parent_PlayerPanel_1", "visibility", "Red")
+        UI.setAttribute("Parent_PlayerPanel_2", "visibility", "Yellow")
+        UI.setAttribute("Parent_PlayerPanel_3", "visibility", "Green")
+        UI.setAttribute("Parent_PlayerPanel_4", "visibility", "Blue")
     end
 
 -- Sichtbarkeit 
