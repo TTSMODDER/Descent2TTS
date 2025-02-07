@@ -6,10 +6,14 @@ require("/main/Heldenpanel_Liste")
 --ONLOAD Bereich
     function initHeldenpanel()
         Heldenliste_onlaod()
+        UI.setAttribute("Parent_PlayerPanel_1", "visibility", "Blue")
+        UI.setAttribute("Parent_PlayerPanel_2", "visibility", "Green")
+        UI.setAttribute("Parent_PlayerPanel_3", "visibility", "Yellow")
+        UI.setAttribute("Parent_PlayerPanel_4", "visibility", "Red")
     end
 
 -- Sichtbarkeit 
-    function updatePanelVisibility(_, selectedOption, id)
+    --[[ function updatePanelVisibility(_, selectedOption, id)
 
 
         -- Extrahiere die Zeilen-ID aus der Dropdown-ID (z. B. "dropdown_1" → 1)
@@ -33,7 +37,7 @@ require("/main/Heldenpanel_Liste")
         -- Dynamisches Hinzufügen der Sichtbarkeitseigenschaft
         UI.setAttribute(panelId, "visibility", visibilityColors)
     
-    end
+    end --]]
 
 
 
