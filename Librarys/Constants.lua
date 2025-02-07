@@ -120,3 +120,16 @@ dicesToThrow = {
     ["Yellow"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
     ["Red"] = {Red = 0, Blue = 0, Yellow = 0, Green = 0, Grey = 0, Black = 0, Brown = 0},
 }
+
+
+---------------------- Variablen für Kamerapositionen ----------------------------------------
+
+---GUIDS for Playermaps---
+playerMap = {
+    ["Red"]     = "1883e1",
+    ["Yellow"]  = "59bdbf",
+    ["Green"]   = "a2b262",
+    ["Blue"]    = "ad841d",
+    ["White"]   = "4a94d6",
+}
+reiseMap = "739c78"

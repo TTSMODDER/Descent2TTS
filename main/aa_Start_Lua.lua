@@ -8,6 +8,7 @@ require("/main/Heldenpanel_Bildauswahl")
 require ("/main/Spielerauswahl")
 require ("/main/Wuerfelscript")
 --require ("/main/Monsterliste")
+require ("/main/Kamerapositionen")
 
 function project_onLoad(save_state)
     initHeldenpanel()
