@@ -41,6 +41,8 @@ placeholderUrl = "https://steamusercontent-a.akamaihd.net/ugc/38943008356388258/
 isFarbpanelVisible = true -- Status der Sichtbarkeit des Farbpanels
 panelSpacing = 10 -- Abstand zwischen Panels
 
+--info: Spieler 1 = blau, Spieler 2= grün, Spieler 3 = gelb, Spieler 4 = rot.
+
 return Panelvariariablen
 
 
