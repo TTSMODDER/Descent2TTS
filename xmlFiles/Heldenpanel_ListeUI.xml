@@ -99,7 +99,7 @@
         <!-- Aktualisieren Button Panel -->
         <Panel id="AdditionalButtonPanel" width="10" height="10" position="120 0 0" rectAlignment="MiddleCenter">
             <Button id="extraButton" rectAlignment="MiddleCenter" width="100" height="40"
-                    position="30 -100 0" color= "#cdba96" onClick="onLoad">
+                    position="30 -100 0" color = "#fffaf0" onClick="onLoad">
                 <Text alignment="MiddleCenter" color="#8b795e" text="aktualisieren"/>
             </Button>
         </Panel>
