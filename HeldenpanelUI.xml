@@ -1,0 +1,677 @@
+<!-- Würfelanzeige in der Mitte des Bildschirms -->
+<Text id = "showResultID" richtText = "true" fontSize = "40" color = "white" alignment = "UpperCenter" position = "0 -100"></Text>
+
+<!-- Anzeige Würfelergebniss Dungenmaster mit Würfelbilder -->
+<!-- <Text id = "NameDM" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-25 -225" text = "Dungeon Master: "></Text>
+<HorizontalLayout id = "diceResultDM" width = "0" height = "50" rectAlignment = "MiddleRight" offsetXY = "-10 45" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout> -->
+
+<!-- Anzeige Würfelergebniss Spieler mit Würfelbilder -->
+<!-- <Text id = "spielerName" richText = "true" fontSize = "20" color = "white" alignment = "UpperRight" position = "-115 -125" text = "Spieler: "></Text>
+<HorizontalLayout id = "diceResult" width = "0" height = "50" rectAlignment = "UpperRight" offsetXY = "-10 170" anchorMin = "1 0.7" anchorMax = "1 0.7" spacing = "5" color = "rgba(0,0,0,0)"></HorizontalLayout> -->
+
+<!-- hinweis: die Liste " Heldenpanels" wird in der Heldenpanellua. erstellt  -->
+    <!-- Panel -->
+
+    <Defaults>
+    
+    <Image class="displayImage" width="250" height="480"/>
+    <Button class="imageButton" width="10" height="10" color="green"/> <!-- Hintergrundbilder -->
+    </Defaults>
+
+
+<!-- Spieler_1 -->
+    <Panel id="Parent_PlayerPanel_1" position="-600 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00" allowDragging="true" returntooriginalpositionwhenreleased="false">
+        <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
+            <Button id="button_1_1" onClick="buttonClick_1_1" class="imageButton"/>
+            <Button id="button_1_2" onClick="buttonClick_1_2" class="imageButton"/>
+            <Button id="button_1_3" onClick="buttonClick_1_3" class="imageButton"/>
+            <Button id="button_1_4" onClick="buttonClick_1_4" class="imageButton"/>
+            <Button id="button_1_5" onClick="buttonClick_1_5" class="imageButton"/>
+            <Button id="button_1_6" onClick="buttonClick_1_6" class="imageButton"/>
+            <Button id="button_1_7" onClick="buttonClick_1_7" class="imageButton"/>
+            <Button id="button_1_8" onClick="buttonClick_1_8" class="imageButton"/>
+            <Button id="button_1_9" onClick="buttonClick_1_9" class="imageButton"/>
+            <Button id="button_1_10" onClick="buttonClick_1_10" class="imageButton"/>
+        </GridLayout>
+        <Image id="displayedImage_1" class="displayImage"/>
+
+    <!-- Inner Player Panel -->
+    <Panel id="PlayerPanel_1" width="220" height="270" alignment="MiddleCenter" position="0 100">
+        <!-- Diceboard Spieler_1 einschalten -->
+
+        <Button id="showDiceboardButton_1"  width="20" height="30" position="-105 -240 0"  onClick="showDiceboard_1" tooltip="Würfelboard anzeigen" colors="#22222200|#22222250|#22222250|#FF0000"/>
+       <Button id="tooglecam_1" width="20" height="30" position="105 -240 0"  onClick="toggleCameras_1" tooltip="Switch Camera" colors="#22222200|#22222250|#22222250|#FF0000"/>
+        
+        <!-- Name Panel -->
+        <Text id="name_1_panel" text=" " alignment="MiddleCenter" position="0 97" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
+        <Text id="description_1_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
+        <!-- Health Controls -->
+        <Panel id="health_controls_1" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+            <Button id="health_down_1" text=" " fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_1"/>
+            <Text id="health_1_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FF0000" alignment="MiddleCenter"/>
+            <Button id="health_up_1" text=" " fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthUp_1"/>
+        </Panel>
+        <!-- Exhaustion Controls -->
+        <Panel id="exhaustion_controls_1" position="0 -25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+            <Button id="exhaustion_down_1" text="" fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionDown_1"/>
+            <Text id="exhaustion_1_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FFFF00" alignment="MiddleCenter"/>
+            <Button id="exhaustion_up_1" text="" fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_1"/>
+        </Panel>
+        <!-- Marker Parent Panel -->
+        <Panel id="panelmarker_Parent_a1" rectAlignment="MiddleCenter" width="110" height="40.5" offsetXY="0 -90">
+            <!-- MANUELL_ Marker Container 1 -->
+            <Panel id="marker_container1_1" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="-13 0" color="#FFFFFF00">
+                <Button id="button2_1_1" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(1)" color="transparent"><!-- wechsel -->
+                    <Image id="image_1_1" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_1_1"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- MANUELL_ Marker Container 2 -->
+            <Panel id="marker_container2_1" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="29.5 0" color="#FFFFFF00">
+                <Button id="button2_1_2" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(2)" color="transparent"><!-- wechsel -->
+                    <Image id="image_1_2" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_1_2"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- MANUELL_ Marker Container 3 -->
+            <Panel id="marker_container3_1" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="72 0" color="#FFFFFF00">
+                <Button id="button2_1_3" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(3)" color="transparent"><!-- wechsel -->
+                    <Image id="image_1_3" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_1_3"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- Marker Container refresh -->
+            <Panel id="marker_container6_1" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="110 0" color="#FFFFFF00">
+                <Button id="refresh_markerpanel_1" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="updateOnlyMarkerPanels" color="transparent">
+                    <Image id="image-refresh_1" width="25" height="25" rectAlignment="MiddleCenter" imageId="image-refresh_1"/>
+                </Button>
+            </Panel>
+        </Panel>
+
+        <!-- Einstellungen & Dice box -->
+        <Panel id="diceboard_1" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
+            <!-- Dice box 1 rot -->
+            <Panel id="Dice_1_1" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
+               <Panel id="minusButtonPanel_1_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="redDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="redDiceCounter">
+                        <Text id="redDiceCountText_Blue" text="0" fontSize="18" color="Black" alignment="MiddleCenter"/>
+                   </Button>
+                </Panel>
+            </Panel>
+            <!-- Dice box2 blau -->
+            <Panel id="Dice_2_1" width="40" height="40" position="-24.5 30 0" color="rgba(0,0,255,0.8)">
+                <Panel id="minusButtonPanel_2_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blueDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blueDiceCounter">
+                        <Text id="blueDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+            <!-- Dice box3 gelb-->
+            <Panel id="Dice_3_1" width="40" height="40" position="26 30 0" color="#FFB90F">
+               <Panel id="minusButtonPanel_3_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="yellowDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="yellowDiceCounter">
+                        <Text id="yellowDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box4 grün-->
+            <Panel id="Dice_4_1" width="40" height="40" position="79 30 0" color="rgba(0,255,0,0.8)">
+                <Panel id="minusButtonPanel_4_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="greenDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="greenDiceCounter">
+                        <Text id="greenDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box5 weiss-->
+            <Panel id="Dice_5_1" width="40" height="40" position="-45 -20 0" color="#808080CC">
+                 <Panel id="minusButtonPanel_5_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="whiteDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="whiteDiceCounter">
+                        <Text id="whiteDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box6 schwarz-->
+            <Panel id="Dice_6_1" width="40" height="40" position="2 -20 0" color="rgba(0,0,0,0.8)">
+                    <Panel id="minusButtonPanel_6_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blackDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blackDiceCounter">
+                        <Text id="blackDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box7 braun -->
+            <Panel id="Dice_7_1" width="40" height="40" position="53 -20 0" color="#A52A2ACC">
+                   <Panel id="minusButtonPanel_7_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="brownDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="brownDiceCounter">
+                        <Text id="brownDiceCountText_Blue" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+             <!-- Minipanel_3 -->
+            <Panel id="dice_small_3" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
+                <Button id="Red" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+                <Button id="Blue" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+                <Button id="Yellow" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+                <Button id="Green" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+                <Button id="Grey" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+                <Button id="Black" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+                <Button id="Brown" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
+            </Panel>
+               
+                </Panel>
+                <!-- Action Buttons Panel _1 -->
+                <Panel id="Action_Buttons_1" width="250" height="50" position="0 -300 0" color="#00000000">
+                    <Button id="angriffButton_1" width="35" height="30" position="-85 0 0" onClick="angriff" tooltip="Angriff>" colors="#22222200|#22222250|#22222250|#FF0000">
+                        <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="probeButton_1" width="30" height="30" position="-25 0 0"  onClick="probe" tooltip="Probe" colors="#22222200|#22222250|#22222250|#FF0000">
+                        <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="heilungButton_1" width="30" height="30" position="20 0 0"  onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
+                        <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="abwehrButton_1" width="35" height="30" position="85 0 0" onClick="abwehr" tooltip="Abwehr" colors="#22222200|#22222250|#22222250|#FF0000">
+                        <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+            </Button>
+        </Panel>
+         </Panel>
+          </Panel>
+           
+        
+                                            
+<!-- Spieler_2 -->
+     <Panel id="Parent_PlayerPanel_2" position="-300 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00"  allowDragging="true" returntooriginalpositionwhenreleased="false">
+           <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
+            <Button id="button_2_1" onClick="buttonClick_2_1" class="imageButton"/>
+            <Button id="button_2_2" onClick="buttonClick_2_2" class="imageButton"/>
+            <Button id="button_2_3" onClick="buttonClick_2_3" class="imageButton"/>
+            <Button id="button_2_4" onClick="buttonClick_2_4" class="imageButton"/>
+            <Button id="button_2_5" onClick="buttonClick_2_5" class="imageButton"/>
+            <Button id="button_2_6" onClick="buttonClick_2_6" class="imageButton"/>
+            <Button id="button_2_7" onClick="buttonClick_2_7" class="imageButton"/>
+            <Button id="button_2_8" onClick="buttonClick_2_8" class="imageButton"/>
+            <Button id="button_2_9" onClick="buttonClick_2_9" class="imageButton"/>
+            <Button id="button_2_10" onClick="buttonClick_2_10" class="imageButton"/>
+        </GridLayout>
+        <Image id="displayedImage_2" class="displayImage"/>
+
+    <!-- Inner Player Panel -->
+    <Panel id="PlayerPanel_2" width="220" height="270" alignment="MiddleCenter" position="0 100">
+        <!-- Diceboard Spieler_2 einschalten -->
+
+        <Button id="showDiceboardButton_2"  width="20" height="30" position="-105 -240 0"  onClick="showDiceboard_2" tooltip="Würfelboard anzeigen" colors="#22222200|#22222250|#22222250|#FF0000"/>
+       <Button id="tooglecam_2" width="20" height="30" position="105 -240 0"  onClick="toggleCameras_2" tooltip="Switch Camera" colors="#22222200|#22222250|#22222250|#FF0000"/>
+
+
+        <!-- Name Panel -->
+        <Text id="name_2_panel"  text=" " alignment="MiddleCenter" position="0 97" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
+        <Text id="description_2_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
+        <!-- Health Controls -->
+        <Panel id="health_controls_2" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+            <Button id="health_down_2" text=" " fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_2"/>
+            <Text id="health_2_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FF0000" alignment="MiddleCenter"/>
+            <Button id="health_up_2" text=" " fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthUp_2"/>
+        </Panel>
+        <!-- Exhaustion Controls -->
+        <Panel id="exhaustion_controls_2" position="0 -25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+            <Button id="exhaustion_down_2" text="" fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionDown_2"/>
+            <Text id="exhaustion_2_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FFFF00" alignment="MiddleCenter"/>
+            <Button id="exhaustion_up_2" text="" fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_2"/>
+        </Panel>
+        <!-- Marker Parent Panel -->
+        <Panel id="panelmarker_Parent_a1" rectAlignment="MiddleCenter" width="110" height="40.5" offsetXY="0 -90">
+            <!-- MANUELL_ Marker Container 1 -->
+            <Panel id="marker_container1_2" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="-13 0" color="#FFFFFF00">
+                <Button id="button2_2_1" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(1)" color="transparent"><!-- wechsel -->
+                    <Image id="image_2_1" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_2_1"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- MANUELL_ Marker Container 2 -->
+            <Panel id="marker_container2_2" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="29.5 0" color="#FFFFFF00">
+                <Button id="button2_2_2" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(2)" color="transparent"><!-- wechsel -->
+                    <Image id="image_2_2" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_2_2"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- MANUELL_ Marker Container 3 -->
+            <Panel id="marker_container3_2" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="72 0" color="#FFFFFF00">
+                <Button id="button2_2_3" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(3)" color="transparent"><!-- wechsel -->
+                    <Image id="image_2_3" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_2_3"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- Marker Container refresh -->
+            <Panel id="marker_container6_2" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="110 0" color="#FFFFFF00">
+                <Button id="refresh_markerpanel_2" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="updateOnlyMarkerPanels" color="transparent">
+                    <Image id="image-refresh_2" width="25" height="25" rectAlignment="MiddleCenter" imageId="image-refresh_2"/>
+                </Button>
+            </Panel>
+        </Panel>
+        <!-- Einstellungen & Dice box -->
+
+
+    
+        <Panel id="diceboard_2" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
+           <Panel id="Dice_1_2" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
+               <Panel id="minusButtonPanel_1_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="redDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="redDiceCounter">
+                        <Text id="redDiceCountText_Green" text="0" fontSize="18" color="Black" alignment="MiddleCenter"/>
+                   </Button>
+                </Panel>
+            </Panel>
+            <!-- Dice box2 blau -->
+            <Panel id="Dice_2_2" width="40" height="40" position="-24.5 30 0" color="rgba(0,0,255,0.8)">
+                <Panel id="minusButtonPanel_2_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blueDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blueDiceCounter">
+                        <Text id="blueDiceCountText_Green" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+            <!-- Dice box3 gelb-->
+            <Panel id="Dice_3_2" width="40" height="40" position="26 30 0" color="#FFB90F">
+               <Panel id="minusButtonPanel_3_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="yellowDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="yellowDiceCounter">
+                        <Text id="yellowDiceCountText_Green" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box4 grün-->
+            <Panel id="Dice_4_2" width="40" height="40" position="79 30 0" color="rgba(0,255,0,0.8)">
+                <Panel id="minusButtonPanel_4_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="greenDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="greenDiceCounter">
+                        <Text id="greenDiceCountText_Green" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box5 weiss-->
+            <Panel id="Dice_5_2" width="40" height="40" position="-45 -20 0" color="#808080CC">
+                 <Panel id="minusButtonPanel_5_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="whiteDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="whiteDiceCounter">
+                        <Text id="whiteDiceCountText_Green" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box6 schwarz-->
+            <Panel id="Dice_6_2" width="40" height="40" position="2 -20 0" color="rgba(0,0,0,0.8)">
+                    <Panel id="minusButtonPanel_6_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blackDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blackDiceCounter">
+                        <Text id="blackDiceCountText_Green" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box7 braun -->
+            <Panel id="Dice_7_2" width="40" height="40" position="53 -20 0" color="#A52A2ACC">
+                <Panel id="minusButtonPanel_7_2" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="brownDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="brownDiceCounter">
+                        <Text id="brownDiceCountText_Green" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+       
+
+                <!-- Minipanel_2 -->
+                <Panel id="dice_small_2" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
+                    <Button id="Red" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+                    <Button id="Blue" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+                    <Button id="Yellow" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+                    <Button id="Green" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+                    <Button id="Grey" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+                    <Button id="Black" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+                    <Button id="Brown" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
+                </Panel>
+            </Panel>
+
+                <!-- Action Buttons Panel _2 -->
+                <Panel id="Action_Buttons_2" width="250" height="50" position="0 -300 0" color="#FFFFFF00">
+                    <Button id="angriffButton_2" width="35" height="30" position="-85 0 0" onClick="angriff" tooltip="Angriff>" colors="#22222200|#22222250|#22222250|#FF0000">
+                        <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="probeButton_2" width="30" height="30" position="-25 0 0" onClick="probe" tooltip="Probe" colors="#22222200|#22222250|#22222250|#FF0000">
+                        <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="heilungButton_2" width="30" height="30" position="20 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
+                        <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                    <Button id="abwehrButton_2" width="35" height="30" position="85 0 0" onClick="abwehr" tooltip="Abwehr" colors="#22222200|#22222250|#22222250|#FF0000">
+                        <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+            </Button>
+        </Panel>
+         </Panel>
+          </Panel>
+           
+
+<!-- Spieler_3 -->
+  
+    <Panel id="Parent_PlayerPanel_3" position="0 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00"  allowDragging="true" returntooriginalpositionwhenreleased="false">
+            <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
+            <Button id="button_3_1" onClick="buttonClick_3_1" class="imageButton"/>
+            <Button id="button_3_2" onClick="buttonClick_3_2" class="imageButton"/>
+            <Button id="button_3_3" onClick="buttonClick_3_3" class="imageButton"/>
+            <Button id="button_3_4" onClick="buttonClick_3_4" class="imageButton"/>
+            <Button id="button_3_5" onClick="buttonClick_3_5" class="imageButton"/>
+            <Button id="button_3_6" onClick="buttonClick_3_6" class="imageButton"/>
+            <Button id="button_3_7" onClick="buttonClick_3_7" class="imageButton"/>
+            <Button id="button_3_8" onClick="buttonClick_3_8" class="imageButton"/>
+            <Button id="button_3_9" onClick="buttonClick_3_9" class="imageButton"/>
+            <Button id="button_3_10" onClick="buttonClick_3_10" class="imageButton"/>
+        </GridLayout>
+        <Image id="displayedImage_3" class="displayImage"/>
+
+    <!-- Inner Player Panel -->
+    <Panel id="PlayerPanel_3" width="220" height="270" alignment="MiddleCenter" position="0 100">
+        <!-- Diceboard Spieler_3 einschalten -->
+
+        <Button id="showDiceboardButton_3" width="20" height="30" position="-105 -240 0" onClick="showDiceboard_3" tooltip="Würfelboard anzeigen" colors="#22222200|#22222250|#22222250|#FF0000"/>
+        <Button id="tooglecam_3" width="20" height="30" position="105 -240 0"  onClick="toggleCameras_3" tooltip="Switch Camera" colors="#22222200|#22222250|#22222250|#FF0000"/>
+
+       
+       
+       
+        <!-- Name Panel -->
+        <Text id="name_3_panel" text=" " alignment="MiddleCenter" position="0 97" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
+        <Text id="description_3_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
+        <!-- Health Controls -->
+        <Panel id="health_controls_3" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+            <Button id="health_down_3" text=" " fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_3"/>
+            <Text id="health_3_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FF0000" alignment="MiddleCenter"/>
+            <Button id="health_up_3" text=" " fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthUp_3"/>
+        </Panel>
+        <!-- Exhaustion Controls -->
+        <Panel id="exhaustion_controls_3" position="0 -25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+            <Button id="exhaustion_down_3" text="" fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionDown_3"/>
+            <Text id="exhaustion_3_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FFFF00" alignment="MiddleCenter"/>
+            <Button id="exhaustion_up_3" text="" fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_3"/>
+        </Panel>
+        <!-- Marker Parent Panel -->
+        <Panel id="panelmarker_Parent_a3" rectAlignment="MiddleCenter" width="110" height="40.5" offsetXY="0 -90">
+            <!-- MANUELL_ Marker Container 1 -->
+            <Panel id="marker_container1_3" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="-13 0" color="#FFFFFF00">
+                <Button id="button2_3_1" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(1)" color="transparent"><!-- wechsel -->
+                    <Image id="image_3_1" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_3_1"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- MANUELL_ Marker Container 2 -->
+            <Panel id="marker_container2_3" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="29.5 0" color="#FFFFFF00">
+                <Button id="button2_3_2" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(2)" color="transparent"><!-- wechsel -->
+                    <Image id="image_3_2" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_3_2"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- MANUELL_ Marker Container 3 -->
+            <Panel id="marker_container3_3" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="72 0" color="#FFFFFF00">
+                <Button id="button2_3_3" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(3)" color="transparent"><!-- wechsel -->
+                    <Image id="image_3_3" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_3_3"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- Marker Container refresh -->
+            <Panel id="marker_container6_3" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="110 0" color="#FFFFFF00">
+                <Button id="refresh_markerpanel_3" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="updateOnlyMarkerPanels" color="transparent">
+                    <Image id="image-refresh_3" width="25" height="25" rectAlignment="MiddleCenter" imageId="image-refresh_3"/>
+                </Button>
+            </Panel>
+        </Panel>
+
+
+        <!--  Dice box -->
+        <Panel id="diceboard_3" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
+            <!-- Dice box 1 rot -->
+            <Panel id="Dice_1_3" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
+               <Panel id="minusButtonPanel_1_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="redDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="redDiceCounter">
+                        <Text id="redDiceCountText_Yellow" text="0" fontSize="18" color="Black" alignment="MiddleCenter"/>
+                   </Button>
+                </Panel>
+            </Panel>
+            <!-- Dice box2 blau -->
+            <Panel id="Dice_2_3" width="40" height="40" position="-24.5 30 0" color="rgba(0,0,255,0.8)">
+                <Panel id="minusButtonPanel_2_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blueDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blueDiceCounter">
+                        <Text id="blueDiceCountText_Yellow" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+            <!-- Dice box3 gelb-->
+            <Panel id="Dice_3_3" width="40" height="40" position="26 30 0" color="#FFB90F">
+               <Panel id="minusButtonPanel_3_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="yellowDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="yellowDiceCounter">
+                        <Text id="yellowDiceCountText_Yellow" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box4 grün-->
+            <Panel id="Dice_4_3" width="40" height="40" position="79 30 0" color="rgba(0,255,0,0.8)">
+                <Panel id="minusButtonPanel_4_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="greenDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="greenDiceCounter">
+                        <Text id="greenDiceCountText_Yellow" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box5 weiss-->
+            <Panel id="Dice_5_3" width="40" height="40" position="-45 -20 0" color="#808080CC">
+                 <Panel id="minusButtonPanel_5_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="whiteDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="whiteDiceCounter">
+                        <Text id="whiteDiceCountText_Yellow" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box6 schwarz-->
+            <Panel id="Dice_6_3" width="40" height="40" position="2 -20 0" color="rgba(0,0,0,0.8)">
+                    <Panel id="minusButtonPanel_6_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blackDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blackDiceCounter">
+                        <Text id="blackDiceCountText_Yellow" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box7 braun -->
+            <Panel id="Dice_7_3" width="40" height="40" position="53 -20 0" color="#A52A2ACC">
+                   <Panel id="minusButtonPanel_7_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="brownDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="brownDiceCounter">
+                        <Text id="brownDiceCountText_Yellow" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+    <!-- Minipanel_3 -->
+    <Panel id="dice_small_3" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
+        <Button id="Red" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+        <Button id="Blue" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+        <Button id="Yellow" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+        <Button id="Green" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+        <Button id="Grey" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+        <Button id="Black" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+        <Button id="Brown" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
+    </Panel>
+    </Panel>
+
+    <!-- Action Buttons Panel _3 -->
+    <Panel id="Action_Buttons_3" width="250" height="50" position="0 -300 0" color="#FFFFFF00">
+        <Button id="angriffButton_3" width="35" height="30" position="-85 0 0" onClick="angriff" tooltip="Angriff>" colors="#22222200|#22222250|#22222250|#FF0000">
+            <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+        </Button>
+        <Button id="probeButton_3" width="30" height="30" position="-25 0 0" onClick="probe" tooltip="Probe" colors="#22222200|#22222250|#22222250|#FF0000">
+            <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+        </Button>
+        <Button id="heilungButton_3" width="30" height="30" position="20 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
+            <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+        </Button>
+        <Button id="abwehrButton_3" width="35" height="30" position="85 0 0" onClick="abwehr" tooltip="Abwehr" colors="#22222200|#22222250|#22222250|#FF0000">
+            <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+        </Button>
+    </Panel>
+    </Panel>
+    </Panel>
+
+<!-- Spieler_4 -->
+    <Panel id="Parent_PlayerPanel_4" position="300 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00"  allowDragging="true" returntooriginalpositionwhenreleased="false">
+    
+            <GridLayout cellSize="10 10" spacing="15">
+            <Button id="button_4_1" onClick="buttonClick_4_1" class="imageButton"/>
+            <Button id="button_4_2" onClick="buttonClick_4_2" class="imageButton"/>
+            <Button id="button_4_3" onClick="buttonClick_4_3" class="imageButton"/>
+            <Button id="button_4_4" onClick="buttonClick_4_4" class="imageButton"/>
+            <Button id="button_4_5" onClick="buttonClick_4_5" class="imageButton"/>
+            <Button id="button_4_6" onClick="buttonClick_4_6" class="imageButton"/>
+            <Button id="button_4_7" onClick="buttonClick_4_7" class="imageButton"/>
+            <Button id="button_4_8" onClick="buttonClick_4_8" class="imageButton"/>
+            <Button id="button_4_9" onClick="buttonClick_4_9" class="imageButton"/>
+            <Button id="button_4_10" onClick="buttonClick_4_10" class="imageButton"/>
+        </GridLayout>
+        <Image id="displayedImage_4" class="displayImage"/>
+
+    <!-- Inner Player Panel -->
+    <Panel id="PlayerPanel_4" width="220" height="270" alignment="MiddleCenter" position="0 100">
+       
+        <!-- Diceboard Spieler_4 einschalten -->
+        <Button id="showDiceboardButton_4" width="20" height="30" position="-105 -240 0" onClick="showDiceboard_4" tooltip="Würfelboard anzeigen" colors="#22222200|#22222250|#22222250|#FF0000"/>
+        <Button id="tooglecam_4" width="20" height="30" position="105 -240 0"  onClick="toggleCameras_4" tooltip="Switch Camera" colors="#22222200|#22222250|#22222250|#FF0000"/>
+
+
+        <!-- Name Panel -->
+        <Text id="name_4_panel"  text=" " alignment="MiddleCenter" position="0 97" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
+        <Text id="description_4_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
+        <!-- Health Controls -->
+        <Panel id="health_controls_4" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+            <Button id="health_down_4" text=" " fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_4"/>
+            <Text id="health_4_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FF0000" alignment="MiddleCenter"/>
+            <Button id="health_up_4" text=" " fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthUp_4"/>
+        </Panel>
+        <!-- Exhaustion Controls -->
+        <Panel id="exhaustion_controls_4" position="0 -25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
+            <Button id="exhaustion_down_4" text="" fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionDown_4"/>
+            <Text id="exhaustion_4_panel" text=" " position="0 0" width="100" height="40" fontSize="25" color="#FFFF00" alignment="MiddleCenter"/>
+            <Button id="exhaustion_up_4" text="" fontSize="30" fontStyle="Bold" position="80 0" width="40" height="40" color="rgba(255,255,0,0)" onClick="adjustExhaustionUp_4"/>
+        </Panel>
+        <!-- Marker Parent Panel -->
+        <Panel id="panelmarker_Parent_a4" rectAlignment="MiddleCenter" width="110" height="40.5" offsetXY="0 -90">
+            <!-- MANUELL_ Marker Container 1 -->
+            <Panel id="marker_container1_4" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="-13 0" color="#FFFFFF00">
+                <Button id="button2_4_1" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(1)" color="transparent"><!-- wechsel -->
+                    <Image id="image_4_1" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_4_1"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- MANUELL_ Marker Container 2 -->
+            <Panel id="marker_container2_4" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="29.5 0" color="#FFFFFF00">
+                <Button id="button2_4_2" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(2)" color="transparent"><!-- wechsel -->
+                    <Image id="image_4_2" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_4_2"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- MANUELL_ Marker Container 3 -->
+            <Panel id="marker_container3_4" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="72 0" color="#FFFFFF00">
+                <Button id="button2_4_3" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="removeMarker(3)" color="transparent"><!-- wechsel -->
+                    <Image id="image_4_3" width="40" height="40.5" rectAlignment="MiddleCenter" imageId="image_4_3"/><!-- wechsel -->
+                </Button>
+            </Panel>
+            <!-- Marker Container refresh -->
+            <Panel id="marker_container6_4" rectAlignment="LowerLeft" width="37.5" height="40.5" offsetXY="110 0" color="#FFFFFF00">
+                <Button id="refresh_markerpanel_4" width="40" height="40.5" rectAlignment="MiddleCenter" onClick="updateOnlyMarkerPanels" color="transparent">
+                    <Image id="image-refresh_4" width="25" height="25" rectAlignment="MiddleCenter" imageId="image-refresh_4"/>
+                </Button>
+            </Panel>
+        </Panel>
+
+
+        <!-- Einstellungen & Dice box -->
+        <Panel id="diceboard_4" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
+            <!-- Dice box 1 rot -->
+            <Panel id="Dice_1_4" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
+               <Panel id="minusButtonPanel_1_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="redDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="redDiceCounter">
+                        <Text id="redDiceCountText_Red" text="0" fontSize="18" color="Black" alignment="MiddleCenter"/>
+                   </Button>
+                </Panel>
+            </Panel>
+            <!-- Dice box2 blau -->
+            <Panel id="Dice_2_4" width="40" height="40" position="-24.5 30 0" color="rgba(0,0,255,0.8)">
+                <Panel id="minusButtonPanel_2_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blueDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blueDiceCounter">
+                        <Text id="blueDiceCountText_Red" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+            <!-- Dice box3 gelb-->
+            <Panel id="Dice_3_4" width="40" height="40" position="26 30 0" color="#FFB90F">
+               <Panel id="minusButtonPanel_3_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="yellowDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="yellowDiceCounter">
+                        <Text id="yellowDiceCountText_Red" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box4 grün-->
+            <Panel id="Dice_4_4" width="40" height="40" position="79 30 0" color="rgba(0,255,0,0.8)">
+                <Panel id="minusButtonPanel_4_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="greenDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="greenDiceCounter">
+                        <Text id="greenDiceCountText_Red" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box5 weiss-->
+            <Panel id="Dice_5_4" width="40" height="40" position="-45 -20 0" color="#808080CC">
+                 <Panel id="minusButtonPanel_5_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="whiteDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="whiteDiceCounter">
+                        <Text id="whiteDiceCountText_Red" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box6 schwarz-->
+            <Panel id="Dice_6_4" width="40" height="40" position="2 -20 0" color="rgba(0,0,0,0.8)">
+                    <Panel id="minusButtonPanel_6_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="blackDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="blackDiceCounter">
+                        <Text id="blackDiceCountText_Red" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+            <!-- Dice box7 braun -->
+            <Panel id="Dice_7_4" width="40" height="40" position="53 -20 0" color="#A52A2ACC">
+                   <Panel id="minusButtonPanel_7_1" width="40" height="40" position="0 0 0" color="none">
+                    <Button id="brownDiceBtn" width="40" height="40" colors="#00000085|#333333|#666666|rgba(0,0,0,0.5)" onClick="brownDiceCounter">
+                        <Text id="brownDiceCountText_Red" text="0" fontSize="18" color="#FFFFFF" alignment="MiddleCenter"/>
+                    </Button>
+                </Panel>
+            </Panel>
+
+    <!-- Minipanel_3 -->
+    <Panel id="dice_small_3" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)">
+        <Button id="Red" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+        <Button id="Blue" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+        <Button id="Yellow" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+        <Button id="Green" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+        <Button id="Grey" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+        <Button id="Black" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+        <Button id="Brown" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
+    </Panel>
+    </Panel>
+
+    <!-- Action Buttons Panel _4 -->
+    <Panel id="Action_Buttons_4" width="250" height="50" position="0 -300 0" color="#FFFFFF00">
+        <Button id="angriffButton_4" width="35" height="30" position="-85 0 0" onClick="angriff" tooltip="Angriff>" colors="#22222200|#22222250|#22222250|#FF0000">
+            <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+        </Button>
+        <Button id="probeButton_4" width="30" height="30" position="-25 0 0" onClick="probe" tooltip="Probe" colors="#22222200|#22222250|#22222250|#FF0000">
+            <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+        </Button>
+        <Button id="heilungButton_4" width="30" height="30" position="20 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
+            <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+        </Button>
+        <Button id="abwehrButton_4" width="35" height="30" position="85 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
+            <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
+        </Button>
+    </Panel>
+    </Panel>
+    </Panel>
+
+
+
+
+
+

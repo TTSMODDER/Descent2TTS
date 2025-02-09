@@ -1,0 +1,20 @@
+<Button width = "60" height = "60" rectAlignment="LowerRight" offsetXY = "-5 90" onClick="showCamMenu" colors="#ffffff40|#ffffff|#222222|#FF0000" tooltip="Kamerapositionen">
+    <Image width="60" height="60" image="https://steamusercontent-a.akamaihd.net/ugc/38945545051093216/6B32A929DBDDE2367FA1BFB13F2B025A41E6CDF3/"/> 
+</Button>
+
+<Panel id="CamPanel" width="200" height="100" color="rgba(0, 0, 0, 0.8)" visibility="hidden" allowDragging="true" returnToOriginalPositionWhenReleased="false" rectAlignment="LowerRight" offsetXY="-80 90">
+    <Image image="https://steamusercontent-a.akamaihd.net/ugc/38945545052240676/9DF560A5F4DE14248091B20577C50455EFC9D818/" width="200" height="100" preserveAspect="true"/>
+    <Panel width="40" height="20" rectAlignment="LowerLeft" offsetXY="2 0">
+        <Button onClick="truheCam" tooltip="Charakterboxen" width="38" height="30" rectAlignment="UpperLeft" offsetXY="2 40" colors="#22222215|#22222250|#222222|#FF0000"></Button>
+    </Panel>
+    <Button onClick="whiteCam" tooltip="Overlord" width="106" height="20" rectAlignment="UpperLeft" offsetXY="45 -5" colors="#22222215|#22222250|#222222|#FF0000"></Button>
+    <Button onClick="reiseCam" tooltip="Reisekarte" width="38" height="20" rectAlignment="UpperLeft" offsetXY="2 -15" colors="#22222215|#22222250|#222222|#FF0000"></Button>
+    <Button onClick="mapCam" tooltip="Spielbrett" width="106" height="50" offsetXY="0 0" colors="#22222215|#22222250|#222222|#222222"></Button>
+    <Button onClick="zustandCam" tooltip="Zustände" width="38" height="25" rectAlignment="MiddleRight" offsetXY="-2 0" colors="#22222215|#22222250|#222222|#FF0000"></Button>
+    <HorizontalLayout width="200" height="15" rectAlignment="LowerLeft" spacing="2" offsetXY="2 5">
+        <Button onClick="redCam" tooltip="Roter Spieler" colors="#22222215|#22222250|#222222|#FF0000"></Button>
+        <Button onClick="yellowCam" tooltip="Gelber Spieler" colors="#22222215|#22222250|#222222|#FF0000"></Button>
+        <Button onClick="greenCam" tooltip="GrünerSpieler" colors="#22222215|#22222250|#222222|#FF0000"></Button>
+        <Button onClick="blueCam"  tooltip="Blauer Spieler" colors="#22222215|#22222250|#222222|#FF0000"></Button>  
+    </HorizontalLayout>
+</Panel>
