@@ -372,12 +372,12 @@ function wuerfeln(player, value, id)
         if wuerfel[id] then
             local url = wuerfel[id].url
             if allowedPlayerColors[playerColor] then
-                local startPos = vector(-8, 10, 8)
+                local startPos = vector(40, 30, 8)
                 local diceForPlayer = currentDice[playerColor]
                 local newDicePos = vector(startPos.x + #diceForPlayer * -3, startPos.y, startPos.z)
                 spawnObjFromCloud(url, id, callback, newDicePos, player)
             elseif allowedDMColor [playerColor] then
-                local startPos = vector(-18, 10, -3) -- Anfangsposition (nur einmal festgelegt)
+                local startPos = vector(40, 15, -3) -- Anfangsposition (nur einmal festgelegt)
                 local diceForPlayer = currentDice[playerColor]
                 local newDicePos = vector(startPos.x + #diceForPlayer * 3, startPos.y, startPos.z)
                 spawnObjFromCloud(url, id, callback, newDicePos, player)
