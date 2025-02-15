@@ -1,0 +1,145 @@
+-- !!!!Dieser Script setzt das Vorhandensein des Custom Object  443 und 444 voraus (monsterkartendecks)
+
+
+function  Monster_Klassen_onload()
+
+-- Aufbau: MonsterID = Monstername&Typ,Tempo,Leben,--(ab hier UC)  Abwehr,Angriff,Monstergruppen,Gruppenstaerke_2,Gruppenstaerke_3,Gruppenstärke_4,Fähigkeiten_Ohne,Fähigkeiten_Blitz,Fähigkeiten_Aktion)
+
+  _G.Monsterklassen = {
+    Akt1 = {
+        [1] = {"Aas-Drache", 5, 6, 1, 1, 1, 1, 1, 1},
+        [2] = {"Aas-Drache E", 5, 8, 1, 1, 1, 1, 1, 1},
+        [3] = {"Arachyura", 3, 5, 1, 1, 1, 1, 1, 1},
+        [4] = {"Arachyura E", 3, 7, 1, 1, 1, 1, 1, 1},
+        [5] = {"Bandit", 4, 4, 1, 1, 1, 1, 1, 1},
+        [6] = {"Bandit E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [7] = {"Barghest", 4, 4, 1, 1, 1, 1, 1, 1},
+        [8] = {"Barghest E", 4, 6, 1, 1, 1, 1, 1, 1},
+        [9] = {"Blutaffe", 4, 5, 1, 1, 1, 1, 1, 1},
+        [10] = {"Blutaffe E", 4, 7, 1, 1, 1, 1, 1, 1},
+        [11] = {"Chaosbiest", 3, 5, 1, 1, 1, 1, 1, 1},
+        [12] = {"Chaosbiest E", 3, 6, 1, 1, 1, 1, 1, 1},
+        [13] = {"Dämonenfürst", 3, 6, 1, 1, 1, 1, 1, 1},
+        [14] = {"Dämonenfürst E", 3, 9, 1, 1, 1, 1, 1, 1},
+        [15] = {"Die Verlorenen", 2, 6, 1, 1, 1, 1, 1, 1},
+        [16] = {"Die Verlorenen E", 2, 8, 1, 1, 1, 1, 1, 1},
+        [17] = {"Dunkler Priester", 4, 4, 1, 1, 1, 1, 1, 1},
+        [18] = {"Dunkler Priester E", 4, 6, 1, 1, 1, 1, 1, 1},
+        [19] = {"Eherner Wächter", 2, 8, 1, 1, 1, 1, 1, 1},
+        [20] = {"Eherner Wächter E", 2, 10, 1, 1, 1, 1, 1, 1},
+        [21] = {"Eiswyrm", 4, 7, 1, 1, 1, 1, 1, 1},
+        [22] = {"Eiswyrm E", 4, 9, 1, 1, 1, 1, 1, 1},
+        [23] = {"Elementar", 4, 4, 1, 1, 1, 1, 1, 1},
+        [24] = {"Elementar E", 4, 6, 1, 1, 1, 1, 1, 1},
+        [25] = {"Ettin", 3, 5, 1, 1, 1, 1, 1, 1},
+        [26] = {"Ettin E", 3, 8, 1, 1, 1, 1, 1, 1},
+        [27] = {"Ferrox", 4, 4, 1, 1, 1, 1, 1, 1},
+        [28] = {"Ferrox E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [29] = {"Feuerteufel", 5, 2, 1, 1, 1, 1, 1, 1},
+        [30] = {"Feuerteufel E", 5, 4, 1, 1, 1, 1, 1, 1},
+        [31] = {"Finsterer Minotaurus", 4, 8, 1, 1, 1, 1, 1, 1},
+        [32] = {"Finsterer Minotaurus E", 4, 8, 1, 1, 1, 1, 1, 1},
+        [33] = {"Geist", 4, 4, 1, 1, 1, 1, 1, 1},
+        [34] = {"Geist E", 5, 8, 1, 1, 1, 1, 1, 1},
+        [35] = {"Gezüchtwandler", 4, 5, 1, 1, 1, 1, 1, 1},
+        [36] = {"Gezüchtwandler E", 5, 7, 1, 1, 1, 1, 1, 1},
+        [37] = {"Goblin - Bogenschütze", 5, 2, 1, 1, 1, 1, 1, 1},
+        [38] = {"Goblin - Bogenschütze E", 5, 4, 1, 1, 1, 1, 1, 1},
+        [39] = {"Goblin - Schamane", 4, 3, 1, 1, 1, 1, 1, 1},
+        [40] = {"Goblin - Schamane E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [41] = {"Golem", 3, 8, 1, 1, 1, 1, 1, 1},
+        [42] = {"Golem E", 3, 10, 1, 1, 1, 1, 1, 1},
+        [43] = {"Halbdrachenkrieger", 4, 5, 1, 1, 1, 1, 1, 1},
+        [44] = {"Halbdrachenkrieger E", 4, 8, 1, 1, 1, 1, 1, 1},
+        [45] = {"Harpyie", 5, 3, 1, 1, 1, 1, 1, 1},
+        [46] = {"Harpyie E", 5, 5, 1, 1, 1, 1, 1, 1},
+        [47] = {"Hexenmeister", 4, 3, 1, 1, 1, 1, 1, 1},
+        [48] = {"Hexenmeister E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [49] = {"Höhlenspinne", 4, 3, 1, 1, 1, 1, 1, 1},
+        [50] = {"Höhlenspinne E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [51] = {"Höllenhund", 4, 4, 1, 1, 1, 1, 1, 1},
+        [52] = {"Höllenhund E", 4, 6, 1, 1, 1, 1, 1, 1},
+        [53] = {"Höllenkoloss", 3, 8, 1, 1, 1, 1, 1, 1},
+        [54] = {"Höllenkoloss E", 3, 9, 1, 1, 1, 1, 1, 1},
+        [55] = {"Knochenschrecken", 5, 5, 1, 1, 1, 1, 1, 1},
+        [56] = {"Knochenschrecken E", 5, 7, 1, 1, 1, 1, 1, 1},
+        [57] = {"Kobold", 3, 2, 1, 1, 1, 1, 1, 1},
+        [58] = {"Kobold E", 3, 5, 1, 1, 1, 1, 1, 1},
+        [59] = {"Krähenhexe", 4, 5, 1, 1, 1, 1, 1, 1},
+        [60] = {"Krähenhexe E", 4, 7, 1, 1, 1, 1, 1, 1},
+        [61] = {"Lavakäfer", 3, 3, 1, 1, 1, 1, 1, 1},
+        [62] = {"Lavakäfer E", 3, 5, 1, 1, 1, 1, 1, 1},
+        [63] = {"Mantikor", 4, 5, 1, 1, 1, 1, 1, 1},
+        [64] = {"Mantikor E", 4, 7, 1, 1, 1, 1, 1, 1},
+        [65] = {"Marktpriester", 5, 7, 1, 1, 1, 1, 1, 1},
+        [66] = {"Marktpriester E", 5, 9, 1, 1, 1, 1, 1, 1},
+        [67] = {"Medusa", 4, 4, 1, 1, 1, 1, 1, 1},
+        [68] = {"Medusa E", 4, 6, 1, 1, 1, 1, 1, 1},
+        [69] = {"Merriod", 3, 5, 1, 1, 1, 1, 1, 1},
+        [70] = {"Merriod E", 3, 7, 1, 1, 1, 1, 1, 1},
+        [71] = {"Mörderspinne", 4, 4, 1, 1, 1, 1, 1, 1},
+        [72] = {"Mörderspinne E", 4, 7, 1, 1, 1, 1, 1, 1},
+        [73] = {"Naga", 4, 5, 1, 1, 1, 1, 1, 1},
+        [74] = {"Naga E", 3, 8, 1, 1, 1, 1, 1, 1},
+        [75] = {"Oger", 3, 6, 1, 1, 1, 1, 1, 1},
+        [76] = {"Oger E", 5, 5, 1, 1, 1, 1, 1, 1},
+        [77] = {"Pestwurm", 2, 5, 1, 1, 1, 1, 1, 1},
+        [78] = {"Pestwurm E", 3, 2, 1, 1, 1, 1, 1, 1},
+        [79] = {"Rasierklingenflügler", 5, 4, 1, 1, 1, 1, 1, 1},
+        [80] = {"Rasierklingenflügler E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [81] = {"Rattenschwarm", 3, 4, 1, 1, 1, 1, 1, 1},
+        [82] = {"Rattenschwarm E", 3, 5, 1, 1, 1, 1, 1, 1},
+        [83] = {"Riese", 3, 10, 1, 1, 1, 1, 1, 1},
+        [84] = {"Riese E", 3, 12, 1, 1, 1, 1, 1, 1},
+        [85] = {"Sarkomant", 4, 4, 1, 1, 1, 1, 1, 1},
+        [86] = {"Sarkomant E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [87] = {"Schatten", 4, 2, 1, 1, 1, 1, 1, 1},
+        [88] = {"Schatten E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [89] = {"Schattendrache", 3, 6, 1, 1, 1, 1, 1, 1},
+        [90] = {"Schattendrache E", 3, 9, 1, 1, 1, 1, 1, 1},
+        [91] = {"Schlurfender Koloss", 3, 5, 1, 1, 1, 1, 1, 1},
+        [92] = {"Schlurfender Koloss E", 3, 8, 1, 1, 1, 1, 1, 1},
+        [93] = {"Skelett - Bogenschütze", 4, 2, 1, 1, 1, 1, 1, 1},
+        [94] = {"Skelett - Bogenschütze E", 5, 4, 1, 1, 1, 1, 1, 1},
+        [95] = {"Tiefenelf", 5, 7, 1, 1, 1, 1, 1, 1},
+        [96] = {"Tiefenelf E", 5, 9, 1, 1, 1, 1, 1, 1},
+        [97] = {"Tiermensch", 4, 4, 1, 1, 1, 1, 1, 1},
+        [98] = {"Tiermensch E", 4, 5, 1, 1, 1, 1, 1, 1},
+        [99] = {"Troll", 3, 8, 1, 1, 1, 1, 1, 1},
+        [100] = {"Troll E", 3, 10, 1, 1, 1, 1, 1, 1},
+        [101] = {"Unterweltdrache", 3, 5, 1, 1, 1, 1, 1, 1},
+        [102] = {"Unterweltdrache E", 3, 7, 1, 1, 1, 1, 1, 1},
+        [103] = {"Volucrix - Jäger", 4, 3, 1, 1, 1, 1, 1, 1},
+        [104] = {"Volucrix - Jäger E", 3, 5, 1, 1, 1, 1, 1, 1},
+        [105] = {"Wechselbalg", 4, 4, 1, 1, 1, 1, 1, 1},
+        [106] = {"Wechselbalg E", 4, 6, 1, 1, 1, 1, 1, 1},
+        [107] = {"Wendigo", 4, 5, 1, 1, 1, 1, 1, 1},
+        [108] = {"Wendigo E", 4, 7, 1, 1, 1, 1, 1, 1},
+        [109] = {"Wiederbelebte", 3, 3, 1, 1, 1, 1, 1, 1},
+        [110] = {"Wiederbelebte E", 3, 5, 1, 1, 1, 1, 1, 1},
+        [111] = {"Zombie", 3, 3, 1, 1, 1, 1, 1, 1},
+        [112] = {"Zombie E", 3, 6, 1, 1, 1, 1, 1, 1},
+            },
+    Akt2 = {
+        [201] = {"Zombie", 5, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        [202] = {"Zombie E", 3, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        [203] = {"Wiederbelebte",3, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        [204] = {"Wiederbelebte E", 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+    }
+}
+Global.setVar("Monsterklassen", _G.Monsterklassen)
+
+
+-- TO DO:
+
+--Monstergruppen
+    
+        --MonstergruppenID,Monstergruppenname,
+
+--Monsterfähigkeiten
+    
+            --MonsterfähigkeitenID,Monsterfähigkeitenname,Monsterfähigkeitenbeschreibung    
+
+
+
+end
