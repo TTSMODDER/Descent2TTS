@@ -39,10 +39,11 @@
     <Panel id="PlayerPanel_1" width="220" height="270" alignment="MiddleCenter" position="0 100">
         <!-- Diceboard Spieler_1 einschalten -->
 
-        <Button id="showDiceboardButton_1" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_1"/>
+        <Button id="showDiceboardButton_1"  width="20" height="30" position="-105 -240 0"  onClick="showDiceboard_1" tooltip="Würfelboard anzeigen" colors="#22222200|#22222250|#22222250|#FF0000"/>
+       <Button id="tooglecam_1" width="20" height="30" position="105 -240 0"  onClick="toggleCameras_1" tooltip="Switch Camera" colors="#22222200|#22222250|#22222250|#FF0000"/>
         
         <!-- Name Panel -->
-        <Text id="name_1_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
+        <Text id="name_1_panel" text=" " alignment="MiddleCenter" position="0 97" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
         <Text id="description_1_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
         <!-- Health Controls -->
         <Panel id="health_controls_1" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
@@ -83,27 +84,6 @@
                 </Button>
             </Panel>
         </Panel>
-
-         <!-- Minipanel_1 -->
-         <!-- <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
-            <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
-            <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
-            <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
-            <Button id="Green" width="30" height="30"  color="#00FF00CC" onClick="wuerfeln"/>
-            <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
-            <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
-            <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
-         </HorizontalLayout> -->
-
-      <!--   <Panel id="dice_small_1" width="210" height="35" position="0 -180 0" color="rgba(0,0,0)">
-            <Button id="Red" width="30" height="30" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
-            <Button id="Blue" width="30" height="30" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
-            <Button id="Yellow" width="30" height="30" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
-            <Button id="Green" width="30" height="30" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
-            <Button id="Grey" width="30" height="30" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
-            <Button id="Black" width="30" height="30" position="40 0 0" color="#404040" onClick="wuerfeln"/>
-            <Button id="Brown" width="30" height="30" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
-        </Panel> -->
 
         <!-- Einstellungen & Dice box -->
         <Panel id="diceboard_1" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
@@ -182,16 +162,16 @@
                 </Panel>
                 <!-- Action Buttons Panel _1 -->
                 <Panel id="Action_Buttons_1" width="250" height="50" position="0 -300 0" color="#00000000">
-                    <Button id="angriffButton_1" width="35" height="30" position="-85 0 0" color="#00000000" onClick="angriff">
+                    <Button id="angriffButton_1" width="35" height="30" position="-85 0 0" onClick="angriff" tooltip="Angriff>" colors="#22222200|#22222250|#22222250|#FF0000">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
-                    <Button id="probeButton_1" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe">
+                    <Button id="probeButton_1" width="30" height="30" position="-25 0 0"  onClick="probe" tooltip="Probe" colors="#22222200|#22222250|#22222250|#FF0000">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
-                    <Button id="heilungButton_1" width="30" height="30" position="20 0 0" color="#00000000" onClick="heal">
+                    <Button id="heilungButton_1" width="30" height="30" position="20 0 0"  onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
-                    <Button id="abwehrButton_1" width="35" height="30" position="85 0 0" onClick="abwehr" color="#00000000">
+                    <Button id="abwehrButton_1" width="35" height="30" position="85 0 0" onClick="abwehr" tooltip="Abwehr" colors="#22222200|#22222250|#22222250|#FF0000">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
             </Button>
         </Panel>
@@ -220,11 +200,13 @@
     <Panel id="PlayerPanel_2" width="220" height="270" alignment="MiddleCenter" position="0 100">
         <!-- Diceboard Spieler_2 einschalten -->
 
-       <Button id="showDiceboardButton_2" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_2"/>
-        
+        <Button id="showDiceboardButton_2"  width="20" height="30" position="-105 -240 0"  onClick="showDiceboard_2" tooltip="Würfelboard anzeigen" colors="#22222200|#22222250|#22222250|#FF0000"/>
+       <Button id="tooglecam_2" width="20" height="30" position="105 -240 0"  onClick="toggleCameras_2" tooltip="Switch Camera" colors="#22222200|#22222250|#22222250|#FF0000"/>
+
+
         <!-- Name Panel -->
-        <Text id="name_2_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
-        <Text id="description_2_panel" text="" alignment="MiddleCenter" position="0 75" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
+        <Text id="name_2_panel"  text=" " alignment="MiddleCenter" position="0 97" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
+        <Text id="description_2_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
         <!-- Health Controls -->
         <Panel id="health_controls_2" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
             <Button id="health_down_2" text=" " fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_2"/>
@@ -264,17 +246,9 @@
                 </Button>
             </Panel>
         </Panel>
- <!-- Einstellungen & Dice box -->
+        <!-- Einstellungen & Dice box -->
 
-        <!--  <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
-            <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
-            <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
-            <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
-            <Button id="Green" width="30" height="30"  color="#00FF00CC" onClick="wuerfeln"/>
-            <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
-            <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
-            <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
-        </HorizontalLayout> -->
+
     
         <Panel id="diceboard_2" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
            <Panel id="Dice_1_2" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
@@ -353,16 +327,16 @@
 
                 <!-- Action Buttons Panel _2 -->
                 <Panel id="Action_Buttons_2" width="250" height="50" position="0 -300 0" color="#FFFFFF00">
-                    <Button id="angriffButton_2" width="35" height="30" position="-85 0 0" color="#00000000" onClick="angriff">
+                    <Button id="angriffButton_2" width="35" height="30" position="-85 0 0" onClick="angriff" tooltip="Angriff>" colors="#22222200|#22222250|#22222250|#FF0000">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
-                    <Button id="probeButton_2" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe">
+                    <Button id="probeButton_2" width="30" height="30" position="-25 0 0" onClick="probe" tooltip="Probe" colors="#22222200|#22222250|#22222250|#FF0000">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
-                    <Button id="heilungButton_2" width="30" height="30" position="20 0 0" color="#00000000" onClick="heal">
+                    <Button id="heilungButton_2" width="30" height="30" position="20 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
                     </Button>
-                    <Button id="abwehrButton_2" width="35" height="30" position="85 0 0" onClick="abwehr" color="#00000000">
+                    <Button id="abwehrButton_2" width="35" height="30" position="85 0 0" onClick="abwehr" tooltip="Abwehr" colors="#22222200|#22222250|#22222250|#FF0000">
                         <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
             </Button>
         </Panel>
@@ -390,10 +364,16 @@
     <!-- Inner Player Panel -->
     <Panel id="PlayerPanel_3" width="220" height="270" alignment="MiddleCenter" position="0 100">
         <!-- Diceboard Spieler_3 einschalten -->
-        <Button id="showDiceboardButton_3" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_3"/>
+
+        <Button id="showDiceboardButton_3" width="20" height="30" position="-105 -240 0" onClick="showDiceboard_3" tooltip="Würfelboard anzeigen" colors="#22222200|#22222250|#22222250|#FF0000"/>
+        <Button id="tooglecam_3" width="20" height="30" position="105 -240 0"  onClick="toggleCameras_3" tooltip="Switch Camera" colors="#22222200|#22222250|#22222250|#FF0000"/>
+
+       
+       
+       
         <!-- Name Panel -->
-        <Text id="name_3_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20" color="rgba(0,0,0,1)"/>
-        <Text id="description_3_panel" text="" alignment="MiddleCenter" position="0 72" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
+        <Text id="name_3_panel" text=" " alignment="MiddleCenter" position="0 97" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
+        <Text id="description_3_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
         <!-- Health Controls -->
         <Panel id="health_controls_3" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
             <Button id="health_down_3" text=" " fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_3"/>
@@ -434,17 +414,8 @@
             </Panel>
         </Panel>
 
-         <!-- <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
-            <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
-            <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
-            <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
-            <Button id="Green" width="30" height="30"  color="#00FF00CC" onClick="wuerfeln"/>
-            <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
-            <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
-            <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
-        </HorizontalLayout> -->
 
-        <!-- Einstellungen & Dice box -->
+        <!--  Dice box -->
         <Panel id="diceboard_3" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
             <!-- Dice box 1 rot -->
             <Panel id="Dice_1_3" width="40" height="40" position="-74 30 0" color="rgba(255,0,0,0.8)">
@@ -521,16 +492,16 @@
 
     <!-- Action Buttons Panel _3 -->
     <Panel id="Action_Buttons_3" width="250" height="50" position="0 -300 0" color="#FFFFFF00">
-        <Button id="angriffButton_3" width="35" height="30" position="-85 0 0" color="#00000000" onClick="angriff">
+        <Button id="angriffButton_3" width="35" height="30" position="-85 0 0" onClick="angriff" tooltip="Angriff>" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="probeButton_3" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe">
+        <Button id="probeButton_3" width="30" height="30" position="-25 0 0" onClick="probe" tooltip="Probe" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="heilungButton_3" width="30" height="30" position="20 0 0" color="#00000000" onClick="heal">
+        <Button id="heilungButton_3" width="30" height="30" position="20 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="abwehrButton_3" width="35" height="30" position="85 0 0" onClick="abwehr" color="#00000000">
+        <Button id="abwehrButton_3" width="35" height="30" position="85 0 0" onClick="abwehr" tooltip="Abwehr" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
     </Panel>
@@ -556,11 +527,15 @@
 
     <!-- Inner Player Panel -->
     <Panel id="PlayerPanel_4" width="220" height="270" alignment="MiddleCenter" position="0 100">
+       
         <!-- Diceboard Spieler_4 einschalten -->
-        <Button id="showDiceboardButton_4" width="20" height="20" position="-105 -245 0" color="#FFFFFF00" onClick="showDiceboard_4"/>
+        <Button id="showDiceboardButton_4" width="20" height="30" position="-105 -240 0" onClick="showDiceboard_4" tooltip="Würfelboard anzeigen" colors="#22222200|#22222250|#22222250|#FF0000"/>
+        <Button id="tooglecam_4" width="20" height="30" position="105 -240 0"  onClick="toggleCameras_4" tooltip="Switch Camera" colors="#22222200|#22222250|#22222250|#FF0000"/>
+
+
         <!-- Name Panel -->
-        <Text id="name_4_panel" text=" " alignment="MiddleCenter" position="0 105" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
-        <Text id="description_4_panel" text="" alignment="MiddleCenter" position="0 72" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
+        <Text id="name_4_panel"  text=" " alignment="MiddleCenter" position="0 97" width="220" height="40" fontSize="20"  color="rgba(0,0,0,1)"/>
+        <Text id="description_4_panel" text="" alignment="MiddleCenter" position="0 65" width="220" height="40" fontSize="15" color="rgba(0,0,0,1)"/>
         <!-- Health Controls -->
         <Panel id="health_controls_4" position="0 25" width="220" height="40" alignment="MiddleCenter" color="rgba(0,0,0,0)">
             <Button id="health_down_4" text=" " fontSize="30" fontStyle="Bold" position="-80 0" width="40" height="40" color="rgba(255,0,0,0)" onClick="adjustHealthDown_4"/>
@@ -601,15 +576,6 @@
             </Panel>
         </Panel>
 
-        <!-- <HorizontalLayout width="210" height="30" position="0 -180 0" color="rgba(0,0,0)">
-            <Button id="Red" width="30" height="30"  color="#FF0000CC" onClick="wuerfeln"/>
-            <Button id="Blue" width="30" height="30"  color="#0000FFCC" onClick="wuerfeln"/>
-            <Button id="Yellow" width="30" height="30"  color="#FFFF00CC" onClick="wuerfeln"/>
-            <Button id="Green" width="30" height="30"  color="#00FF00CC" onClick="wuerfeln"/>
-            <Button id="Grey" width="30" height="30" color="#D3D3D3CC" onClick="wuerfeln"/>
-            <Button id="Black" width="30" height="30"  color="#404040" onClick="wuerfeln"/>
-            <Button id="Brown" width="30" height="30"  color="#A52A2ACC" onClick="wuerfeln"/>
-        </HorizontalLayout> -->
 
         <!-- Einstellungen & Dice box -->
         <Panel id="diceboard_4" width="205" height="90" position="0 -180 0" visibility="hidden" color="#FFFFFF00">
@@ -688,16 +654,16 @@
 
     <!-- Action Buttons Panel _4 -->
     <Panel id="Action_Buttons_4" width="250" height="50" position="0 -300 0" color="#FFFFFF00">
-        <Button id="angriffButton_4" width="35" height="30" position="-85 0 0" color="#00000000" onClick="angriff">
+        <Button id="angriffButton_4" width="35" height="30" position="-85 0 0" onClick="angriff" tooltip="Angriff>" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="probeButton_4" width="30" height="30" position="-25 0 0" color="#00000000" onClick="probe">
+        <Button id="probeButton_4" width="30" height="30" position="-25 0 0" onClick="probe" tooltip="Probe" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="heilungButton_4" width="30" height="30" position="20 0 0" color="#00000000" onClick="heal">
+        <Button id="heilungButton_4" width="30" height="30" position="20 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="abwehrButton_4" width="35" height="30" position="85 0 0" onClick="abwehr" color="#00000000">
+        <Button id="abwehrButton_4" width="35" height="30" position="85 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
     </Panel>
