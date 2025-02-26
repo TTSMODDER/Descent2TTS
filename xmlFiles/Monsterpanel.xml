@@ -1,0 +1,546 @@
+<Panel id="monster_root_panel" 
+       width="250" height="150" 
+       position="600 350" 
+       allowDragging="true" 
+       returntooriginalpositionwhenreleased="false" 
+       image = "https://steamusercontent-a.akamaihd.net/ugc/38946813293844664/7F47448FF4A1520BFE79A291B47FAD1D8D1BE088/"
+       visibility="White|Black">   
+
+
+    <Text id="selected_monster_name" 
+          text="Monstername"
+          fontSize="20"
+          position="0 -4"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+
+    <Text id="selected_monster_health" 
+          text="0/0"
+          fontSize="25"
+          position="0 -30"
+           alignment="MiddleCenter"
+          color="#FFFFFF"/>
+
+
+
+    <!-- +/- Buttons im Root Panel -->
+    <Button id="health_up" 
+            width="30" height="30"
+            position="-100 35"
+            colors="#22222215|#22222250|#222222|#FF0000"
+            onClick="adjustSelectedMonsterHealth"/>
+            
+    <Button id="health_down"
+            width="30" height="30" 
+            position="-100 -35"     
+            colors="#22222215|#22222250|#222222|#FF0000"
+            onClick="adjustSelectedMonsterHealth"/>
+
+<Button id="attack_button"
+        width="40" height="40"
+        position="-30 55"
+         tooltip="Angriff" colors="#22222215|#22222250|#222222|#FF0000"
+        onClick="MonsterAttackButton" />
+
+<Button id="defense_button"
+        width="40" height="40"
+        position="20 55"
+        tooltip="Abwehr" colors="#22222215|#22222250|#222222|#FF0000"
+        onClick="MonsterDefendButton"/>
+
+<Button id="probe_button"
+        width="35" height="35"
+        position="-27 -55"
+        active="true"  
+        tooltip="Abwehr" colors="#22222215|#22222250|#222222|#FF0000"
+        onClick="probe"/>
+
+<Button id="healing_button"
+        width="35" height="35"
+        position="20 -55"
+        tooltip="Abwehr" colors="#22222215|#22222250|#222222|#FF0000"
+        active="true"
+        onClick="heal"/>
+
+<Button id="ol_view_button"
+        width="50" height="50"
+        position="100 -50"
+      colors="#22222215|#22222250|#222222|#FF0000"
+       onClick="toggleOLView"/>
+
+
+
+    <!-- Aktualisieren-Button -->
+    <Button id="refresh_button"
+            width="30" height="30"
+            
+            position="80 60"
+            text="↻"
+            fontStyle="Bold"
+            fontSize="20"
+            textColor="#FFFFFF"
+            color="#000000"
+            onClick="Monsterliste_onload"/>
+
+    <!-- toogle visib-Button -->
+    <Button id="toggle_panels_button"
+            width="30" height="30"
+            position="110 60"
+            text="-"      
+            fontStyle="Bold"
+            fontSize="20"
+            textColor="#FFFFFF"
+            color="#000000"
+            onClick="togglePanelsVisibility"/>
+
+  
+    <Button id="toggle_dice_button"
+            tooltip="würfelboard"
+            colors="#22222215|#22222250|#222222|#FF0000"
+            width="35" 
+            height="35"
+            position="100 3"
+            onClick="toggleDicePanel" />
+
+             <!-- Minipanel_ -->
+            <Panel id="dice_small_root" width="150" height="25" position="0 -65 0" color="rgba(0,0,0)" active="false">
+                <Button id="Red" width="15.625" height="15.625" position="-60 0 0" color="#FF0000CC" onClick="wuerfeln"/>
+                <Button id="Blue" width="15.625" height="15.625" position="-40 0 0" color="#0000FFCC" onClick="wuerfeln"/>
+                <Button id="Yellow" width="15.625" height="15.625" position="-20 0 0" color="#FFFF00CC" onClick="wuerfeln"/>
+                <Button id="Green" width="15.625" height="15.625" position="0 0 0" color="#00FF00CC" onClick="wuerfeln"/>
+                <Button id="Grey" width="15.625" height="15.625" position="20 0 0" color="#D3D3D3CC" onClick="wuerfeln"/>
+                <Button id="Black" width="15.625" height="15.625" position="40 0 0" color="#404040" onClick="wuerfeln"/>
+                <Button id="Brown" width="15.625" height="15.625" position="60 0 0" color="#A52A2ACC" onClick="wuerfeln"/>
+            </Panel>
+
+
+
+<!-- Reihe 1: Panels 1-2 -->  
+<Panel id="monster_panel_1" 
+       width="125" height="65"
+       position="-63 -110"    
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_1" 
+          text="Monster 1" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_1" 
+          text="Monster 1" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_2" 
+       width="125" height="65"
+       position="65 -110"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_2" 
+          text="Monster 2" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_2" 
+          text="Monster 2" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+
+<Panel id="monster_panel_3" 
+       width="125" height="65"
+        position="-63 -180"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_3" 
+          text="Monster 3" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_3" 
+          text="Monster 3" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_4" 
+       width="125" height="65"
+      position="65 -180"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_4" 
+          text="Monster 4" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_4" 
+          text="Monster 4" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+
+<Panel id="monster_panel_5" 
+       width="125" height="65"
+        position="-63 -247"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_5" 
+          text="Monster 5" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_5" 
+          text="Monster 5" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_6" 
+       width="125" height="65"
+       position="65 -247"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_6" 
+          text="Monster 6" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_6" 
+          text="Monster 6" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<!-- Reihe 4: Panels 7-8 -->
+<Panel id="monster_panel_7" 
+       width="125" height="65"
+       position="-63 -314"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_7" 
+          text="Monster 7" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_7" 
+          text="Monster 7" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_8" 
+       width="125" height="65"
+       position="65 -314"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_8" 
+          text="Monster 8" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_8" 
+          text="Monster 8" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<!-- Reihe 5: Panels 9-10 -->
+<Panel id="monster_panel_9" 
+       width="125" height="65"
+       position="-63 -381"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_9" 
+          text="Monster 9" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_9" 
+          text="Monster 9" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_10" 
+       width="125" height="65"
+       position="65 -381"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_10" 
+          text="Monster 10" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_10" 
+          text="Monster 10" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+<!-- Reihe 6: Panels 11-12 -->
+<Panel id="monster_panel_11" 
+       width="125" height="65"
+       position="-63 -448"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_11" 
+          text="Monster 11" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_11" 
+          text="Monster 11" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_12" 
+       width="125" height="65"
+       position="65 -448"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_12" 
+          text="Monster 12" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_12" 
+          text="Monster 12" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<!-- Reihe 7: Panels 13-14 -->
+<Panel id="monster_panel_13" 
+       width="125" height="65"
+       position="-63 -515"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_13" 
+          text="Monster 13" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_13" 
+          text="Monster 13" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_14" 
+       width="125" height="65"
+       position="65 -515"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_14" 
+          text="Monster 14" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_14" 
+          text="Monster 14" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+<!-- Reihe 8: Panels 15-16 -->
+<Panel id="monster_panel_15" 
+       width="125" height="65"
+       position="-63 -582"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_15" 
+          text="Monster 15" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_15" 
+          text="Monster 15" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_16" 
+       width="125" height="65"
+       position="65 -582"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_16" 
+          text="Monster 16" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_16" 
+          text="Monster 16" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<!-- Reihe 9: Panels 17-18 -->
+<Panel id="monster_panel_17" 
+       width="125" height="65"
+       position="-63 -649"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_17" 
+          text="Monster 17" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_17" 
+          text="Monster 17" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_18" 
+       width="125" height="65"
+       position="65 -649"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_18" 
+          text="Monster 18" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_18" 
+          text="Monster 18" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+<!-- Reihe 10: Panels 19-20 -->
+<Panel id="monster_panel_19" 
+       width="125" height="65"
+       position="-63 -716"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_19" 
+          text="Monster 19" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_19" 
+          text="Monster 19" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+<Panel id="monster_panel_20" 
+       width="125" height="65"
+       position="65 -716"
+       color="#000000"
+       active="true"
+       visibility=""
+       onClick="Click_MonsterPanel">
+    <Text id="monster_text_1_20" 
+          text="Monster 20" 
+          fontSize="15"
+          position="0 10"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+    <Text id="monster_text_2_20" 
+          text="Monster 20" 
+          fontSize="20"
+          position="0 -15"
+          alignment="MiddleCenter"
+          color="#FFFFFF"/>
+</Panel>
+
+
+</Panel>
