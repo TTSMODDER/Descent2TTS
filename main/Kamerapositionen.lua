@@ -1,4 +1,5 @@
-require ("/Librarys/Constants")
+--require ("/Librarys/Constants")
+require("Librarys/Constants")   
 
 local showAndHide = false
 
@@ -35,6 +36,7 @@ end
 
 
 function redCam(player) --Soielerpanel_4
+    print("redCam") 
     local redMap = getObjectFromGUID(playerMap.Red)
     local mapPos = redMap.getPosition()
     local playerColor = player.color
@@ -131,7 +133,7 @@ function whiteCam(player)
         Player[playerColor].lookAt({
             position = mapPos,
             pitch    = 60,
-            yaw      = 180,
+            yaw      = 160,
             distance = 15,
         })
     elseif allowedDMColor[playerColor] then
@@ -150,7 +152,7 @@ function truheCam(player)
         Player[playerColor].lookAt({
             position = {x=60,y=0,z=0},
             pitch    = 60,
-            yaw      = 180,
+            yaw      = 0,
             distance = 35,
         })
     elseif allowedDMColor[playerColor] then
@@ -216,6 +218,30 @@ function reiseCam (player)
     end
 end
 
+-- Funktione für OL CArds Kamerapositionen
+function OL_Card_Cam(player)
+    local playerColor = player.color
+    if allowedPlayerColors[playerColor] then
+        Player[playerColor].lookAt({
+            position = {x=3,y=3,z=-43},
+            pitch    = 90,
+            yaw      = 0,
+            distance = 16,
+        })
+    elseif allowedDMColor[playerColor] then
+        Player[playerColor].lookAt({
+            position = {x=3,y=3,z=-43},
+            pitch    = 90,
+            yaw      = 0,
+            distance = 16,
+        })
+    end
+end
+
+
+
+
+
 -- Funktionen für toggle Buttons auf Spleierpanels
     local isMapCamActive = true
 
@@ -233,7 +259,7 @@ end
     -- Toggle-Funktion für Kamerawechsel_Spieler Gelb= Panel _2
     function toggleCameras_2(player)
         if isMapCamActive then
-            yellowCam(player)
+            greenCam(player)
         else
             mapCam(player)
         end
@@ -244,7 +270,7 @@ end
     -- Toggle-Funktion für Kamerawechsel_Spieler grün= Panel _3
     function toggleCameras_3(player)
         if isMapCamActive then
-            greenCam(player)
+            yellowCam(player)
         else
             mapCam(player)
         end
