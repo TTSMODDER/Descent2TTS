@@ -19,7 +19,7 @@
     </Defaults>
 
 
-<!-- Spieler_1 -->
+<!-- Spieler_1 blau-->
     <Panel id="Parent_PlayerPanel_1" position="-600 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00" allowDragging="true" returntooriginalpositionwhenreleased="false">
         <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
             <Button id="button_1_1" onClick="buttonClick_1_1" class="imageButton"/>
@@ -180,7 +180,7 @@
            
         
                                             
-<!-- Spieler_2 -->
+<!-- Spieler_2 grün -->
      <Panel id="Parent_PlayerPanel_2" position="-300 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00"  allowDragging="true" returntooriginalpositionwhenreleased="false">
            <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
             <Button id="button_2_1" onClick="buttonClick_2_1" class="imageButton"/>
@@ -344,7 +344,7 @@
           </Panel>
            
 
-<!-- Spieler_3 -->
+<!-- Spieler_3 gelb-->
   
     <Panel id="Parent_PlayerPanel_3" position="0 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00"  allowDragging="true" returntooriginalpositionwhenreleased="false">
             <GridLayout cellSize="10 10" spacing="16"><!-- Hintergrundbilder -->
@@ -508,7 +508,7 @@
     </Panel>
     </Panel>
 
-<!-- Spieler_4 -->
+<!-- Spieler_4 rot -->
     <Panel id="Parent_PlayerPanel_4" position="300 0 0" width="250" height="500" alignment="MiddleCenter" color="#FFFFFF00"  allowDragging="true" returntooriginalpositionwhenreleased="false">
     
             <GridLayout cellSize="10 10" spacing="15">
@@ -663,7 +663,7 @@
         <Button id="heilungButton_4" width="30" height="30" position="20 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
-        <Button id="abwehrButton_4" width="35" height="30" position="85 0 0" onClick="heal" tooltip="Heilung" colors="#22222200|#22222250|#22222250|#FF0000">
+        <Button id="abwehrButton_4" width="35" height="30" position="85 0 0" onClick="abwehr" tooltip="Abwehr" colors="#22222200|#22222250|#22222250|#FF0000">
             <Text text="" fontSize="12" color="#FFFFFF" alignment="MiddleCenter"/>
         </Button>
     </Panel>
